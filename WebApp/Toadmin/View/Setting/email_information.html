@@ -1,0 +1,97 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>Email设置</h3>
+      <ul class="tab-base">
+        <li><a href="JavaScript:void(0);" class="current"><span>Email设置</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form method="post" id="form_email" name="settingForm">
+    <table class="table tb-type2">
+      <tbody>
+        <tr class="noborder">
+          <td colspan="2" class="required"><label for="email_type">邮箱功能开启:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform onoff">
+            <label for="email_status_1" class="cb-enable <if condition="$vo['email_status'] eq '1'">selected</if>" title="开启"><span>开启</span></label>
+            <label for="email_status_0" class="cb-disable <if condition="$vo['email_status'] eq '0'">selected</if>" title="关闭"><span>关闭</span></label>
+            <input type="radio" <if condition="$vo['email_status'] eq '1'">checked="checked"</if> value="1" name="email_status" id="email_status_1" />
+            <input type="radio" <if condition="$vo['email_status'] eq '0'">checked="checked"</if> value="0" name="email_status" id="email_status_0" />
+            <input type="hidden" name="email_type" value="1" />
+          </td>
+          <td class="vatop tips">&nbsp;</td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required">SMTP 服务器:</td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$vo['email_host']}" name="email_host" id="email_host" class="txt"></td>
+          <td class="vatop tips"><label class="field_notice">设置 SMTP 服务器的地址，如 smtp.163.com</label></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required">SMTP 端口:</td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$vo['email_port']}" name="email_port" id="email_port" class="txt"></td>
+          <td class="vatop tips"><label class="field_notice">设置 SMTP 服务器的端口，默认为 25</label></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required">发信人邮件地址:</td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$vo['email_addr']}" name="email_addr" id="email_addr" class="txt"></td>
+          <td class="vatop tips"><label class="field_notice">使用SMTP协议发送的邮件地址，如 muxiangdao@163.com</label></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required">SMTP 身份验证用户名:</td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$vo['email_id']}" name="email_id" id="email_id" class="txt"></td>
+          <td class="vatop tips"><label class="field_notice">如  muxiangdao@163.com</label></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required">SMTP 身份验证密码:</td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="password" value="{$vo['email_pass']}" name="email_pass" id="email_pass" class="txt"></td>
+          <td class="vatop tips"><label class="field_notice">muxiangdao@163.com邮件的密码，如 123456</label></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required">测试接收的邮件地址:</td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="" name="email_test" id="email_test" class="txt"></td>
+          <td class="vatop tips"><input type="button" value="测试" name="send_test_email" class="btn" id="send_test_email"></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr class="tfoot">
+          <td colspan="2" ><a href="JavaScript:void(0);" class="btn" onclick="document.settingForm.submit()"><span>保存</span></a></td>
+        </tr>
+      </tfoot>
+    </table>
+  </form>
+</div>
+<script>
+$(document).ready(function(){
+	$('#send_test_email').click(function(){
+		$.ajax({
+			type:'POST',
+			url:"{:U('Setting/email_testing')}",
+			data:'email_host='+$('#email_host').val()+'&email_port='+$('#email_port').val()+'&email_addr='+$('#email_addr').val()+'&email_id='+$('#email_id').val()+'&email_pass='+$('#email_pass').val()+'&email_type='+1+'&email_test='+$('#email_test').val(),
+			error:function(){
+					alert('邮件测试失败');
+				},
+			success:function(html){
+				alert('邮件测试成功');
+			},
+			dataType:'json'
+		});
+	});
+});
+</script>
+<include file="Public/footer" />

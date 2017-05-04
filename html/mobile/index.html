@@ -1,0 +1,111 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>摇滚时代</title>
+</head>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/swiper-3.3.1.min.css">
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/swiper-3.3.1.jquery.min.js"></script>
+<body>
+<div class="qj"><img src="img/back.jpg" width='100%' alt=""><div class="back"><img src="img/ck.jpg" width='100%' alt=""></div>
+</div>
+
+	<div id="top" class="wrapp">
+		<div class="logo"><img src="img/logo.png" alt=""></div>
+			<div class="con">
+				 <img class="bounceIn" src="img/contai.png" alt="">
+				 <div class="music playflash"><a href="javascript:showView()"><img src="img/music.png" alt=""></a></div>
+			</div>
+
+			<div class="download">
+				<a class="" href="#"><img src="img/dow.png" alt=""></a>
+			</div>
+
+			<div class="distan">
+				<div class="trans">
+					<div class="inter">
+						<div class="title"><img src="img/title.png" alt=""></div>
+						<div class="pic-link">
+							<ul>
+								<li><a href=""><img src="img/pic.png" alt=""></a></li>
+								<li><a href=""><img src="img/pic.png" alt=""></a></li>
+								<li><a href=""><img src="img/pic.png" alt=""></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="download">
+				<a class="" href="#"><img src="img/dow1.png" alt=""></a>
+			</div>
+
+			<div class="distan">
+				<div class="trans sroll">
+					<div class="swiper-container banner">
+						<ul class="swiper-wrapper">
+							<li class="swiper-slide"><a href=""><img src="img/banner1.jpg" alt=""></a></li>
+							<li class="swiper-slide"><a href=""><img src="img/banner2.jpg" alt=""></a></li>
+							<li class="swiper-slide"><a href=""><img src="img/banner3.jpg" alt=""></a></li>
+							<li class="swiper-slide"><a href=""><img src="img/banner2.jpg" alt=""></a></li>
+						</ul>
+						<div class="swiper-pagination sub-box"></div>
+					</div>
+				</div>
+			</div> 
+
+			<script language="javascript"> 
+		        var mySwiper = new Swiper('.swiper-container',{
+		        pagination : '.swiper-pagination',
+		        autoplay : 2000,
+		        //pagination : '#swiper-pagination1',
+		        })
+	        </script>
+
+			<div class="distan">
+				<div class="server">
+					<img src="img/servers.png" alt="">
+				</div>
+			</div>
+
+			<div class="distan">
+				<div class="atten">
+					<ul>
+						<li><a href=""><img src="img/wb.png" alt=""></a></li>
+						<li><a href=""><img src="img/baidu.png" alt=""></a></li>
+					</ul>
+				</div>
+				<div class="atten">
+					<div style="padding:10px 0;"><img src="img/wx.png" alt="" width="100%"></div>
+				</div>
+			</div>
+
+			<div class="download">
+				<a class="" href="#top"><img src="img/dow2.png" alt=""></a>
+			</div>
+			
+	</div>
+	
+  <div id="Popup" class="modal-wrapper-bg" style="display: none;">
+	        <div class="modal-dialog bounceInDown">
+				<!-- 视频内容 可以删除 -->
+	        	<img src="img/view.png" alt="">
+
+				<!-- 关闭按钮 -->
+	            <span onclick="Close()" id="close" class="close"></span>
+	        </div>
+	</div>
+
+</body>
+<script>
+function showView(){
+    document.getElementById('Popup').style.display='block';
+}
+function Close(){
+    document.getElementById('Popup').style.display='none';
+}
+</script>
+</html>

@@ -1,0 +1,101 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>规格管理</h3>
+      <ul class="tab-base">
+        <li><a class="current" href="JavaScript:void(0);"><span>管理</span></a></li>
+        <!--<li><a href="JavaScript:void(0);"><span>添加</span></a></li>-->
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <table id="prompt" class="table tb-type2">
+    <tbody>
+      <tr class="space odd">
+        <th colspan="12" class="nobg"> <div class="title">
+            <h5>操作提示</h5>
+            <span class="arrow"></span></div>
+        </th>
+      </tr>
+      <tr class="odd">
+        <td><ul>
+            <li>规格将会对应到商品发布的规格，请详细添加。如：颜色;军绿色、天蓝色、巧克力色、桔色、浅灰色、浅绿色、浅黄色等等。</li>
+            <li>当管理员添加类型时需选择规格，不同的类型可以选择相同的规格。</li>
+          </ul></td>
+      </tr>
+    </tbody>
+  </table>
+  <form id="form_spec" method="get" action="{:U('Spec/spec_del')}">
+    <table class="table tb-type2">
+      <thead>
+        <tr class="thead">
+          <th></th>
+          <th>排序</th>
+          <th>规格名称</th>
+          <th>规格值</th>
+          <th class="align-center">状态</th>
+          <th class="align-center">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <notempty name="spec_list">
+        <volist name="spec_list" id="vo">
+        <tr class="hover edit">
+          <td class="w24"><input type="checkbox" name="del_id[]" value="{$vo['sp_id']}" <if condition="$vo['sp_id'] eq 1">disabled="disabled"<else/>class="checkitem"</if>/></td>
+          <td class="w48 sort">
+          <span class="tooltip editable" title="可编辑" maxvalue="255" datatype="pint" fieldid="{$vo['sp_id']}" ajax_branch="sort" ajax_control="Spec" fieldname="sp_sort" nc_type="inline_edit">{$vo['sp_sort']}</span>
+          </td>
+          <td class="w270 name"><span>{$vo['sp_name']}</span></td>
+          <td class="name">{$vo['sp_value']}</td>
+          <td class="align-center yes-onoff">
+          <if condition="$vo['sp_show'] eq 1">
+          <a href="JavaScript:void(0);" class="tooltip enabled" ajax_control="Spec" ajax_branch='sp_show' nc_type="inline_edit" fieldname="sp_show" fieldid="{$vo['sp_id']}" fieldvalue="1" title="关闭"><img src="__IMG__/transparent.gif"></a>
+          <else/>
+          <a href="JavaScript:void(0);" class="tooltip disabled" ajax_control="Spec" ajax_branch='sp_show' nc_type="inline_edit" fieldname="sp_show" fieldid="{$vo['sp_id']}" fieldvalue="0" title="启用"><img src="__IMG__/transparent.gif"></a>          
+          </if>
+         </td>            
+          <td class="w96 align-center"><a href="{:U('Spec/spec_edit',array('sp_id'=>$vo['sp_id']))}">编辑</a></td>
+        </tr>
+        </volist>
+        <else/>
+        <tr class="no_data">
+          <td colspan="10">没有符合条件的相关记录</td>
+        </tr>
+        </notempty>
+      </tbody>
+      <notempty name="spec_list">
+      <tfoot>
+<!--        <tr>
+          <td><input type="checkbox" class="checkall" id="checkallBottom" /></td>
+          <td id="dataFuncs" colspan="16"><label for="checkallBottom">全选</label>
+            <a class="btn" onclick="submit_form('del');" href="JavaScript:void(0);"> <span>删除</span> </a>
+            <div class="pagination"></div></td>
+        <tr>-->
+      </tfoot>
+      </notempty>
+    </table>
+  </form>
+</div>
+<script type="text/javascript" src="__JS__/jquery.edit.js" charset="utf-8"></script> 
+<script type="text/javascript">
+function submit_form(type){
+	var id='';
+	$('input[type=checkbox]:checked').each(function(){
+		if(!isNaN($(this).val())){
+			id += $(this).val();
+		}
+	});
+	if(id == ''){
+		alert('请选择要操作的数据项');
+		return false;
+	}
+	if(type=='del'){
+		if(!confirm('您确定要删除？')){
+			return false;
+		}
+	}
+	$('#form_spec').submit();
+}
+</script>
+<include file="Public/footer" />

@@ -1,0 +1,79 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>微信回复</h3>
+      <ul class="tab-base">
+        <li><a href="JavaScript:void(0);" class="current"><span>信息管理</span></a></li>
+        <li><a href="{:U('Weixin/wx_msg_add')}" ><span>添加</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+
+  <form method='post' action="{:U('Weixin/wx_msg')}" id="form_weixin" name="form_weixin">
+    <table class="table tb-type2">
+      <thead>
+        <tr class="thead">
+          <th class="name">项目名称</th>
+         <!-- <th class="w156">类型</th>  -->  
+          <th class="align-center">关键词</th>  
+          <!--<th class="align-center">状态</th>-->
+          <th class="w72">操作 </th>
+        </tr>
+      </thead>
+      <tbody>
+         
+         <volist name="list" id="vo">
+         <tr class="hover edit">
+          <td class="name">{$vo.msg_title}</td>
+<!--          <td class="w156">
+              <if condition="$vo['msg_type'] eq 1">文本
+              <elseif condition="$vo['msg_type'] eq 2"/>图片
+              <elseif condition="$vo['msg_type'] eq 3"/>语音
+              <elseif condition="$vo['msg_type'] eq 4"/>视频
+              <elseif condition="$vo['msg_type'] eq 5"/>音乐
+              <elseif condition="$vo['msg_type'] eq 6"/>图文
+              <else/>
+              </if>
+          </td>-->
+          <td class="align-center">{$vo['msg_key']}</td>
+<!--          <td class="align-center power-onoff">            
+          <a href="JavaScript:void(0);" class="tooltip <eq name="vo['show']" value="1">enabled<else/>disabled</eq>" fieldvalue="{$vo.show}" fieldid="{$vo.id}" ajax_control="Weixin" ajax_branch="show" fieldname="show" nc_type="inline_edit" title="可编辑"><img src="__IMG__/transparent.gif"></a>
+         </td>-->
+          <td class="w72">
+          <a href="{:U('Weixin/wx_msg_edit',array('id'=>$vo['id']))}">编辑</a>
+          <if condition="($vo['id'] neq 1) AND ($vo['id'] neq 2) AND ($vo['id'] neq 6) AND ($vo['id'] neq 9)">
+          &nbsp;&nbsp;|&nbsp;&nbsp;<a href="{:U('Weixin/wx_msg_del',array('id'=>$vo['id']))}">移除</a>
+          </if>
+          </td>
+        </tr>
+        </volist>
+      </tbody>
+      <tfoot>
+        <tr class="tfoot">
+          <td></td>
+          <td colspan="16">
+            <div class="pagination"> 
+            {$pages}
+            </div>
+          </td>
+        </tr>
+      </tfoot>
+      
+    </table>
+  </form>
+</div>
+
+<script>
+//按钮先执行验证再提交表单
+$(function(){
+	$('#ncsubmit').click(function(){
+		$('#formSearch').submit();
+	});
+	$('#delweixin').click(function(){
+		$('#form_weixin').submit();
+	});
+});
+</script>
+<include file="Public/footer" />

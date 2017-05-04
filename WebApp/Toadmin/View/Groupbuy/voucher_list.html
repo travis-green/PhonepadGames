@@ -1,0 +1,90 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>团购管理</h3>
+      <ul class="tab-base">
+        <li><a href="{:U('Groupbuy/groupbuy')}"><span>管理</span></a></li>
+        <li><a href="javascript:void(0);" class="current"><span>团购券</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <!-- 操作说明 -->
+  <table class="table tb-type2" id="prompt">
+    <tbody>
+      <tr class="space odd">
+        <th colspan="12" class="nobg">
+	        <div class="title">
+	            <h5>操作提示</h5>
+	            <span class="arrow"></span>
+	        </div>
+        </th>
+      </tr>
+      <tr>
+        <td>
+		  <ul>
+            <li>该团购下的全部团购券</li>
+          </ul>
+		</td>
+      </tr>
+    </tbody>
+  </table>
+  <form id="list_form" method='post'>
+    <input id="member_id" name="member_id" type="hidden" />
+    <table class="table tb-type2">
+      <thead>
+        <tr class="space">
+          <th colspan="15" class="nobg">列表</th>
+        </tr>
+        <tr class="thead">
+          <th class="w200">订单号</th>
+		  <th class="w48">商铺名称</th>
+		  <th class="w120">名称</th>
+		  <th class="w48">会员名称</th>
+		  <th class="w200">团购券密码</th>
+          <th class="w48">状态</th>
+		  <th class="w48">使用时间</th>
+        </tr>
+      </thead>
+      <tbody>
+        <notempty name="list">
+        <volist name="list" id="val">
+        <tr class="hover edit">
+		  <td>{$val['order_sn']}</td>
+		  <td>{$val['store_name']}</td>
+		  <td>{$val['item_name']}</td>
+		  <td>{$val['member_name']}</td>
+		  <td>{$val['OrderPwd']['order_pwd']}</td>
+		  <td>
+          	<if condition="$val['state'] eq 1">
+            	<if condition="$end_time LT $Think.NOW_TIME">已过期
+                <else/>未消费
+                </if> 
+            <elseif condition="$val['state'] eq 2"/>已消费
+			<else/>
+            </if>	
+		  </td>
+		  <td><if condition="$val['use_time'] GT 0">{$val['use_time']|date='Y-m-d H:i:s',###}</if></td>
+        </tr>
+        </volist>
+        <else/>
+        <tr class="no_data">
+          <td colspan="10">暂无记录</td>
+        </tr>
+        </notempty>
+      </tbody>
+      <notempty name="list">
+      <tfoot>
+        <tr class="tfoot">
+          <td></td>
+          <td id="batchAction" colspan="15">
+            <div class="pagination">{$page_show}</div>
+          </td>
+        </tr>
+      </tfoot>
+      </notempty>
+    </table>
+  </form>
+</div>
+<include file="Public/footer" />

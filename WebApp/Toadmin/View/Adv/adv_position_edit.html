@@ -1,0 +1,299 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>广告管理</h3>
+      <ul class="tab-base">
+        <li><a href="{:U('Adv/adv_position')}"><span>管理</span></a></li>
+        <li><a href="JavaScript:void(0);" class="current"><span>编辑</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form id="link_form" enctype="multipart/form-data" method="post">
+   <input name="ap_id" type="hidden" value="{$vo['ap_id']}"/>
+    <table class="table tb-type2">
+      <tbody>
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="validation" for="ap_name">名称:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" name="ap_name" id="ap_name"  value="{$vo['ap_name']}" class="txt">
+            </td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="validation" for="ap_code">广告位置:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform">
+          <select name="ap_code" id="ap_code">
+          <option value="">请选择...</option>
+          <option value="banner" <if condition="$vo['ap_code'] eq 'banner'">selected="selected"</if>>PC首页轮播图</option>
+          <option value="index" <if condition="$vo['ap_code'] eq 'index'">selected="selected"</if>>PC首页中部广告</option>
+          <option value="link" <if condition="$vo['ap_code'] eq 'link'">selected="selected"</if>>PC友情链接</option>
+          <option value="m_banner" <if condition="$vo['ap_code'] eq 'm_banner'">selected="selected"</if>>手机轮播图</option>
+          <option value="m_adv" <if condition="$vo['ap_code'] eq 'm_adv'">selected="selected"</if>>手机中部广告图</option>        
+          </select>
+          </td>
+          <td class="vatop tips"></td>
+        </tr>           
+<!--         <tr>
+          <td colspan="2" class="required"><label for="sg_description">广告位描述:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform">
+          	<textarea id="sg_description" name="ap_intro" class="tarea" >{$vo['ap_intro']}</textarea>
+          </td>
+          <td class="vatop tips"></td>
+        </tr>     --> 
+        <tr class="noborder">
+          <td colspan="2" class="required"><label for="ap_link">链接地址:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" name="ap_link" value="{$vo['ap_link']}" id="ap_link" class="txt">
+            </td>
+          <td class="vatop tips">以http://开头</td>
+        </tr>
+<!--        <tr class="noborder">
+          <td colspan="2" class="required"><label for="ap_price">价格:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" name="ap_price" value="{$vo['ap_price']}" id="ap_price" class="txt">
+            </td>
+          <td class="vatop tips"></td>
+        </tr>     -->   
+<!--        <tr>
+          <td colspan="2" class="required">
+          	<label>广告类型:</label>
+          </td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform">
+          	<select name="ap_class" id="ap_class">
+            <if condition="$vo['ap_class'] eq 2">
+          	  <option value="2" selected="selected">图片</option>
+            <else/>  
+              <option value="1" selected="selected">文字</option> 
+            </if>  
+            </select>
+		  </td>
+          <td class="vatop tips">选择此广告位广告的形式</td>
+        </tr>-->
+<!--        <tr>
+          <td colspan="2" class="required">是否使用:</td>
+        </tr>
+        <tr class="noborder">
+			<td class="vatop rowform">
+				<ul>
+	              <li>
+	                <input name="is_use" type="radio" value="1" <if condition="$vo['is_use'] eq 1">checked="checked"</if>>
+	                <label>是</label>
+	              </li>
+	              <li>
+	                <input type="radio" name="is_use" value="0" <if condition="$vo['is_use'] eq 0">checked="checked"</if>>
+	                <label>否</label>
+	              </li>
+	            </ul>
+            </td>
+          <td class="vatop tips"></td>
+        </tr>-->
+      </tbody>
+
+      <tbody id="default_pic_tb">
+        <tr>
+          <td colspan="2" class="required"><label class="validation" for="change_default_pic">图片</label></td>
+        </tr>
+          <td class="vatop rowform">
+          	<span class="type-file-show">
+          		<img class="show_image" src="__IMG__/preview.png">
+            	<div class="type-file-preview">
+            		<img src="__UPLOADS__{$vo['ap_pic']}">
+            	</div>
+            </span>
+            <span class="type-file-box">
+            <input type='text' name='txt_goods_pic' id='txt_goods_pic' class='type-file-text' />
+            <input type='button' name='but_goods_pic' id='but_goods_pic' value='' class='type-file-button' />
+            <input name="default_pic" type="file" class="type-file-file" id="default_pic" size="30" hidefocus="true" nc_type="change_default_pic">
+            </span>
+          </td>
+          <td class="vatop tips" id="img_ts"></td>
+      </tbody>
+      
+      <tbody id="default_pic_tb2">
+        <tr>
+          <td colspan="2" class="required"><label class="validation" for="change_default_pic_2">焦点图片</label></td>
+        </tr>
+          <td class="vatop rowform">
+          	<span class="type-file-show">
+                <img class="show_image" src="__IMG__/preview.png">
+            	<div class="type-file-preview">
+            		<img src="__UPLOADS__{$vo['ap_pic_2']}">
+            	</div>
+            </span>
+            <span class="type-file-box">
+            <input type='text' name='txt_goods_pic_2' id='txt_goods_pic_2' class='type-file-text' />
+            <input type='button' name='but_goods_pic_2' id='but_goods_pic_2' value='' class='type-file-button' />
+            <input name="default_pic_2" type="file" class="type-file-file" id="default_pic_2" size="30" hidefocus="true" nc_type="change_default_pic_2">
+            </span>
+          </td>
+          <td class="vatop tips" id="img_ts">(尺寸为277x105px)</td>
+      </tbody>
+                  
+<!--      <tbody id="ap_width_media">
+        <tr>
+          <td colspan="2" class="required"><label class="validation" for="ap_width_media_input">宽度:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$vo['ap_width']}" name="ap_width"  class="txt" id="ap_width_media_input"></td>
+          <td class="vatop tips">像素</td>
+        </tr>
+	  </tbody>
+      <tbody id="ap_height">
+        <tr>
+          <td colspan="2" class="required"><label class="validation" for="ap_height_input">高度:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$vo['ap_height']}" name="ap_height" class="txt" id="ap_height_input"></td>
+          <td class="vatop tips">像素</td>
+        </tr>
+      </tbody>
+   
+      <tbody id="default_word">
+        <tr>
+          <td colspan="2" class="required"><label for="default_word" class="validation">文字:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" id="default_word" value="{$vo['default_content']}" name="default_content" class="txt">
+            </td>
+          <td class="vatop tips">当没有广告可供展示时使用的默认文字</td>
+        </tr>
+      </tbody>-->
+    <tbody id="default_word">
+    <tr>
+      <td colspan="2" class="required"><label>简介:</label></td>
+    </tr>
+    <tr class="noborder">
+      <td class="vatop rowform">
+      <textarea name="ap_intro" rows="6" class="tarea" id="ap_intro">{$vo['ap_intro']}</textarea>
+      </td>
+      <td class="vatop tips"></td>
+    </tr>  
+      <tfoot>
+        <tr class="tfoot">
+          <td colspan="15" ><a href="JavaScript:void(0);" class="btn" id="submitBtn"><span>保存</span></a></td>
+        </tr>
+      </tfoot>
+    </table>
+  </form>
+</div>
+<script>
+//按钮先执行验证再提交表单
+$(function(){$("#submitBtn").click(function(){
+    if($("#link_form").valid()){
+     $("#link_form").submit();
+	}
+	});
+});
+//
+$(document).ready(function(){
+	<?php if($vo['ap_code'] == 'index'){?>
+	$("#default_pic_tb2").show();
+	<?php }else{ ?>
+	$("#default_pic_tb2").hide();
+	<?php } ?>
+	$('#link_form').validate({
+        errorPlacement: function(error, element){
+			error.appendTo(element.parent().parent().prev().find('td:first'));
+        },
+        success: function(label){
+            label.addClass('valid');
+        },
+        rules : {
+        	ap_name : {
+                required : true
+            },
+			ap_code : {
+				 required : true	
+			},			
+            ap_link:{
+				url : true
+           	}
+/*			ap_width:{
+				required :function(){return $("#ap_class").val()!=1;},
+				digits	 :true,
+				min:1
+			},
+			ap_height:{
+				required :function(){return $("#ap_class").val()!=1;},
+				digits	 :true,
+				min:1
+			},
+			default_content  :{
+				required :function(){return $("#ap_class").val()==1;}
+			}*/
+        },
+        messages : {
+        	ap_name : {
+                required : '请输入标题'
+            },
+			ap_code : {
+				 required : '请输入调用代码'	
+			},				
+            ap_link : {
+				url : '链接地址格式错误'
+            }
+/*	
+            ap_width	:{
+            	required : '请输入宽度',
+            	digits	:'格式错误',
+            	min	:'1px以上'
+            },
+            ap_height	:{
+            	required   : '请输入高度',
+            	digits	:'格式错误',
+            	min	:'1px以上'
+            },            
+            default_content	:{
+            	required   : '请输入文字信息'
+            }*/
+        }
+    });
+});
+</script>
+<script type="text/javascript">
+// 模拟网站LOGO上传input type='file'样式
+$(function(){
+	$("#default_pic").change(function(){
+		$("#txt_goods_pic").val($(this).val());
+	});
+	$("#default_pic_2").change(function(){
+		$("#txt_goods_pic_2").val($(this).val());
+	});	
+// 上传图片类型
+$('input[class="type-file-file"]').change(function(){
+	var filepatd=$(this).val();	
+	var extStart=filepatd.lastIndexOf(".");
+	var ext=filepatd.substring(extStart,filepatd.lengtd).toUpperCase();		
+		if(ext!=".PNG"&&ext!=".GIF"&&ext!=".JPG"&&ext!=".JPEG"){
+			alert("图片格式错误");
+				$(this).attr('value','');
+			return false;
+		}
+	});
+	$("#ap_code").change(function(){
+		if($(this).val() == 'banner')
+		{
+			$("#img_ts").text('(尺寸为580x330px)');
+			$("#default_pic_tb2").hide();
+		}else if($(this).val() == 'index'){
+			$("#img_ts").text('(尺寸为277x105px)');
+			$("#default_pic_tb2").show();
+		}else if($(this).val() == 'link'){
+			$("#img_ts").text('(尺寸为190x63px)');
+			$("#default_pic_tb2").hide();
+		}
+	});		
+});
+</script>
+<include file="Public/footer" />

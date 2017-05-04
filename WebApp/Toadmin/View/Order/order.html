@@ -1,0 +1,121 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>订单管理</h3>
+      <ul class="tab-base">
+        <li><a href="JavaScript:void(0);" class="current"><span>订单管理</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form method="get" name="formSearch">
+    <table class="tb-type1 noborder search">
+      <tbody>
+        <tr>
+          <th><label>订单状态</label></th>
+          <td colspan="4"><select name="order_state" class="querySelect">
+              <option value="">请选择...</option>
+              <option value="10" <if condition="$search['order_state'] eq 10">selected</if>>待付款</option>
+              <option value="20" <if condition="$search['order_state'] eq 20">selected</if>>已付款</option>
+              <option value="30" <if condition="$search['order_state'] eq 30">selected</if>>已发货</option>
+              <option value="40" <if condition="$search['order_state'] eq 40">selected</if>>已收货</option>
+              <option value="50" <if condition="$search['order_state'] eq 50">selected</if>>已完成</option>
+              <option value="60" <if condition="$search['order_state'] eq 60">selected</if>>已取消</option>
+            </select>
+            <label style=" margin-left:20px;">类型</label>
+            <select name="field" class="querySelect">
+              <option value="order_sn" <if condition="$search['field'] eq 'order_sn'">selected</if>>订单号</option>
+              <option value="buyer_name" <if condition="$search['field'] eq 'buyer_name'">selected</if>>买家名称</option>
+            </select>
+            <input class="txt2" type="text" name="search_name" value="" />
+            </td>
+        </tr>
+        <tr>
+          <th><label for="add_time_from">下单时间</label></th>
+          <td><input class="txt date" type="text" value="{$search['add_time_from']}" id="add_time_from" name="add_time_from">
+            <label for="add_time_to">~</label>
+            <input class="txt date" type="text" value="{$search['add_time_to']}" id="add_time_to" name="add_time_to"/></td>
+          <th><label for="order_amount_from">订单金额</label></th>
+          <td><input class="txt-short" type="text" value="{$search['order_amount_from']}" name="order_amount_from" id="order_amount_from"/>
+            <label for="order_amount_to">~</label>
+            <input class="txt-short" type="text" value="{$search['order_amount_from']}" name="order_amount_to" id="order_amount_to"/></td>
+          <td><a href="javascript:document.formSearch.submit();" class="btn-search tooltip" title="查询">&nbsp;</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+  <table class="table tb-type2" id="prompt">
+    <tbody>
+      <tr class="space odd">
+        <th colspan="12"><div class="title"><h5>操作提示</h5><span class="arrow"></span></div></th>
+      </tr>
+      <tr>
+        <td>
+        <ul>
+            <li>点击查看操作将显示订单（包括订单物品）的详细信息</li>
+          </ul></td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="table tb-type2 nobdb">
+    <thead>
+      <tr class="thead">
+        <th>订单号</th>
+        <th>买家</th>
+        <th class="align-center">下单时间</th>
+        <th class="align-center">订单总额</th>
+        <th class="align-center">支付方式</th>
+        <th class="align-center">订单状态</th>
+        <th class="align-center">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+     <notempty name="list">
+      <volist name="list" id="vo">
+      <tr class="hover">
+        <td>{$vo['order_sn']}</td>
+        <td>{$vo['buyer_name']}</td>
+        <td class="nowrap align-center">{$vo['add_time']|date='Y-m-d H:i:s',###}</td>
+        <td class="align-center">{$vo['order_amount']}</td>
+        <td class="align-center">{$vo['payment_name']}</td>
+        <td class="align-center">
+        	<if condition="$vo['order_state'] eq 10">待付款
+            <elseif condition="$vo['order_state'] eq 20"/>已付款
+            <elseif condition="$vo['order_state'] eq 30"/>已发货
+            <elseif condition="$vo['order_state'] eq 40"/>已收货
+            <elseif condition="$vo['order_state'] eq 50"/>已完成
+            <else/>已取消
+            </if>
+        </td>
+        <td class="w60 align-center">
+        <if condition="$vo['order_state'] eq 20">
+        <!--<a href="{:U('Order/order_op',array('order_id'=>$vo['order_id']))}">发货</a> | -->
+        </if>
+        <a href="{:U('Order/order_view',array('order_id'=>$vo['order_id']))}">查看</a>
+        </td>
+      </tr>
+      </volist>
+      <else/>
+      <tr class="no_data">
+        <td colspan="15">没有符合条件的记录</td>
+      </tr>
+      </notempty>
+    </tbody>
+    <tfoot>
+      <tr class="tfoot">
+        <td colspan="15" id="dataFuncs"><div class="pagination"> {$page_show} </div></td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+<script type="text/javascript" src="__STATIC__/jquery-ui/jquery.ui.js"></script> 
+<script type="text/javascript" src="__STATIC__/jquery-ui/i18n/zh-CN.js" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="__STATIC__/jquery-ui/themes/ui-lightness/jquery.ui.css"  />
+<script type="text/javascript">
+$(function(){
+    $('#add_time_from').datepicker({dateFormat: 'yy-mm-dd'});
+    $('#add_time_to').datepicker({dateFormat: 'yy-mm-dd'});
+});
+</script> 
+<include file="Public/footer" />

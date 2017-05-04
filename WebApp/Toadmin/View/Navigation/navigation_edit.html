@@ -1,0 +1,122 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>页面导航</h3>
+      <ul class="tab-base">
+        <li><a href="{:U('Navigation/navigation')}" ><span>管理</span></a></li>
+        <li><a href="JavaScript:void(0);" class="current"><span>编辑</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form id="navigation_form" method="post">
+  <input type="hidden" name="nav_type" value="0">
+  <input type="hidden" name="nav_id" value="{$vo['nav_id']}"/>
+    <table class="table tb-type2">
+      <tbody>
+        <tr>
+          <td colspan="2" class="required"><label class="validation" for="nav_title">标题:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$vo['nav_title']}" name="nav_title" id="" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><label class="" for="nav_title">别名:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$vo['nav_byname']}" name="nav_byname" id="" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><label for="nav_url">链接:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$vo['nav_url']}" name="nav_url" id="" class="txt"></td>
+          <td class="vatop tips">以http://开头</td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><label>
+            <label for="type">位置:</label>
+            </label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><ul>
+              <li>
+                <input type="radio" value="1" name="nav_location" <if condition="$vo['nav_location'] eq 1">checked="checked"</if>>
+                <label>头部</label>
+              </li>
+              <li>
+                <input type="radio" value="3" name="nav_location" <if condition="$vo['nav_location'] eq 3">checked="checked"</if>>
+                <label>底部</label>
+              </li>
+            </ul></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><label>
+            <label>新窗口打开:</label>
+            </label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform onoff">
+          	<label for="nav_new_open1" class='cb-enable <if condition="$vo['nav_new_open'] eq 1">selected</if>'><span>是</span></label>
+            <label for="nav_new_open0" class='cb-disable <if condition="$vo['nav_new_open'] eq 0">selected</if>'><span>否</span></label>
+            <input id="nav_new_open1" name="nav_new_open" <if condition="$vo['nav_new_open'] eq 1">checked="checked"</if> value="1" type="radio">
+            <input id="nav_new_open0" name="nav_new_open" <if condition="$vo['nav_new_open'] eq 0">checked="checked"</if> value="0" type="radio"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><label for="nav_sort">排序:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$vo['nav_sort']}" name="nav_sort" id="" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr class="tfoot">
+          <td colspan="15"><a href="JavaScript:void(0);" class="btn" id="submitBtn"><span>保存</span></a></td>
+        </tr>
+      </tfoot>
+    </table>
+  </form>
+</div>
+<script>
+//按钮先执行验证再提交表单
+$(function(){$("#submitBtn").click(function(){
+    if($("#navigation_form").valid()){
+     $("#navigation_form").submit();
+	}
+	});
+});
+//
+$(document).ready(function(){
+	$('#navigation_form').validate({
+        errorPlacement: function(error, element){
+			error.appendTo(element.parent().parent().prev().find('td:first'));
+        },
+        success: function(label){
+            label.addClass('valid');
+        },
+        rules : {
+            nav_title : {
+                required : true
+            },
+            nav_sort:{
+               number   : true
+            }
+        },
+        messages : {
+            nav_title : {
+                required : '请输入标题'
+            },
+            nav_sort  : {
+                number   : '格式错误'
+            }
+        }
+    });
+});
+</script>
+<include file="Public/footer" />

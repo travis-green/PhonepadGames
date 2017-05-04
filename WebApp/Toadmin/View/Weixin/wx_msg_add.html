@@ -1,0 +1,101 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>微信回复</h3>
+      <ul class="tab-base">
+        <li><a href="{:U('Weixin/wx_msg')}"><span>信息管理</span></a></li>
+        <li><a href="javascript:void(0);" class="current" ><span>添加</span></a></li>
+      </ul>    
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form id="weixin_form" method="post" action="{:U('Weixin/wx_msg_add')}" enctype="multipart/form-data">
+    <div class="tabs_qh">
+    <div>
+    <table class="table tb-type2">
+      <tbody>
+      
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="validation" for="msg_key">菜单名称:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform">
+            <select name="msg_key" id="msg_key">
+            <option value="">请选择...</option>
+            <volist name="wx_menu" id="vo">
+            <option value="{$vo.key_url}">{$vo.name}</option>
+            </volist>
+            </select>          
+          </td>
+          <td class="vatop tips"></td>
+        </tr>
+              
+<!--        <tr>
+          <td colspan="2" class="required"><label class="validation" for="msg_type">信息类型:</label></td>
+        </tr>
+        <tr class="noborder">
+        <td class="vatop rowform1">
+        <select name="msg_type" id="msg_type">
+        <option value="">请选择...</option>
+        <option value="1">文本</option>
+		<option value="6">图文</option>
+        </select>
+        </td>
+        <td class="vatop tips"></td>
+        </tr>-->
+        <tr>
+          <td colspan="2" class="required"><label class="validation" for="body">信息内容:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="rowform">
+          <textarea style="width:500px;height:150px;" name="body" id="body" cols="" rows=""></textarea>
+          </td>
+          <td class="vatop tips"></td>
+        </tr>
+                
+      </tbody>
+    </table>
+    </div>
+    <div class="hidden"></div>
+    <tfoot>
+        <tr>
+          <td colspan="2"><a href="JavaScript:void(0);" class="btn" id="submitBtn"><span>提交</span></a></td>
+        </tr>
+      </tfoot>
+    </div>
+  </form>
+</div>
+
+<script>
+//按钮先执行验证再提交表单
+$(function(){
+	$("#submitBtn").click(function(){
+		if($("#weixin_form").valid()){
+			$("#weixin_form").submit();
+		}
+	});
+	
+	
+	$('#weixin_form').validate({
+        rules : {
+            msg_key : {
+                required   : true
+            },
+            body : {
+                required   : true
+            }											
+        },
+        messages : {
+            msg_key  : {
+                required   : '请选择菜单'
+            },
+            body  : {
+                required   : '请输入信息内容'
+            }										
+        }
+    });	
+	
+});
+</script>
+<include file="Public/footer" />

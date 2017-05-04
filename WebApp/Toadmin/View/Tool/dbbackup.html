@@ -1,0 +1,99 @@
+<include file="Public:header"/>
+<body>
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>数据库管理</h3>
+      <ul class="tab-base">
+        <li><a href="JavaScript:void(0);" class="current"><span>数据库管理</span></a></li>
+        <li><a href="#" ><span>备份数据库</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form method="post" id="form_member" action="#">
+    <table class="table tb-type2 nobdb">
+      <thead>
+      	<tr>
+          <td><input type="checkbox" class="checkall" id="checkallBottom"/></td>
+          <td colspan="16">
+          <label for="checkallBottom">全选</label>
+          <div class="pagination"></div>
+         </td>
+        </tr>
+        <tr class="thead">
+          <th>&nbsp;</th>
+          <th colspan="2">表名</th>
+          <th class=""><span fieldname="logins" nc_type="order_by">数据量</span></th>
+          <th class="align-center"><span fieldname="last_login" nc_type="order_by">数据大小</span></th>
+          <th class="align-center">创建时间</th>
+          <th class="align-center">备注</th>
+          <th class="align-center">操作</th>
+        </tr>
+      <tbody>
+        <volist name="list" id="vo" empty="暂无相关数据">
+       <tr class="hover member">
+          <td class="w24"><input type="checkbox" name='tables[]' value="{$vo['name']}" class="checkitem"/></td>
+          <td class="w48 picture">{$vo['name']|substr=3}
+          </td>
+          <td ></td>
+          <td class="">{$vo['rows']}</td>
+          <td class="w150 align-center">{$vo['data_length']|format_bytes}
+          </td>
+          <td class="align-center">{$vo['create_time']}</td>
+          <td class="align-center">{$vo['comment']}</td>
+          
+          <td class="align-center">
+            <a class="optimize_db" href="javascript:void(0);" title="优化表" data-url="{:U('Tool/optimize',array('tables'=>$vo['name']))}">优化表</a>&nbsp;
+          </td>
+        </tr>
+        </volist>
+      </tbody>
+      <tfoot class="tfoot">
+        <tr>
+          <td><input type="checkbox" class="checkall" id="checkallBottom"/></td>
+          <td colspan="16">
+          <label for="checkallBottom">全选</label>&nbsp;&nbsp;
+          <a href="JavaScript:void(0);" class="btn delall"><span>全部优化</span></a>
+          <div class="pagination">{$pages}</div>
+         </td>
+        </tr>
+      </tfoot>
+    </table>
+  </form>
+</div>
+<script>
+$(function(){
+    $('#exc_export').click(function(){
+    	$('input=[name="op"]').val('export_step1');
+    	$('#formSearch').submit();
+    });
+    $('#ncsubmit').click(function(){
+    	$('#formSearch').submit();
+    });	
+    $('.optimize_db,.repair_db').live('click', function(){
+        var title = $(this).attr('title'),
+            data_url = $(this).attr('data-url');
+        $.getJSON(data_url, function(result){
+            $.lzx.tip({content:result.msg});
+        });
+    });
+    $optimize.add($repair).click(function(){
+        $.post(this.href, $form.serialize(), function(data){
+            if(data.status){
+                updateAlert(data.info,'alert-success');
+            } else {
+                updateAlert(data.info,'alert-error');
+            }
+            setTimeout(function(){
+                $('#top-alert').find('button').click();
+                $(that).removeClass('disabled').prop('disabled',false);
+            },1500);
+        }, "json");
+        return false;
+    });
+    
+});
+</script>
+</body>
+</html>

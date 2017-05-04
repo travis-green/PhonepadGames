@@ -1,0 +1,132 @@
+<include file="Public/header" />
+<script type="text/javascript">
+function submit_delete_batch(type){
+    /* 获取选中的项 */
+    var items = '';
+    $('.checkitem:checked').each(function(){
+        items += this.value + ',';
+    });
+    if(items != '') {
+        items = items.substr(0, (items.length - 1));
+        submit_delete(items,type);
+    }  
+    else {
+        alert('请选择要操作的对象');
+    }
+}
+
+function submit_delete(id,type)
+{
+    if(confirm('确认要操作？')){
+        $('#list_form').attr('method','post');
+        if(type == 'recommend'){
+        	$('#list_form').attr('action',"{:U('Comment/recommend',array('op'=>1))}");
+        }else{
+        	$('#list_form').attr('action',"{:U('Comment/recommend')}");
+        }    
+        $('#comment_id').val(id);
+        $('#list_form').submit();
+    }
+}
+
+</script>
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>评论管理</h3>
+      <ul class="tab-base">
+        <li><a href="javascript:void(0);" class="current"><span>管理</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form method="get" name="formSearch">
+    <table class="tb-type1 noborder search">
+      <tbody>
+        <tr>
+          <td>
+			  <select name='s_type'>
+				<option value="store_name" <if condition="$search['s_type'] eq 'store_name'">selected</if>>商铺名称</option>
+				<option value="comment" <if condition="$search['s_type'] eq 'comment'">selected</if>>评论内容</option>
+				<option value="parking" <if condition="$search['s_type'] eq 'parking'">selected</if>>停车情况</option>
+			  </select>
+          </td>
+          <td><input type="text" value="{$search['s_content']}" name="s_content" class="txt" ></td>
+          <td><a href="javascript:document.formSearch.submit();" class="btn-search tooltip" title="查询">&nbsp;</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+  <!-- 操作说明 -->
+  <table class="table tb-type2" id="prompt">
+    <tbody>
+      <tr class="space odd">
+        <th colspan="12" class="nobg"><div class="title">
+            <h5>操作提示</h5>
+            <span class="arrow"></span></div></th>
+      </tr>
+      <tr>
+        <td>
+        	<ul>
+	            <li>评论管理可以对评论进行删除、推荐到首页、取消推荐等操作</li>
+	            <li>列表显示商铺名称、会员名称、人均消费、停车情况、推荐、评论内容等信息</li>
+          	</ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <form id="list_form" method='post'>
+    <input id="comment_id" name="comment_id" type="hidden" />
+    <table class="table tb-type2">
+      <thead>
+        <tr class="space">
+          <th colspan="15" class="nobg">列表</th>
+        </tr>
+        <tr class="thead">
+          <th class="w48"></th>
+          <th>商铺名称</th>
+		  <th>会员名称</th>
+		  <th>人均消费</th>
+		  <th>停车情况</th>
+		  <th>推荐</th>
+		  <th style="width:40%">评论内容</th>
+          <th class="w200 align-center">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+       <notempty name="list">
+       <volist name="list" id="val">
+        <tr class="hover edit">
+		  <td><input type="checkbox" value="{$val['comment_id']}" class="checkitem"></td>
+          <td><a href="#" target="_blank">{$val['store_name']}</a></td>
+		  <td>{$val['member_name']}</td>
+		  <td><span style="color:#E64D5E;font-weight:bold;font-size:14px">{$val['person_cost']}</span>元</td>
+		  <td>{$val['parking']}</td>
+		  <td>{$val['is_recommend']?'是':'否'}</td>
+		  <td>{$val['comment']}</td>
+		  <td class='align-center'><a href='javascript:if(confirm("确定要删除？"))window.location = "{:U('Comment/comment_del',array('comment_id'=>$val['comment_id']))}";'>删除</a></td>
+        </tr>
+        </volist>
+        <else /> 
+        <tr class="no_data">
+          <td colspan="10"暂无记录</td>
+        </tr>
+        </notempty>
+      </tbody>
+     <notempty name="list">
+      <tfoot>
+        <tr class="tfoot">
+          <td><input type="checkbox" class="checkall" id="checkall_1"></td>
+          <td id="batchAction" colspan="15"><span class="all_checkbox">
+            <label for="checkall_1">全选</label>
+            </span>&nbsp;&nbsp; 
+           	<a href="javascript:void(0)" class="btn" onclick="submit_delete_batch('recommend');"><span>推荐</span></a>
+           	&nbsp;<a href="javascript:void(0)" class="btn" onclick="submit_delete_batch('not_recommend');"><span>取消推荐</span></a>
+            <div class="pagination">{$page_show}</div>
+        </tr>
+      </tfoot>
+     </notempty>
+    </table>
+  </form>
+</div>
+<include file="Public/footer" />

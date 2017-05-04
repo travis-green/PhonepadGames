@@ -1,0 +1,130 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>积分商城</h3>
+      <ul class="tab-base">
+        <li><a href="{:U('Gift/gift_manage')}" class=""><span>礼品管理</span></a></li>
+        <li><a href="{:U('Gift/gift_add')}" class=""><span>新增礼品</span></a></li>
+        <li><a href="{:U('Gift/gift_order')}" class="current"><span>订单管理</span></a></li> 
+        <li><a href="javascript:void(0);" class="current"><span>订单详情</span></a></li>      
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+    <table class="table tb-type2">
+      <tbody>
+      	<tr class="noborder">
+          <td colspan="2" class="required"><label class="" for="sg_name">订单编号</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform">{$vo['['go_sn']']}</td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="" for="sg_name">礼品名称</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform">{$vo['sg_name']}</td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="" for="sg_name">会员名</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform">{$vo['member_name']}</td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="" for="sg_name">礼品名称</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform">{$vo['sg_name']}</td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="" for="sg_name">兑换数量</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform">{$vo['go_num']}</td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="" for="sg_name">礼品积分</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform">{$vo['go_unit_point']}</td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="" for="sg_name">总积分</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform">{$vo['go_total_point']}</td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="" for="sg_name">收货地址</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform">{$vo['go_address']}</td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="" for="sg_name">收货人</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform">{$vo['go_contact']}</td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="" for="sg_name">电话</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform">{$vo['go_phone']}</td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="" for="sg_name">邮编</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform">{$vo['go_zipcode']}</td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="" for="sg_name">下单时间</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform">{$vo['go_add_time']|date='Y-m-d H:i:s',###}</td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="" for="sg_name">最后状态变更</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform">{$vo['go_change_time']|date='Y-m-d H:i:s',###}</td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="" for="sg_name">订单状态</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform">
+          <if condition="$vo['go_state'] eq 1">已下单
+          <elseif condition="$vo['go_state'] eq 2"/>已发货
+          <else/>已收货
+          </if>	 
+          </td>
+          <td class="vatop tips"></td>
+        </tr>
+      </tbody>
+      <if condition="$vo['go_state'] eq 1">
+      <tfoot>
+        <tr>
+          <td colspan="2"><a id="submit" href='javascript:if(confirm("确认发货吗？"))window.location="{:U('Gift/order_ship',array('go_id'=>$vo['go_id']))}";' class="btn"><span>确认发货</span></a></td>
+        </tr>
+      </tfoot>
+      </if>
+    </table>
+</div>
+<include file="Public/footer" />

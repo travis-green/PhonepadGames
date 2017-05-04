@@ -1,0 +1,119 @@
+<include file="Public/header" />
+<script type="text/javascript">
+function submit_delete_batch(){
+    /* 获取选中的项 */
+    var items = '';
+    $('.checkitem:checked').each(function(){
+        items += this.value + ',';
+    });
+    if(items != '') {
+        items = items.substr(0, (items.length - 1));
+        submit_delete(items);
+    }  
+    else {
+        alert('请选择要操作的对象');
+    }
+}
+function submit_delete(id)
+{
+    if(confirm('确认删除?')) 
+	{
+        $('#member_id').val(id);
+        $('#list_form').submit();
+    }
+}
+</script>
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>会员管理</h3>
+      <ul class="tab-base">
+        <li><a href="javascript:void(0);" class="current"><span>管理</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form method="get" name="formSearch">
+    <table class="tb-type1 noborder search">
+      <tbody>
+        <tr>
+          <th>会员名称</th>
+          <td><input type="text" value="{$search['member_name']}" name="member_name" class="txt" ></td>
+          <td><a href="javascript:document.formSearch.submit();" class="btn-search tooltip" title="查询">&nbsp;</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+  <!-- 操作说明 -->
+  <table class="table tb-type2" id="prompt">
+    <tbody>
+      <tr class="space odd">
+        <th colspan="12" class="nobg"><div class="title">
+            <h5>操作提示</h5>
+            <span class="arrow"></span></div></th>
+      </tr>
+      <tr>
+        <td>
+		  <ul>
+            <li>可以查看会员，对会员进行删除操作</li>
+          </ul>
+		</td>
+      </tr>
+    </tbody>
+  </table>
+  <form id="list_form" method='post' action="{:U('Member/member_del')}">
+    <input id="member_id" name="member_id" type="hidden" />
+    <table class="table tb-type2">
+      <thead>
+        <tr class="space">
+          <th colspan="15" class="nobg">列表</th>
+        </tr>
+        <tr class="thead">
+          <!--<th class="w48"></th>-->
+          <th class="w200">名称</th>
+		  <th class="w48">性别</th>
+		  <th class="w200">注册时间</th>
+          <th class="w48">积分</th>
+		  <th class="w48">余额</th>
+		  <th class="w48">地区</th>
+		  <th class="w200 align-center">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <notempty name="list">
+        <volist name="list" id="val">
+        <tr class="hover edit">
+          <!--<td><input type="checkbox" value="{$val['member_id']}" class="checkitem"></td>-->
+		  <td>{$val['nickname']}</td>
+		  <td><if condition="$val['gender'] eq 1">男<elseif condition="$val['gender'] eq 2"/>女<else/>保密</if></td>
+		  <td>{$val['register_time']|date='Y-m-d',###}</td>
+		  <td>{$val['point']}</td>
+		  <td>{$val['predeposit']}</td>
+		  <td>{$val['usercity']}</td>
+		  <td class='align-center'>
+		  <a href='javascript:if(confirm("确定要删除？"))window.location ="{:U('Member/member_del',array('member_id'=>$val['member_id']))}";'>删除</a>
+          </td>
+        </tr>
+        </volist>
+        <else/>
+        <tr class="no_data">
+          <td colspan="10">暂无记录</td>
+        </tr>
+        </notempty>
+      </tbody>
+      <notempty name="list">
+      <tfoot>
+        <tr class="tfoot">
+          <td><!--<input type="checkbox" class="checkall" id="checkall_1">--></td>
+          <td id="batchAction" colspan="15">
+             <!--<span class="all_checkbox">
+            <label for="checkall_1">全选</label>
+            </span>&nbsp;&nbsp; <a href="javascript:void(0)" class="btn" onclick="submit_delete_batch();"><span>删除</span></a>-->
+            <div class="pagination">{$page_show}</div>
+        </tr>
+      </tfoot>
+      </notempty>
+    </table>
+  </form>
+</div>
+<include file="Public/footer" />

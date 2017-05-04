@@ -1,0 +1,59 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>公众号管理</h3>
+      <ul class="tab-base">
+        <li><a href="javascript:void(0);" class="current"><span>公众号</span></a></li>
+
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  
+  <table class="table tb-type2" id="prompt">
+    <tbody>
+      <tr class="space odd">
+        <th colspan="12" class="nobg"><div class="title"><h5>操作提示</h5><span class="arrow"></span></div></th>
+      </tr>
+      <tr>
+        <td>
+			<ul>
+				<li>请填写通过认证的微信公众号信息</li>
+			</ul>
+		</td>
+      </tr>
+    </tbody>
+  </table>
+  <form method="post" name="form_index">
+    <input name="wx_id" value="{$vo.wx_id}" type="hidden"/>
+    <table class="table tb-type2">
+      <tbody>
+        <tr class="noborder">
+          <td class="w96">公众号名称</td><td><input id="wx_gzh_name" name="wx_gzh_name" value="{$vo.wx_gzh_name}" class="w300" type="text"/></td>
+        </tr>
+        <tr class="noborder">
+          <td class="w96">APPID</td><td><input id="wx_appid" name="wx_appid" value="{$vo.wx_appid}" class="w300" type="text" maxlength="200" /></td>
+        </tr>
+         <tr class="noborder">
+          <td class="w96">SECRET</td><td><input id="wx_secret" name="wx_secret" value="{$vo.wx_secret}" class="w300" type="text" maxlength="200" /></td>
+        </tr>
+        <tr class="noborder">
+          <td class="w96">TOKEN</td><td><input id="wx_token" name="wx_token" value="{$vo.wx_token}" class="w300" type="text" maxlength="200" /></td>
+        </tr>
+        <tr class="noborder">
+          <td class="w96">商户号</td><td><input id="wx_mch_id" name="wx_mch_id" value="{$vo.wx_mch_id}" class="w300" type="text" maxlength="200" /></td>
+        </tr> 
+        <tr class="noborder">
+          <td class="w96">API调用地址</td><td><textarea name="wx_api_url" rows="6" class="w300" id="wx_api_url" >{$vo['wx_api_url']}</textarea>(&nbsp;请填写 {$Think.config.SiteUrl}/Weixin/valid )</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr class="tfoot">
+          <td colspan="2" ><a href="JavaScript:void(0);" class="btn" onclick="document.form_index.submit()"><span>保存</span></a></td>
+        </tr>
+      </tfoot>
+    </table>
+  </form>
+</div>
+<include file="Public/footer" />

@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{$arr_seo['title']}</title>
+<meta name="keywords" content="{$arr_seo['key']}">
+<meta name="description" content="{$arr_seo['desc']}">
+<meta name="viewport" content="width=device-width; initial-scale=1.0">
+<link rel="shortcut icon" href="/Public/home/img/ico.jpg" type="image/x-icon">
+<link rel="stylesheet" href="__CSS__/style.css">
+<script src="__JS__/jquery-1.11.3.min.js"></script>
+<script src="__JS__/jquery.SuperSlide.2.1.1.js"></script>
+<script src="__JS__/com.js"></script>

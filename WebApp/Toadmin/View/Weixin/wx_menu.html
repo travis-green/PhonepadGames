@@ -1,0 +1,136 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>菜单管理</h3>
+      <ul class="tab-base">
+        <li><a href="JavaScript:void(0);" class="current"><span>管理</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  
+  <table class="table tb-type2" id="prompt">
+    <tbody>
+      <tr class="space odd">
+        <th class="nobg" colspan="12"><div class="title"><h5>操作提示</h5><span class="arrow"></span></div></th>
+      </tr>
+      <tr>
+        <td>
+        <ul>
+           <li>菜单编辑规范：一级菜单最多4个汉字，二级菜单最多7个汉字</li>
+           <li>菜单编辑好后，需要提交到服务器，由于微信客户端缓存，需要24小时微信客户端才会展现出来</li>
+        </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <form method='post'>
+    <input type="hidden" name="form_submit" value="ok" />
+    <input type="hidden" name="submit_type" id="submit_type" value="" />
+    <table class="table tb-type2">
+      <thead>
+        <tr class="thead">
+          <th class="w48 sort">排序</th>
+          <th class="w25pre name">分类名称</th>
+          <th>类型</th>
+          <!--<th>数据</th>-->
+          <th>状态</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+      
+   <volist name="list" id="vo">
+    
+        <tr class="hover edit">
+              <td class="w48 sort" id="list-{$v['id']}">
+              <span title="可编辑" ajax_branch="sort" ajax_control="Weixin" datatype="number" fieldid="{$vo['id']}" fieldname="sort" nc_type="inline_edit" class="editable tooltip">{$vo['sort']}</span>
+              </td>
+              <td class="w25pre name">
+               <span title="可编辑" required="1" fieldid="{$vo['id']}" ajax_branch="name" ajax_control="Weixin" fieldname="name" nc_type="inline_edit" class="editable tooltip">{$vo.name}</span>
+              </td>
+              <td>{$vo['type']}</td>
+              <!--<td>{$vo['key_url']}</td>-->
+            <td class="power-onoff">            
+          <a href="JavaScript:void(0);" class="tooltip <eq name="vo['is_show']" value="1">enabled<else/>disabled</eq>" fieldvalue="{$vo.id}" id="pra-{$vo.id}" ajax_control="Weixin" ajax_branch="is_show" fieldname="is_show" nc_type="inline_edit" title="<eq name="vo['is_show']" value="1">关闭<else/>开启</eq>"><img src="__IMG__/transparent.gif"></a>
+            </td>
+              <td class="w48">
+                <a dialog_id="edit" nc_type="dialog" dialog_title="菜单编辑" dialog_width="500" uri="{:U('Weixin/wx_menu_edit',array('id'=>$vo['id']))}" href="javascript:void(0);">编辑</a>
+              </td>
+          </tr>
+       
+     <volist name="vo['sub']" id="v">     
+        <tr class="hover edit row3" id="list-{$v['id']}">
+        <td class="w48 sort">
+        <span class="tooltip editable" nc_type="inline_edit" fieldname="sort" fieldid="{$v.id}" datatype="number" ajax_control="Weixin" ajax_branch="sort" title="可编辑下级分类排序">{$v['sort']}</span>
+        </td>
+        <td class="w25pre name">
+        <img src="__IMG__/tv-expandable1.gif" nc_type="flex" status="none" fieldid="4">
+        <span title="可编辑" required="1" fieldid="{$v.id}" ajax_branch="name" ajax_control="Weixin" fieldname="name" nc_type="inline_edit" class="editable tooltip">{$v.name}</span>
+        </td>
+        <td>{$v['type']}</td>
+        <!--<td>{$v['key_url']}</td>-->
+        <td class="power-onoff">            
+          <a href="JavaScript:void(0);" class="tooltip <eq name="v['is_show']" value="1">enabled<else/>disabled</eq>" fieldvalue="{$v.id}" id="sub-{$v.p_id}-{$v.id}" pid="{$v.p_id}" ajax_control="Weixin" ajax_branch="is_show" fieldname="is_show" nc_type="inline_edit" title="<eq name="v['is_show']" value="1">关闭<else/>开启</eq>"><img src="__IMG__/transparent.gif"></a>
+        </td>
+        <td class="w48">
+        <a dialog_id="edit" nc_type="dialog" dialog_title="菜单编辑" dialog_width="500" uri="{:U('Weixin/wx_menu_edit',array('id'=>$v['id']))}" href="javascript:void(0);">编辑</a>
+        </td>
+        </tr>
+     </volist>      
+   </volist>       
+        </tbody>
+        <tfoot>
+        <tr class="tfoot">
+          <td id="batchAction" colspan="15">      
+            <a href="{:U('Weixin/post_menu')}" class="btn"><span>提交到服务器</span></a>
+          </td>
+        </tr>
+      </tfoot>
+          </table>
+  </form>
+</div>
+<script type="text/javascript" src="__STATIC__/common.js"></script>  
+<script language="javascript" src="__STATIC__/dialog/dialog.js"  id="dialog_js" charset="utf-8"> </script> 
+<script type="text/javascript" src="__STATIC__/jquery-ui/jquery.ui.js"></script> 
+<script type="text/javascript" src="__STATIC__/jquery-ui/i18n/zh-CN.js" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="__STATIC__/jquery-ui/themes/ui-lightness/jquery.ui.css"  />
+<link href="__STATIC__/dialog/custom.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="__JS__/jquery.editWx.js" charset="utf-8"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('a[id^="sub-"]').click(function(){
+			var menuid = $(this).attr('fieldvalue');
+			var praid = $(this).attr('pid');
+			var URL = '{$Think.config.SiteUrl}'+"/Toadmin/Weixin/isShow";
+			var cla = 'tooltip';
+			var data = {'menuid':menuid,'class':cla};
+			$.post(URL,data,function(info){
+				$('#sub-'+praid+'-'+menuid).removeClass().addClass(info);
+			});
+		});
+		$('a[id^="pra-"]').click(function(){
+			var menuid = $(this).attr('fieldvalue');
+			var URL = '{$Think.config.SiteUrl}'+"/Toadmin/Weixin/isShow";
+			var cla = 'tooltip';
+			var data = {'menuid':menuid,'class':cla};
+			$.post(URL,data,function(info){
+				$('#pra-'+menuid).removeClass().addClass(info);
+				$('a[id^="sub-'+menuid+'-"]').removeClass().addClass(info);
+			});
+		});
+	});
+</script>
+<script type="text/javascript">
+$('a[nc_type="dialog"]').click(function(){
+	var id = $(this).attr('dialog_id');
+	var title = $(this).attr('dialog_title') ? $(this).attr('dialog_title') : '';
+	var url = $(this).attr('uri');
+	var width = $(this).attr('dialog_width');
+	CUR_DIALOG = ajax_form(id, title, url, width,0);
+	return false;
+});
+</script>
+<include file="Public/footer" />

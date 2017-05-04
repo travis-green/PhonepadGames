@@ -1,0 +1,83 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>商户管理</h3>
+      <ul class="tab-base">
+        <li><a href="{:U('Store/storelist',array('op'=>'list'))}"><span>管理</span></a></li>
+		<li><a href="{:U('Store/storelist',array('op'=>'add'))}"><span>创建</span></a></li>
+		<li><a href="javascript:void(0);" class="current"><span>修改商户密码</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form id="add_form" method="post">
+  	<input name="store_id" id="store_id" value="{$vo['store_id']}" type="hidden"/>
+    <table class="table tb-type2 nobdb">
+      <tbody>
+        <tr class="noborder">
+          <td colspan="2" class="required"><label for="account">账户:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform">{$vo['account']}</td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><label class="validation" for="pwd">新密码:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="password" id="pwd" name="pwd" class="txt"></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><label class="validation" for="re_pwd">确认新密码:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="password" id="re_pwd" name="re_pwd" class="txt"></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr class="tfoot">
+          <td colspan="2"><a href="JavaScript:void(0);" class="btn" id="submitBtn"><span>提交</span></a></td>
+        </tr>
+      </tfoot>
+    </table>
+  </form>
+</div>
+<script>
+//按钮先执行验证再提交表
+$(function(){
+	$("#submitBtn").click(function(){
+	    if($("#add_form").valid()){
+	     $("#add_form").submit();
+		}
+	});
+});
+$(document).ready(function(){
+	$("#add_form").validate({
+		errorPlacement: function(error, element){
+			error.appendTo(element.parent().parent().prev().find('td:first'));
+        },
+        success: function(label){
+            label.addClass('valid');
+        },
+        rules : {
+            pwd : {
+                required : true
+            },
+            re_pwd : {
+                required : true,
+				equalTo:'#pwd'
+            }
+        },
+        messages : {
+            pwd : {
+                required : '请输入新密码'
+            },
+            re_pwd : {
+            	required : '请输入确认密码',
+				equalTo: '两次输入的密码不一致'
+            }
+        }
+	});
+});
+</script> 
+<include file="Public/footer" />

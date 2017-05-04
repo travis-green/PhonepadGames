@@ -1,0 +1,196 @@
+<include file="Public/header" />
+<script language="javascript">
+	$(document).ready(function(){
+		$("#province").change(function(){
+			var province_id=$(this).val();
+			var pr = $("#district_list");
+			$("#citySpan").load(AdminUrl+"/Setting/get_city_list?sign=1&cid="+province_id);
+			$("#townSpan").html('');
+			$("#areaSpan").html('');
+			$.ajax({
+				url: AdminUrl+"/Setting/show_district_list?cid="+province_id,
+				dataType: 'json',
+				success: function(data){
+					var info='';
+					for(var i = 0; i < data.length; i++)
+					{
+						info+='<tr class="hover edit">';
+						info+='<td class="w48 sort"><span title="可编辑" ajax_branch="displayorder" ajax_control="Setting" datatype="number" fieldid="'+data[i].id+'"fieldname="displayorder" nc_type="inline_edit" class="editable tooltip">'+data[i].displayorder+'</span></td>';
+						info+='<td class="w48 align-center">'+data[i].first_letter+'</td>';
+						info+='<td class="w50pre name"><span title="可编辑" required="1" fieldid="'+data[i].id+'" ajax_branch="name" ajax_control="Setting" fieldname="name" nc_type="inline_edit" class="editable tooltip">'+data[i].name+'</span></td>';		
+						info+='<td class="power-onoff"><a href="JavaScript:void(0);" class="tooltip disabled" fieldvalue="0" fieldid="'+data[i].id+'" ajax_control="Setting" ajax_branch="usetype" fieldname="usetype" nc_type="inline_edit" title="设置为常用城市"><img src="__IMG__/transparent.gif"></a></td>';
+						info+='<td class="align-center yes-onoff">';
+						if(data[i].status == 1)
+						{
+							info+='<a href="JavaScript:void(0);" class="tooltip enabled" ajax_control="Setting" ajax_branch="status" nc_type="inline_edit" fieldname="status" fieldid="'+data[i].id+'" fieldvalue="1" title="关闭"><img src="__IMG__/transparent.gif"></a>';
+						}else{
+							info+='<a href="JavaScript:void(0);" class="tooltip disabled" ajax_control="Setting" ajax_branch="status" nc_type="inline_edit" fieldname="status" fieldid="'+data[i].id+'" fieldvalue="0" title="启用"><img src="__IMG__/transparent.gif"></a>   ';
+						}
+						info+='</td>';
+						info+='<td class="w84 align-center"><a href='+AdminUrl+"/Setting/add_district/id/"+data[i].id+">添加下级</a>&nbsp;|&nbsp;<a href="+AdminUrl+"/Setting/district_del/id/"+data[i].id+">删除</a></td></tr>";
+					}
+					pr.html(info);
+					$.getScript(SiteUrl+"/Public/admin/js/jquery.edit.js");
+					$.getScript(SiteUrl+"/Public/admin/js/jquery.tooltip.js");
+					$.getScript(SiteUrl+"/Public/admin/js/admincp.js");				  
+				},
+				error: function(){
+					alert('获取信息失败');
+				}				
+			});	
+		});		
+	})
+
+	function city()
+	{
+		var city_id=$("#city").val();
+		var pr = $("#district_list");
+		$("#townSpan").load(AdminUrl+"/Setting/get_city_list?sign=2&cid="+city_id);
+		$("#areaSpan").html('');
+		$.ajax({
+			url: AdminUrl+"/Setting/show_district_list?cid="+city_id,
+			dataType: 'json',
+			success: function(data){
+				var info='';
+				for(var i = 0; i < data.length; i++)
+				{
+					info+='<tr class="hover edit">';
+					info+='<td class="w48 sort"><span title="可编辑" ajax_branch="displayorder" ajax_control="Setting" datatype="number" fieldid="'+data[i].id+'"fieldname="displayorder" nc_type="inline_edit" class="editable tooltip">'+data[i].displayorder+'</span></td>';
+					info+='<td class="w48 align-center">'+data[i].first_letter+'</td>';
+					info+='<td class="w50pre name"><span title="可编辑" required="1" fieldid="'+data[i].id+'" ajax_branch="name" ajax_control="Setting" fieldname="name" nc_type="inline_edit" class="editable tooltip">'+data[i].name+'</span></td>';		
+					info+='<td class="power-onoff"><a href="JavaScript:void(0);" class="tooltip disabled" fieldvalue="0" fieldid="'+data[i].id+'" ajax_control="Setting" ajax_branch="usetype" fieldname="usetype" nc_type="inline_edit" title="设置为常用城市"><img src="__IMG__/transparent.gif"></a></td>';
+					info+='<td class="align-center yes-onoff">';
+					if(data[i].status == 1)
+					{
+						info+='<a href="JavaScript:void(0);" class="tooltip enabled" ajax_control="Setting" ajax_branch="status" nc_type="inline_edit" fieldname="status" fieldid="'+data[i].id+'" fieldvalue="1" title="关闭"><img src="__IMG__/transparent.gif"></a>';
+					}else{
+						info+='<a href="JavaScript:void(0);" class="tooltip disabled" ajax_control="Setting" ajax_branch="status" nc_type="inline_edit" fieldname="status" fieldid="'+data[i].id+'" fieldvalue="0" title="启用"><img src="__IMG__/transparent.gif"></a>   ';
+					}
+					info+='</td>';					
+					info+='<td class="w84 align-center"><a href='+AdminUrl+"/Setting/add_district/id/"+data[i].id+">添加下级</a>&nbsp;|&nbsp;<a href="+AdminUrl+"/Setting/district_del/id/"+data[i].id+">删除</a></td></tr>";
+				}
+				pr.html(info);
+				$.getScript(SiteUrl+"/Public/admin/js/jquery.edit.js");
+				$.getScript(SiteUrl+"/Public/admin/js/jquery.tooltip.js");
+				$.getScript(SiteUrl+"/Public/admin/js/admincp.js");				  
+			},
+			error: function(){
+				alert('获取信息失败');
+			}				
+		});	
+	}	
+	function town()
+	{
+		var town_id=$("#town").val();
+		var pr = $("#district_list");
+		$("#areaSpan").load(AdminUrl+"/Setting/get_city_list?sign=3&cid="+town_id);
+		$.ajax({
+			url: AdminUrl+"/Setting/show_district_list?cid="+town_id,
+			dataType: 'json',
+			success: function(data){
+				var info='';
+				for(var i = 0; i < data.length; i++)
+				{
+					info+='<tr class="hover edit">';
+					info+='<td class="w48 sort"><span title="可编辑" ajax_branch="displayorder" ajax_control="Setting" datatype="number" fieldid="'+data[i].id+'"fieldname="displayorder" nc_type="inline_edit" class="editable tooltip">'+data[i].displayorder+'</span></td>';
+					info+='<td class="w48 align-center">'+data[i].first_letter+'</td>';
+					info+='<td class="w50pre name"><span title="可编辑" required="1" fieldid="'+data[i].id+'" ajax_branch="name" ajax_control="Setting" fieldname="name" nc_type="inline_edit" class="editable tooltip">'+data[i].name+'</span></td>';		
+					info+='<td class="power-onoff"><a href="JavaScript:void(0);" class="tooltip disabled" fieldvalue="0" fieldid="'+data[i].id+'" ajax_control="Setting" ajax_branch="usetype" fieldname="usetype" nc_type="inline_edit" title="设置为常用城市"><img src="__IMG__/transparent.gif"></a></td>';
+					info+='<td class="align-center yes-onoff">';
+					if(data[i].status == 1)
+					{
+						info+='<a href="JavaScript:void(0);" class="tooltip enabled" ajax_control="Setting" ajax_branch="status" nc_type="inline_edit" fieldname="status" fieldid="'+data[i].id+'" fieldvalue="1" title="关闭"><img src="__IMG__/transparent.gif"></a>';
+					}else{
+						info+='<a href="JavaScript:void(0);" class="tooltip disabled" ajax_control="Setting" ajax_branch="status" nc_type="inline_edit" fieldname="status" fieldid="'+data[i].id+'" fieldvalue="0" title="启用"><img src="__IMG__/transparent.gif"></a>   ';
+					}
+					info+='</td>';					
+					info+='<td class="w84 align-center"><a href="+AdminUrl+"/Setting/district_del/id/"+data[i].id+">删除</a></td></tr>';
+				}
+				pr.html(info);
+				$.getScript(SiteUrl+"/Public/admin/js/jquery.edit.js");
+				$.getScript(SiteUrl+"/Public/admin/js/jquery.tooltip.js");
+				$.getScript(SiteUrl+"/Public/admin/js/admincp.js");				  
+			},
+			error: function(){
+				alert('获取信息失败');
+			}				
+		});			
+	}
+</script>
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>地区设置</h3>
+      <ul class="tab-base">
+        <li><a href="JavaScript:void(0);" class="current"><span>地区管理</span></a></li>
+        <li><a href="{:U('Setting/hot_district')}"><span>常用地区管理</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  
+	<table class="tb-type1 noborder search">
+      <tbody>
+        <tr>
+          <th><label>地区</label></th>
+          <td id="gcategory">
+            	<select  name="province" id="province">
+				<option value="">请选择...</option>
+	             <volist name="list" id="vo">
+				 <option value="{$vo.id}">{$vo.name}</option>
+	             </volist>
+				</select>
+                <span id="citySpan"></span>
+                <span id="townSpan"></span>
+                <span id="areaSpan"></span>
+            </td>
+        </tr>
+      </tbody> 
+    </table>
+
+  <form method='post'>
+    <input type="hidden" name="form_submit" value="ok" />
+    <input type="hidden" name="submit_type" id="submit_type" value="" />
+    <table class="table tb-type2">
+      <thead>
+        <tr class="thead">
+          <th>排序</th>
+          <th class="w48 align-center">首字母</th>
+          <th>地区名称</th>
+          <th>设为常用</th>
+          <th class="align-center">状态</th>
+          <th class="w84 align-center">操作</th>
+        </tr>
+      </thead>
+      <tbody id="district_list">
+         <volist name="list" id="vo">        
+          <tr class="hover edit">      
+          <td class="w48 sort">
+          <span title="可编辑" ajax_branch="displayorder" ajax_control="Setting" datatype="number" fieldid="{$vo.id}" fieldname="displayorder" nc_type="inline_edit" class="editable tooltip">{$vo.displayorder}</span>
+          </td>
+          <td class="w48 align-center">{$vo.first_letter}</td>
+          <td class="w50pre name">
+          <span title="可编辑" ajax_branch="name" ajax_control="Setting" required="1" fieldid="{$vo.id}"  fieldname="name" nc_type="inline_edit" class="editable tooltip">{$vo.name}</span>
+          </td>
+           <td class="power-onoff">
+            <a href="JavaScript:void(0);" class="tooltip disabled" fieldvalue="0" fieldid="{$vo.id}" ajax_control="Setting" ajax_branch="usetype" fieldname="usetype" nc_type="inline_edit" title="设置为常用城市">
+            <img src="__IMG__/transparent.gif"></a>    
+          </td> 
+          <td class="align-center yes-onoff">
+          <if condition="$vo['status'] eq 1">
+          <a href="JavaScript:void(0);" class="tooltip enabled" ajax_control="Setting" ajax_branch='status' nc_type="inline_edit" fieldname="status" fieldid="{$vo['id']}" fieldvalue="1" title="关闭">	<img src="__IMG__/transparent.gif"></a>
+          <else/>
+          <a href="JavaScript:void(0);" class="tooltip disabled" ajax_control="Setting" ajax_branch='status' nc_type="inline_edit" fieldname="status" fieldid="{$vo['id']}" fieldvalue="0" title="启用"><img src="__IMG__/transparent.gif"></a>          
+          </if>
+         </td>              
+          <td class="w84 align-center"><a href="{:U('Setting/add_district',array('id'=>$vo['id']))}">添加下级</a>&nbsp;|&nbsp;<a href="{:U('Setting/district_del',array('id'=>$vo['id']))}">删除</a></td>      
+
+          </tr>
+          </volist>
+        
+        </tbody>
+      </table>
+  </form>
+</div>
+<script type="text/javascript" src="__JS__/jquery.edit.js" charset="utf-8"></script> 
+<include file="Public/footer" />

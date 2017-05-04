@@ -1,0 +1,41 @@
+/* 通用弹出式窗口样式*/
+
+/*html, body, div, ul, ol, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, fieldset, input { padding: 0; margin: 0;}
+h1, h2, h3, h4, h5, h6, pre, code, address, caption, cite, code, em, strong, table, th, td { font-size: 1em; font-style: normal; font-weight: normal;}*/
+
+/*body { background: none repeat scroll 0 0 #FFF; color: #333333; font: 12px/1 "微软雅黑", Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;}
+input, select, textarea { font: 12px/1 Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;}*/
+
+/*a { outline: medium none;}
+a:link, a:visited, a:active { text-decoration: none;}
+a:hover { text-decoration: underline;}*/
+.mt5 { margin-top:5px;}
+.warning { color: #C00; background-color: #FFC; width: 98%; clear: both; padding: 6px; margin: 6px auto; border: 1px dashed #F90;}	
+.warning label { clear: both; line-height: 20px;}
+/*body { font-size: 63%;} */
+
+.eject_con { font-size:1.2em; background-color: #FFF; overflow: hidden;}
+.eject_con dl { line-height: 20px; display: block; width: 100%; clear: both; padding:12px 0 0 0; overflow:hidden;}
+.eject_con dl dt { color: #555; text-align: right; text-overflow: ellipsis; white-space: nowrap; width: 29%; float: left; }
+.eject_con dl dt.required em { line-height: 22px; background: url(images/ncus_public.png) no-repeat scroll -276px -231px; display: inline-block; width: 16px; height: 16px; margin-right: 5px;}
+.hint { color: #BBB; line-height: 20px; }
+.eject_con dl dd { float: right; width: 60%;}
+.eject_con h2 { line-height:20px; font-weight: 600; background-color:#FEFEDA; color: #630; text-align: left; width: 90%; padding:8px 16px; margin: 5px auto 5px auto; border: solid 1px #FFE8C2;}
+.eject_con span.num { font-weight: 600; color: #390;}
+.eject_con ul { overflow: hidden;}
+.eject_con li h2 { font-size: 16px; font-weight: 600; line-height: 32px; color: #555; width: 98%; text-align: left; margin: 0 auto; border-bottom: dashed 1px #E7E7E7;}
+.eject_con .checked { float: left; padding: 0; margin: 0;}
+.eject_con .checked li { line-height: 16px; height: 16px; padding: 4px 0;}
+.eject_con li p { float: left; }
+.eject_con .strong { padding-left: 10px; color: #ff4e00; }
+.eject_con dl.bottom { padding: 12px 0; background-color:#F9F9F9; border-top: 1px solid #EAEAEA; margin-top:12px; }
+
+
+a.ncu-btn6 { line-height: 19px; color: #FFF; font-weight: 600; background: url(images/ncus_repeat_x.png) repeat-x scroll center -140px; text-align: center; display: inline-block; height: 20px; padding-right: 10px; padding-left: 10px; border: solid 1px #64A8E1; border-radius: 4px; box-shadow: 1px 1px 1px rgba(0,0,0,0.1);}
+a:hover.ncu-btn6 {color: #498CD0; text-decoration: none; background-position: 0 -40px; border-color:#AED2FF; box-shadow: none;}
+
+input.text{ font-family: Tahoma; height: 16px; line-height: 16px; background-color:#FBFBFB; padding: 1px 2px 3px 4px !important; padding: 3px 2px 1px 4px; border: solid 1px; border-color: #CCC #DDD #DDD #CCC;}
+input.text:hover{ background-color:#FFF;}
+
+input[type="submit"] { font-weight: 700; color: #555; background: url(images/ncus_public.png) no-repeat scroll 0 -110px; width: 120px; height: 34px; border: 0; border-radius: 4px; cursor: pointer; box-shadow: 1px 1px 0 rgba(0,0,0,0.1);}
+input[type="submit"]:hover { color: #000; background-position: 0 -150px; box-shadow: none;}

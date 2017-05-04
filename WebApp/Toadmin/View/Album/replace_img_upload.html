@@ -1,0 +1,57 @@
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="__STATIC__/jquery.js"></script>
+<style>
+input[type="file"]{
+	cursor:pointer;
+}
+.pic-change-a ,.pic-change-b{ 
+	font-size: 12px;
+	margin-top: -2px;
+	color: #FA831F;
+	cursor:pointer;
+  }
+.file-span{
+	height: 20px; 
+	position: absolute; 
+	left: 0px; 
+	top: 0px; 
+	width: 84px; 
+	z-index: 999; 
+	cursor:pointer; 
+}
+.file-up{
+	width: 84px; 
+	height: 20px; 
+	cursor: pointer;  
+	opacity:0; 
+	filter: alpha(opacity=0)
+}  
+</style>
+<script type="text/javascript">
+function submit_form()
+{
+    $('#image_form').submit();
+}
+$(function(){
+	$('span').hover(
+	function(){
+		$('#picChange').attr('class','pic-change-b');
+	},
+	function(){
+		$('#picChange').attr('class','pic-change-a');
+	});
+});
+</script>
+</head>
+<body>
+<form action="{:U('Album/replace_img_upload')}" method="post" enctype="multipart/form-data" id="image_form">
+  <input type="hidden" name="apic_id" value="{$apic_id}">
+  <span class="file-span">
+  <input class="file-up" onChange="$('#submit_button').click();" type="file" name="file"  size="1" hidefocus="true" maxlength="0">
+  </span>
+  <div class="pic-change-a" id="picChange">替换上传</div>
+  <input id="submit_button" style="display:none" type="button" value="提交" onClick="submit_form()" />
+</form>
+</body>
+</html>

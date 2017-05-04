@@ -1,0 +1,43 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>优惠券管理</h3>
+      <ul class="tab-base">
+      	<li><a href="index.php?act=coupon"><span>管理</span></a></li>
+      	<li><a href="javascript:void(0);" class="current"><span>审核</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form method="post" enctype="multipart/form-data" name='form1'>
+    <input type="hidden" name="coupon_id" value="{$vo['coupon_id']}" />
+    <table class="table tb-type2">
+      <tbody>     
+        <tr>
+          <td colspan="2" class="required">审核状态:</td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform onoff">
+          	<label for="site_status1" class="cb-enable selected" ><span>通过</span></label>
+            <label for="site_status0" class="cb-disable" ><span>不通过</span></label>
+            <input id="site_status1" name="audit"  value="2" type="radio" checked>
+            <input id="site_status0" name="audit"  value="3" type="radio">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><label for="closed_reason">原因:</label></td>
+        </tr>    
+        <tr class="noborder">
+          <td class="vatop rowform"><textarea name="audit_reason" rows="6" id="audit_reason" ></textarea></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr class="tfoot">
+          <td colspan="2" ><a href="JavaScript:void(0);" class="btn" onclick="document.form1.submit()"><span>提交</span></a></td>
+        </tr>
+      </tfoot>
+    </table>
+  </form>
+</div>
+<include file="Public/footer" />

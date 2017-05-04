@@ -1,0 +1,102 @@
+﻿<include file="Public/header" /> 
+</head>
+<body>
+	<include file="Public/nav" /> 
+
+	<div class="wrap">
+		<div class="con-box">
+			<img class="star glintFlash" src="__IMG__/star.png" alt="">
+			<a class="video playflash" href="javascript:showView()"><img src="__IMG__/music.png" alt="{$web_stting['site_name']}"></a>
+			<div class="app-down clearfix">
+				<span class="fr"><img class="wx" src="__UPLOADS__/{$web_stting['weixin_qrcode']}" alt="{$web_stting['site_name']}"></span>
+				<span class="ios fr"><a target="_blank"> </a></span>
+				<span class="android fr"><a target="_blank"> </a></span>
+			</div>
+
+			<div class="news-box clearfix">
+				<div class="fl newRoll">
+					 <div class="bd">
+					 	<ul>
+						<volist name="banner" id="bn">
+					 		<li><a href="{$bn['ap_link']}" target="_blank"><img src="__UPLOADS__/{$bn['ap_pic']}" alt="{$bn['ap_intro']}"></a></li>
+                        </volist>
+					 	</ul>
+					 </div>
+					 <ol class="ol">
+					 	<li></li>
+					 </ol>
+				  <div class="luce"></div>
+				</div>	
+				<div class="fr newList">
+					<div class="list">
+						<div class="head clearfix">
+							<ol id="inde">
+                            <volist name="article_class" id="ac"> 
+								<li <if condition="$i eq 1">class="on"</if>><a href="{:U('Index/news',array('ac_id'=>$ac['ac_id']))}">{$ac['ac_name']}</a></li>
+							</volist>	
+							</ol>
+							<a href="{:U('Index/news')}" class="more"> </a>
+						</div>
+
+						<div class="main">
+						<volist name="article_class" id="at"> 	
+							<div class="con-item" <if condition="$i eq 1">style="display:block"</if>>
+                            <ul>
+                            <volist name="art_arr[$at['ac_id']]" id="art"> 
+                            <li><a href="{:U('Index/news_view',array('id'=>$art['article_id']))}">{$art['article_title']|cutstr=30}</a> <span>{$art['article_time']|date='m-d',###}</span></li>
+                            </volist>
+                            </ul>
+							</div>
+                        </volist>
+						</div>
+
+					</div>
+				</div>	
+			</div>
+
+			<div class="other-box clearfix">
+				<ul>
+                <volist name="index_ad" id="i_ad">
+                    <li><a href="{$i_ad['ap_link']}" target="_blank"><img src="__UPLOADS__/{$i_ad['ap_pic']}" onMouseOver="this.src='__UPLOADS__/{$i_ad["ap_pic_2"]}'" onMouseOut="this.src='__UPLOADS__/{$i_ad["ap_pic"]}'" alt="{$i_ad['ap_intro']}"></a></li>
+                </volist>                    
+				</ul>
+			</div>
+			<!-- 友情链接 -->
+
+		</div>
+	</div>
+    
+<include file="Public/footer" /> 
+
+<!-- 弹出层 669X344-->
+	<div id="Popup" class="modal-wrapper-bg" style="display:none">
+	        <div class="modal-dialog bounceInDown">
+				{$web_stting['video_info']|htmlspecialchars_decode}
+				<!-- 关闭按钮 -->
+	            <span onClick="Close()" id="close" class="close"></span>
+	        </div>
+	</div>
+</body>
+</html>
+
+<script>
+    // 滚动图js
+	jQuery(".newRoll").slide({mainCell:".bd ul",effect:"fold",autoPlay:true,autoPage:true,titCell:".ol"});
+	// 友情链接
+	jQuery(".link-box .main").slide({ mainCell:".con ul",autoPage:true,effect:"leftLoop",autoPlay:true,vis:5,delayTime:1000});
+</script>
+
+ <!-- tab 切换 -->
+<script>
+	$(function(){
+		$('#inde li').mouseover(function(){
+			var n = $(this).index();
+			$('#inde li').removeClass('on');
+			$(this).addClass('on');
+			$('.con-item').each(function(){
+				$(this).hide();
+			});
+			$('.con-item').eq(n).show();
+		});
+	});
+</script>

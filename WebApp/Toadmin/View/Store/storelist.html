@@ -1,0 +1,164 @@
+<include file="Public/header" />
+<script type="text/javascript">
+function submit_delete_batch(){
+    /* 获取选中的项 */
+    var items = '';
+    $('.checkitem:checked').each(function(){
+        items += this.value + ',';
+    });
+    if(items != '') {
+        items = items.substr(0, (items.length - 1));
+        submit_delete(items);
+    }  
+    else {
+        alert('请选择要操作的对象');
+    }
+}
+function submit_delete(id){
+    if(confirm('确认删除')) {
+        $('#list_form').attr('method','post');
+        $('#list_form').attr('action','index.php?act=microshop&op=goods_class_drop');
+        $('#class_id').val(id);
+        $('#list_form').submit();
+    }
+}
+function ajax_set_recommend(stat,store_id){
+	$.getJSON('index.php?act=store&op=ajax_store_recommend&store_id='+store_id+'&stat='+stat, function(result){
+		if(result.done){
+			if(stat == 1){
+				var stat_show = '是';
+				var rechange_tip = '取消推荐';
+				var new_rcstat = 0;
+			}else{
+				var stat_show = '否';
+				var rechange_tip = '设为推荐';
+				var new_rcstat = 1;
+			}
+			$('#re_stat_'+store_id).html(stat_show);
+			$('a[re_change="'+store_id+'"]').html("["+rechange_tip+"]").attr("href","javascript:ajax_set_recommend("+new_rcstat+","+store_id+");");
+        }else{
+            alert('店铺首页推荐状态修改失败');
+        }
+	});
+}
+</script>
+
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>商铺管理</h3>
+      <ul class="tab-base">
+        <li><a href="javascript:void(0);" class="current"><span>管理</span></a></li>
+		<li><a href="{:U('Store/storelist',array('op'=>'add'))}"><span>创建</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form method="get" name="formSearch" action="{:U('Store/storelist',array('op'=>'list'))}">
+    <table class="tb-type1 noborder search">
+      <tbody>
+        <tr>
+          <td><input type="text" value="{$search['store_name']}" name="store_name" class="txt" placeholder="商铺名称"></td>
+          <td>
+			  <select name="store_state">
+			    <option value="">商铺状态</option>
+				<option value="2" <if condition="$search['store_state'] eq 2">selected</if>>开启</option>
+				<option value="3" <if condition="$search['store_state'] eq 3">selected</if>>关闭</option>
+			  </select>
+          </td>          
+          <td>
+			  <select name='is_audit'>
+			    <option value="">审核状态</option>
+				<option value="1" <if condition="$search['is_audit'] eq 1">selected</if>>待审核</option>
+				<option value="2" <if condition="$search['is_audit'] eq 2">selected</if>>审核通过</option>
+				<option value="3" <if condition="$search['is_audit'] eq 3">selected</if>>审核不通过</option>
+			  </select>
+          </td>         
+          <td>
+			  <select name='city_id'>
+			    <option value="">所属城市</option>
+                <volist name="city" id="vo">
+				<option value="{$vo['id']}" <if condition="$vo['id'] eq $search['city_id']">selected</if>>{$vo['name']}</option>
+			    </volist>
+              </select>
+          </td>          
+          <td><a href="javascript:document.formSearch.submit();" class="btn-search tooltip" title="查询">&nbsp;</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+  <!-- 操作说明 -->
+
+  <form id="list_form" method='post'>
+    <input id="class_id" name="class_id" type="hidden" />
+    <table class="table tb-type2">
+      <thead>
+        <tr class="space">
+          <th colspan="15" class="nobg">列表</th>
+        </tr>
+        <tr class="thead">
+          <th class="w200">商铺名称</th>
+		  <th class="w200">地址</th>
+		  <th class="w200">联系电话</th>
+          <th class="w48">点击数</th>
+          <th class="w60">评论数</th>
+          <th class="w84">商铺得分</th>
+		  <th class="w48">状态</th>
+		  <th class="w108">审核</th>
+		  <th class="w108">首页推荐</th>
+		  <th class="w270 align-center">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <notempty name="list">
+        <volist name="list" id="val">
+        <tr class="hover edit">
+		  <td><a href="#" target="_blank">{$val['store_name']}</a></td>
+		  <td>{$val['address']}</td>
+          <td>{$val['tel']}</td>
+		  <td>{$val['store_click']}</td>
+		  <td>{$val['comment_count']}</td>
+		  <td>{$val['store_score']}</td>
+		  <td><if condition="$val['store_state'] eq 2">开启<elseif condition="$val['store_state'] eq 3"/>关闭<else/>创建</if></td>
+		  <td>
+          	<if condition="$val['is_audit'] eq 1">待审核
+		  	<elseif condition="$val['is_audit'] eq 2"/>通过审核
+            <else/>审核不通过
+            </if>
+		  </td>
+		  <td>
+          	<span id="re_stat_{$val['store_id']}">{$val['store_recommend']==0?'否':'是'}</span>
+          	<a re_change="{$val['store_id']}" class="marginleft" href="javascript:ajax_set_recommend({$val['store_recommend']==0?'1':'0'},{$val['store_id']});">[{$val['store_recommend']==0?'设为推荐':'取消推荐'}]</a>
+          </td>
+		  <td class="align-center">
+		  	<a target="_blank" href="#">浏览</a>&nbsp; 
+		  	<if condition="$val['store_state'] eq 2">
+		  	<a href="#">关闭</a>&nbsp; 
+		  	</if>
+		  	<if condition="$val['is_audit'] eq 1">
+		  	<a href="#">审核</a>&nbsp; 
+		  	<else/>
+		  	<span style="color:#ccc">审核</span>
+		  	</if>
+		  	<a href="{:U('Store/changepwd',array('store_id'=>$val['store_id']))}">修改密码</a>
+		  </td>
+        </tr>
+        </volist>
+        <else /> 
+        <tr class="no_data">
+          <td colspan="10">暂无记录</td>
+        </tr>
+       </notempty>
+      </tbody>
+      
+      <tfoot>
+        <tr class="tfoot">
+          <td id="batchAction" colspan="16">
+            <div class="pagination">{$page_show}</div></td>
+        </tr>
+      </tfoot>
+
+    </table>
+  </form>
+</div>
+<include file="Public/footer" />

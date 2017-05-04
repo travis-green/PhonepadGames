@@ -1,0 +1,161 @@
+<include file="Public/header" />
+<script>
+	$(document).ready(function(){
+		$("#gc_parent_id").change(function(){
+			var gc_parent_id=$(this).val();
+			$("#id_gc_parent_2").load("__MODULE__/goods/goods_class_ajax/gc_parent_id/"+gc_parent_id);
+		});
+	})
+</script>
+
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>主题分类</h3>
+      <ul class="tab-base">
+        <li><a href="{:U('Goods/goods_class')}"><span>管理</span></a></li>
+        <li><a href="JavaScript:void(0);" class="current"><span>新增</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form id="goods_class_form" method="post" enctype="multipart/form-data" action="{:U('Goods/goods_class_add')}">
+    <input type="hidden" name="form_submit" value="ok" />
+    <table class="table tb-type2">
+      <tbody>
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="validation" for="gc_name">分类名称:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="" name="gc_name" id="gc_name" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        
+<!--        <tr>
+          <td colspan="2" class="required"><label for="gc_parent_id">上一级分类:</label></td>
+        </tr>
+        <tr class="noborder">
+        <td class="vatop rowform">
+        <select name="gc_parent_id" id="gc_parent_id">
+        <option value="0">请选择...</option>    
+        <volist name="class_list" id="vo"> 
+        <option  value="{$vo.gc_id}" <if condition="$gc_parent_id eq $vo['gc_id']">selected="selected"</if>>{$vo.gc_name}</option>
+        </volist>
+        </select>
+        </td>
+        <td class="vatop tips">如果选择上级分类，那么新增的分类则为被选择上级分类的子分类</td>
+        </tr>-->
+
+        <tr class="noborder">
+          <td colspan="2" class="required"><label for="gc_title">SEO标题:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="" name="gc_title" id="gc_title" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="2" class="required"><label for="gc_key">SEO关键词:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="" name="gc_key" id="gc_key" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="2" class="required"><label for="gc_desc">SEO描述:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><textarea name="gc_desc" rows="6" class="w300" id="gc_desc"></textarea></td>
+          <td class="vatop tips"></td>
+        </tr> 
+  
+<!--        <tr>
+          <td colspan="2" class="required"><label for="gc_img">产品图片:</label></td>
+        </tr>
+        <tr class="noborder">
+         <td class="vatop rowform">  
+            <span class="type-file-show">
+          	<img class="show_image" src="__IMG__/preview.png">
+            <div class="type-file-preview"><img src="__UPLOADS__{$rs['gc_img']}"></div>
+            </span>
+            <span class="type-file-box">
+            <input type='text' name='txt_gc_img' id='txt_gc_img' class='type-file-text' />
+            <input type='button' name='but_gc_img' id='but_gc_img' value='' class='type-file-button' />
+            <input name="gc_img" type="file" class="type-file-file" id="gc_img" size="30" hidefocus="true" nc_type="change_gc_img">
+            </span>
+          </td>
+          <td class="vatop tips"><span class="vatop rowform"></span></td>
+        </tr> -->
+        
+        <tr>
+          <td colspan="2" class="required"><label>排序:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="0" name="gc_sort" id="gc_sort" class="txt"></td>
+          <td class="vatop tips">数字范围为0~255，数字越小越靠前</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2"><a href="JavaScript:void(0);" class="btn" id="submitBtn"><span>提交</span></a></td>
+        </tr>
+      </tfoot>
+    </table>
+  </form>
+</div>
+<script>
+//按钮先执行验证再提交表单
+$(function(){
+
+	$("#submitBtn").click(function(){
+		if($("#goods_class_form").valid()){
+			$("#goods_class_form").submit();
+		}
+	});
+	
+	$('#goods_class_form').validate({
+        errorPlacement: function(error, element){
+			error.appendTo(element.parent().parent().prev().find('td:first'));
+        },
+        success: function(label){
+            label.addClass('valid');
+        },
+        rules : {
+            gc_name : {
+                required : true
+            },
+            gc_sort : {
+                number   : true
+            }
+        },
+        messages : {
+            gc_name : {
+                required : '分类名称不能为空'
+			},
+            gc_sort  : {
+                number   : '排序仅能为数字'
+            }
+        }
+    });
+	
+});
+</script>
+<script type="text/javascript">
+// 模拟网站LOGO上传input type='file'样式
+$(function(){
+	$("#gc_img").change(function(){
+		$("#txt_gc_img").val($(this).val());
+	});
+// 上传图片类型
+$('input[class="type-file-file"]').change(function(){
+	var filepatd=$(this).val();	
+	var extStart=filepatd.lastIndexOf(".");
+	var ext=filepatd.substring(extStart,filepatd.lengtd).toUpperCase();		
+		if(ext!=".PNG"&&ext!=".GIF"&&ext!=".JPG"&&ext!=".JPEG"){
+			alert("图片格式错误");
+				$(this).attr('value','');
+			return false;
+		}
+	});
+});
+</script>
+<include file="Public/footer" />

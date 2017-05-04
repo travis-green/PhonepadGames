@@ -1,0 +1,114 @@
+<include file="Public/header" />
+<script type="text/javascript" charset="utf-8" src="__STATIC__/swfupload/swfupload.js"></script>
+<script type="text/javascript" charset="utf-8" src="__STATIC__/swfupload/js/handlers.js"></script>
+<script type="text/javascript">
+var GOODS_SWFU;
+$(function(){
+    GOODS_SWFU = new SWFUpload({
+        upload_url: "__URL__/uploadImg",
+        flash_url: "__STATIC__/swfupload/swfupload.swf",
+        post_params: {
+            'sid': 1,
+          	"PHPSESSID": "<?php echo session_id();?>",
+            "HTTP_USER_AGENT":"Mozilla/5.0 (Windows; U; Windows NT 6.1; zh-CN; rv:1.9.2.4) Gecko/20100611 Firefox/3.6.4 GTB7.1",
+            'category_id': <?php echo $ac_rs['aclass_id'];?>
+			},
+        file_size_limit: "2 MB",
+        file_types: "*.gif;*.jpg;*.jpeg;*.png",
+        custom_settings: {
+            upload_target: "goods_upload_progress",
+            if_multirow: 1
+        },
+
+        // Button Settings
+        button_image_url: "__STATIC__/swfupload/images/SmallSpyGlassWithTransperancy_17x18.png",
+        button_width: 86,
+        button_height: 18,
+        button_text: '<span class="button">批量上传</span>',
+        button_text_style: '.button {font-family: Helvetica, Arial, sans-serif; font-size: 12pt; font-weight: bold; color: #3F3D3E;} .buttonSmall {font-size: 10pt;}',
+        button_text_top_padding: 0,
+        button_text_left_padding: 18,
+        button_window_mode: SWFUpload.WINDOW_MODE.TRANSPARENT,
+        button_cursor: SWFUpload.CURSOR.HAND,
+
+        // The event handler functions are defined in handlers.js
+        file_queue_error_handler: fileQueueError,
+        file_dialog_complete_handler: fileDialogComplete,
+        upload_progress_handler: uploadProgress,
+        upload_error_handler: uploadError,
+        upload_success_handler: uploadSuccess,
+        upload_complete_handler: uploadComplete,
+        button_placeholder_id: "spanButtonPlaceholder",
+        file_queued_handler : fileQueued
+    });
+});
+</script>
+<script type="text/javascript">
+var num=0;
+function add_uploadedfile(file_data)
+{
+	file_data = jQuery.parseJSON(file_data);
+	if(file_data.state == 'true') {
+		num++;
+		if(GOODS_SWFU.getStats().files_queued == 0){
+            window.setTimeout(function(){
+                $('#uploader').hide();
+                $('#open_uploader').find('.show').attr('class','hide');
+                history.go(0);
+            },4000);
+        }
+		return false;
+	}
+}
+function upload_complete(){
+	alert('成功上传张图片');
+}
+</script>
+
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>相册管理</h3>
+      <ul class="tab-base">
+        <li><a href="{:U('Album/album')}"><span>管理</span></a></li>
+        <li><a href="JavaScript:void(0);" class="current"><span>新增</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form id="album_add_form" method="post" action="{:U('Album/album_pic_add')}" enctype="multipart/form-data">
+  <input name="aclass_id" id="aclass_id" value="{$ac_rs['aclass_id']}" type="hidden"/>
+    <table class="table tb-type2">
+      <tbody>
+        <tr class="noborder">
+          <td colspan="2" class="required"><label for="aclass_name">相册名称:</label> </td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform">{$ac_rs['aclass_name']}</td>
+          <td class="vatop tips"></td>
+        </tr>
+
+        <tr>
+          <td colspan="2" class="required"><label>图片上传:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="2" class="vatop rowform">
+            <ul>
+            <li class="btn1">
+            <div id="divSwfuploadContainer">
+            <div id="divButtonContainer"> <span id="spanButtonPlaceholder"></span> </div>
+            </div>
+            </li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2"><!--<a href="JavaScript:void(0);" class="btn" id="submitBtn"><span>提交</span></a>--></td>
+        </tr>
+      </tfoot>
+    </table>
+  </form>
+</div>
+<include file="Public/footer" />

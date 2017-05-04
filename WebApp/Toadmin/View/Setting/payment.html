@@ -1,0 +1,45 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>支付管理</h3>
+      <ul class="tab-base">
+        <li><a href="JavaScript:void(0);" class="current"><span>管理</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form method="post" id='form_admin'>
+    <table class="table tb-type2">
+      <thead>
+        <tr class="space">
+          <th colspan="15" class="nobg">接口列表</th>
+        </tr>
+        <tr class="thead">
+          <th>名称</th>
+          <th class="align-center">编码</th>
+          <th class="align-center">状态</th>
+          <th class="align-center">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+	    <volist name="list" id="vo">	
+        <tr class="hover">
+          <td>{$vo['payment_name']}</td>
+          <td class="w150 align-center">{$vo['payment_code']}</td>
+          <td class="align-center"><if condition="$vo['payment_state'] eq 1">启用<else/>关闭</if></td>
+          <td class="w150 align-center">
+			<a href="{:U('Setting/payment',array('op'=>'edit','payment_id'=>$vo['payment_id']))}">编辑</a>
+		  </td>
+        </tr>
+		</volist>
+      </tbody>
+      <tfoot>
+        <tr class="tfoot">
+        <td colspan="16"></td>
+        </tr>
+      </tfoot>
+    </table>
+  </form>
+</div>
+<include file="Public/footer" />

@@ -1,0 +1,146 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>消息管理</h3>
+      <ul class="tab-base">
+        <li><a href="{:U('Weixin/wx_info')}"><span>管理</span></a></li>
+        <li><a href="JavaScript:void(0);" class="current"><span>编辑</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form id="article_form" method="post" name="articleForm" enctype="multipart/form-data">
+  <input name="wx_id" value="{$vo['wx_id']}" type="hidden"/>
+    <table class="table tb-type2 nobdb">
+      <tbody>
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="validation">标题:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$vo['wx_title']}" name="wx_title" id="wx_title" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>     
+        <tr>
+          <td colspan="2" class="required"><label for="wx_img">图片:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform">
+          	<span class="type-file-show">
+          		<img class="show_image" src="__IMG__/preview.png">
+            	<div class="type-file-preview"><img src="__UPLOADS__{$vo['wx_img']}"></div>
+            </span>     
+            <span class="type-file-box">
+            <input type='text' name='txt_wx_img' id='txt_wx_img' class='type-file-text' />
+            <input type='button' name='but_wx_img' id='but_wx_img' value='' class='type-file-button' />
+            <input name="wx_img" type="file" class="type-file-file" id="wx_img" size="30" hidefocus="true" nc_type="change_wx_img">
+            </span>
+          </td>
+          <td class="vatop tips"><span class="vatop rowform">180px * 50px</span></td>
+        </tr>
+                      
+        <tr>
+          <td colspan="2" class="required"><label for="wx_url">链接:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$vo['wx_url']}" name="wx_url" id="wx_url" class="txt"></td>
+          <td class="vatop tips">链接格式请以http://开头</td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required">排序: </td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$vo['wx_sort']}" name="wx_sort" id="wx_sort" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>
+         <tr class="noborder">
+          <td colspan="2" class="required"><label class="validation">描述:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><textarea id="wx_desc" class="tarea" rows="6" name="wx_desc">{$vo['wx_desc']}</textarea></td>
+          <td class="vatop tips"></td>
+        </tr>          
+<!--     <tr>
+          <td colspan="2" class="required"><label class="validation">文章内容:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="2" class="vatop rowform"><?php kindEditor('wx_body');?></td>
+        </tr>-->
+      </tbody>
+      <tfoot>
+        <tr class="tfoot">
+          <td colspan="15" ><a href="JavaScript:void(0);" class="btn" id="submitBtn"><span>保存</span></a></td>
+        </tr>
+      </tfoot>
+    </table>
+  </form>
+</div>
+<script>
+//按钮先执行验证再提交表单
+$(function(){$("#submitBtn").click(function(){
+    if($("#article_form").valid()){
+     $("#article_form").submit();
+	}
+	});
+});
+//
+$(document).ready(function(){
+	$('#article_form').validate({
+        errorPlacement: function(error, element){
+			error.appendTo(element.parent().parent().prev().find('td:first'));
+        },
+        success: function(label){
+            label.addClass('valid');
+        },
+        rules : {
+            wx_title : {
+                required   : true
+            },
+			wx_url : {
+				url : true
+            },
+			wx_desc : {
+                required   : true
+            },
+            wx_sort : {
+                number   : true
+            }
+        },
+        messages : {
+            wx_title : {
+                required   : '请输入标题'
+            },
+			wx_url : {
+				url : '输入错误'
+            },
+			wx_desc : {
+                required   : '请输入描述内容'
+            },
+            wx_sort  : {
+                number   : '输入错误'
+            }
+        }
+    });
+	
+});
+</script>
+<script type="text/javascript">
+// 模拟网站LOGO上传input type='file'样式
+$(function(){
+	$("#wx_img").change(function(){
+		$("#txt_wx_img").val($(this).val());
+	});
+// 上传图片类型
+$('input[class="type-file-file"]').change(function(){
+	var filepatd=$(this).val();	
+	var extStart=filepatd.lastIndexOf(".");
+	var ext=filepatd.substring(extStart,filepatd.lengtd).toUpperCase();		
+		if(ext!=".PNG"&&ext!=".GIF"&&ext!=".JPG"&&ext!=".JPEG"){
+			alert("图片格式错误");
+				$(this).attr('value','');
+			return false;
+		}
+	});
+});
+</script>
+<include file="Public/footer" />

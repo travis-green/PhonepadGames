@@ -1,0 +1,125 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>{$arr_seo['title']}</title>
+<meta name="keywords" content="{$arr_seo['key']}">
+<meta name="description" content="{$arr_seo['desc']}">
+</head>
+<link rel="stylesheet" href="__MCSS__/style.css">
+<link rel="stylesheet" href="__MCSS__/swiper-3.3.1.min.css">
+<script src="__MJS__/jquery-1.11.3.min.js"></script>
+<script src="__MJS__/swiper-3.3.1.jquery.min.js"></script>
+<body>
+<div class="qj"><img src="__MIMG__/back.jpg" width='100%' alt=""><div class="back"><img src="__MIMG__/ck.jpg" width='100%' alt=""></div>
+</div>
+
+	<div id="top" class="wrapp">
+		<div class="logo"><img src="__UPLOADS__/{$web_stting['m_site_logo']}"></div>
+			<div class="con">
+				 <img class="bounceIn" src="__MIMG__/contai.png" alt="">
+				 <div class="music playflash"><a href="javascript:showView()"><img src="__MIMG__/music.png" alt=""></a></div>
+			</div>
+
+			<div class="download">
+				<a class="" href="{$web_stting['app_url']}" target="_blank"><img src="__MIMG__/dow.png" alt=""></a>
+			</div>
+
+			<div class="distan">
+				<div class="trans">
+					<div class="inter">
+						<div class="title"><img src="__MIMG__/title.png" alt=""></div>
+						<div class="pic-link">
+							<ul>
+							<volist name="m_adv" id="ma">       
+								<li><a href="{$ma['ap_link']}" target="_blank"><img src="__UPLOADS__/{$ma['ap_pic']}" alt=""></a></li>
+                            </volist>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="download">
+				<a class="" href="{$web_stting['lingqu_url']}" target="_blank"><img src="__MIMG__/dow1.png" alt=""></a>
+			</div>
+
+			<div class="distan">
+				<div class="trans sroll">
+					<div class="swiper-container banner">
+						<ul class="swiper-wrapper">
+                        <volist name="m_banner" id="mb">                         
+							<li class="swiper-slide"><a href="{$mb['ap_link']}" target="_blank"><img src="__UPLOADS__/{$mb['ap_pic']}" alt=""></a></li>
+                        </volist>
+						</ul>
+						<div class="swiper-pagination sub-box"></div>
+					</div>
+				</div>
+			</div> 
+
+			<script language="javascript"> 
+		        var mySwiper = new Swiper('.swiper-container',{
+		        pagination : '.swiper-pagination',
+		        autoplay : 2000,
+		        //pagination : '#swiper-pagination1',
+		        })
+	        </script>
+
+			<!-- <div class="distan">
+				<div class="server">
+					<img src="__MIMG__/servers.png" alt="">
+				</div>
+			</div> -->
+
+			<div class="distan">
+				<div class="server">
+					<img class="bj" src="__MIMG__/servers.png" alt="">
+					<div class="adc">
+						<p>客服热线：{$web_stting['m_tel']}</p>
+						<p>客服QQ1：{$web_stting['m_qq1']}</p>
+						<p>客服QQ2：{$web_stting['m_qq2']}</p>
+						<p>官方QQ群：{$web_stting['m_qq_qun']}</p>
+					</div>
+				</div>
+			</div>
+			
+
+			<div class="distan">
+				<div class="atten">
+					<ul>
+						<li><a href="{$web_stting['m_wb_url']}" target="_blank"><img src="__MIMG__/wb.png"></a></li>
+						<li><a href="{$web_stting['m_tb_url']}"><img src="__MIMG__/baidu.png"></a></li>
+					</ul>
+				</div>
+				<div class="atten">
+					<div style="padding:10px 0;"><img src="__MIMG__/wx.png" alt="" width="100%"></div>
+				</div>
+			</div>
+
+			<div class="download">
+				<a class="" href="#top"><img src="__MIMG__/dow2.png" alt=""></a>
+			</div>
+			
+	</div>
+	
+  <div id="Popup" class="modal-wrapper-bg" style="display: none;">
+	        <div class="modal-dialog bounceInDown">
+				<!-- 视频内容 可以删除 -->
+	        	<!--<iframe frameborder="0" width="100%" src="http://v.qq.com/iframe/player.html?vid=d0193y873tw&tiny=0&auto=0" allowfullscreen></iframe>-->
+                {$web_stting['m_video_info']|htmlspecialchars_decode}
+				<!-- 关闭按钮 -->
+	            <span onclick="Close()" id="close" class="close"></span>
+	        </div>
+	</div>
+
+</body>
+<script>
+function showView(){
+    document.getElementById('Popup').style.display='block';
+}
+function Close(){
+    document.getElementById('Popup').style.display='none';
+}
+</script>
+</html>

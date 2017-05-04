@@ -1,0 +1,76 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>结算管理</h3>
+      <ul class="tab-base">
+        <li><a href="index.php?act=settle&op=settle_manage"><span>管理</span></a></li>
+        <li><a href="javascript:void(0);" class="current"><span>明细</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form method="post" name="formSearch">
+    <table class="tb-type1 noborder search">
+      <tbody>
+        <tr>
+          <th>商户名称：</th>
+          <td><span style="font-weight:bold;font-size:16px">{$settle_info['store_name']}</span></td>
+          <th>结算日期：</th>
+          <td><span style="font-weight:bold;font-size:16px">{$settle_info['date_start']|date='Y-m-d'}至{$settle_info['date_end']|date='Y-m-d'}</span></td>
+          <th>订单总额：</th>
+          <td><span style="font-weight:bold;font-size:16px">{$settle_info['amount']}元</span></td>
+          <th>结算金额：</th>
+          <td><span style="font-weight:bold;font-size:16px">{$settle_info['final_pay']}元</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+  <form id="list_form" method='post'>
+    <table class="table tb-type2">
+      <thead>
+        <tr class="space">
+          <th colspan="15" class="nobg">列表</th>
+        </tr>
+        <tr class="thead">
+          <th class="w200">订单编号</th>
+          <th class="w200">用户名称</th>
+		  <th class="w200">团购名称</th>
+		  <th class="w200">下单时间</th>
+          <th class="w200">消费时间</th>
+          <th class="w200">数量</th>
+		  <th class="w200">金额(元)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <notempty name="order_list">
+        <volist name="order_list" id="val">
+        <tr class="hover edit">
+          <td>{$val['order_sn']}</td>
+          <td>{$val['member_name']}</td>
+          <td>{$val['item_name']}</td>
+          <td>{$val['add_time']|date='Y-m-d H:i:s',###}</td>
+          <td>{$val['use_time']|date='Y-m-d H:i:s',###}</td>
+          <td>{$val['number']}</td>
+          <td>{$val['price']}</td>
+        </tr>
+        </volist>
+        <else />
+        <tr class="no_data">
+          <td colspan="10">暂无记录</td>
+        </tr>
+        </notempty>
+      </tbody>
+      <notempty name="order_list">
+      <tfoot>
+        <tr class="tfoot">
+          <td id="batchAction" colspan="15">
+            <div class="pagination">{$show_page}</div>
+          </td>
+        </tr>
+      </tfoot>
+      </notempty>
+    </table>
+  </form>
+</div>
+<include file="Public/footer" />

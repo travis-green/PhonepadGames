@@ -1,0 +1,170 @@
+[ 2017-05-04T14:04:55+08:00 ] 117.25.139.88 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000300s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000381s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000430s ]
+SQL: SHOW COLUMNS FROM `mxd_setting` [ RunTime:0.0007s ]
+SQL: SELECT `name`,`value` FROM `mxd_setting`  [ RunTime:0.0002s ]
+NOTIC: [8] unserialize(): Error at offset 0 of 12 bytes /data/www/rockweb/WebApp/Home/Controller/BaseController.class.php 第 26 行.
+NOTIC: [8] unserialize(): Error at offset 0 of 20 bytes /data/www/rockweb/WebApp/Home/Controller/BaseController.class.php 第 26 行.
+NOTIC: [8] unserialize(): Error at offset 0 of 22 bytes /data/www/rockweb/WebApp/Home/Controller/BaseController.class.php 第 26 行.
+NOTIC: [8] unserialize(): Error at offset 0 of 22 bytes /data/www/rockweb/WebApp/Home/Controller/BaseController.class.php 第 26 行.
+NOTIC: [8] unserialize(): Error at offset 0 of 24 bytes /data/www/rockweb/WebApp/Home/Controller/BaseController.class.php 第 26 行.
+NOTIC: [8] unserialize(): Error at offset 0 of 1 bytes /data/www/rockweb/WebApp/Home/Controller/BaseController.class.php 第 26 行.
+NOTIC: [8] unserialize(): Error at offset 0 of 27 bytes /data/www/rockweb/WebApp/Home/Controller/BaseController.class.php 第 26 行.
+NOTIC: [8] unserialize(): Error at offset 0 of 1 bytes /data/www/rockweb/WebApp/Home/Controller/BaseController.class.php 第 26 行.
+NOTIC: [8] unserialize(): Error at offset 0 of 1 bytes /data/www/rockweb/WebApp/Home/Controller/BaseController.class.php 第 26 行.
+NOTIC: [8] unserialize(): Error at offset 0 of 1 bytes /data/www/rockweb/WebApp/Home/Controller/BaseController.class.php 第 26 行.
+NOTIC: [8] unserialize(): Error at offset 0 of 12 bytes /data/www/rockweb/WebApp/Home/Controller/BaseController.class.php 第 26 行.
+NOTIC: [8] unserialize(): Error at offset 0 of 2 bytes /data/www/rockweb/WebApp/Home/Controller/BaseController.class.php 第 26 行.
+NOTIC: [8] unserialize(): Error at offset 0 of 17 bytes /data/www/rockweb/WebApp/Home/Controller/BaseController.class.php 第 26 行.
+NOTIC: [8] unserialize(): Error at offset 0 of 17 bytes /data/www/rockweb/WebApp/Home/Controller/BaseController.class.php 第 26 行.
+NOTIC: [8] unserialize(): Error at offset 0 of 6 bytes /data/www/rockweb/WebApp/Home/Controller/BaseController.class.php 第 26 行.
+NOTIC: [8] unserialize(): Error at offset 0 of 6 bytes /data/www/rockweb/WebApp/Home/Controller/BaseController.class.php 第 26 行.
+NOTIC: [8] unserialize(): Error at offset 0 of 29 bytes /data/www/rockweb/WebApp/Home/Controller/BaseController.class.php 第 26 行.
+NOTIC: [8] unserialize(): Error at offset 0 of 29 bytes /data/www/rockweb/WebApp/Home/Controller/BaseController.class.php 第 26 行.
+NOTIC: [8] unserialize(): Error at offset 0 of 319 bytes /data/www/rockweb/WebApp/Home/Controller/BaseController.class.php 第 26 行.
+NOTIC: [8] unserialize(): Error at offset 0 of 943 bytes /data/www/rockweb/WebApp/Home/Controller/BaseController.class.php 第 26 行.
+NOTIC: [8] unserialize(): Error at offset 0 of 22 bytes /data/www/rockweb/WebApp/Home/Controller/BaseController.class.php 第 26 行.
+NOTIC: [8] unserialize(): Error at offset 0 of 29 bytes /data/www/rockweb/WebApp/Home/Controller/BaseController.class.php 第 26 行.
+NOTIC: [8] unserialize(): Error at offset 0 of 29 bytes /data/www/rockweb/WebApp/Home/Controller/BaseController.class.php 第 26 行.
+NOTIC: [8] unserialize(): Error at offset 0 of 441 bytes /data/www/rockweb/WebApp/Home/Controller/BaseController.class.php 第 26 行.
+NOTIC: [8] unserialize(): Error at offset 0 of 9 bytes /data/www/rockweb/WebApp/Home/Controller/BaseController.class.php 第 26 行.
+NOTIC: [8] unserialize(): Error at offset 0 of 30 bytes /data/www/rockweb/WebApp/Home/Controller/BaseController.class.php 第 26 行.
+NOTIC: [8] unserialize(): Error at offset 0 of 79 bytes /data/www/rockweb/WebApp/Home/Controller/BaseController.class.php 第 26 行.
+SQL: SHOW COLUMNS FROM `mxd_document` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `mxd_document`  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mxd_seo` [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `mxd_article_class` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `mxd_article_class` ORDER BY ac_sort asc  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mxd_adv_position` [ RunTime:0.0006s ]
+SQL: SELECT * FROM `mxd_adv_position` WHERE ( ap_code='banner' )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mxd_adv_position` WHERE ( ap_code='index' ) LIMIT 4   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mxd_adv_position` WHERE ( ap_code='link' )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mxd_article` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `mxd_article` WHERE ( article_show=1 and ac_id=11 ) ORDER BY article_sort desc LIMIT 4   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `mxd_article` WHERE ( article_show=1 and ac_id=15 ) ORDER BY article_sort desc LIMIT 4   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mxd_article` WHERE ( article_show=1 and ac_id=2 ) ORDER BY article_sort desc LIMIT 4   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mxd_article` WHERE ( article_show=1 and ac_id=16 ) ORDER BY article_sort desc LIMIT 4   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mxd_seo` WHERE ( type='index' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mxd_seo` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000147s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000195s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014071s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014117s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000129s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000168s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000451s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000498s ]
+
+[ 2017-05-04T14:05:17+08:00 ] 220.170.92.44 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000347s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000417s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000477s ]
+SQL: SHOW COLUMNS FROM `mxd_document` [ RunTime:0.0011s ]
+SQL: SELECT * FROM `mxd_document`  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `mxd_seo` [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `mxd_article_class` [ RunTime:0.0008s ]
+SQL: SELECT * FROM `mxd_article_class` ORDER BY ac_sort asc  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `mxd_adv_position` [ RunTime:0.0011s ]
+SQL: SELECT * FROM `mxd_adv_position` WHERE ( ap_code='banner' )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `mxd_adv_position` WHERE ( ap_code='index' ) LIMIT 4   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `mxd_adv_position` WHERE ( ap_code='link' )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mxd_article` [ RunTime:0.0006s ]
+SQL: SELECT * FROM `mxd_article` WHERE ( article_show=1 and ac_id=11 ) ORDER BY article_sort desc LIMIT 4   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `mxd_article` WHERE ( article_show=1 and ac_id=15 ) ORDER BY article_sort desc LIMIT 4   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mxd_article` WHERE ( article_show=1 and ac_id=2 ) ORDER BY article_sort desc LIMIT 4   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mxd_article` WHERE ( article_show=1 and ac_id=16 ) ORDER BY article_sort desc LIMIT 4   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mxd_seo` WHERE ( type='index' ) LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000151s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000200s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015175s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015233s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000184s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000235s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000417s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000467s ]
+
+[ 2017-05-04T14:05:17+08:00 ] 59.34.148.30 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000295s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000377s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000426s ]
+SQL: SHOW COLUMNS FROM `mxd_document` [ RunTime:0.0008s ]
+SQL: SELECT * FROM `mxd_document`  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mxd_seo` [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `mxd_article_class` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `mxd_article_class` ORDER BY ac_sort asc  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mxd_adv_position` [ RunTime:0.0007s ]
+SQL: SELECT * FROM `mxd_adv_position` WHERE ( ap_code='banner' )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mxd_adv_position` WHERE ( ap_code='index' ) LIMIT 4   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mxd_adv_position` WHERE ( ap_code='link' )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mxd_article` [ RunTime:0.0006s ]
+SQL: SELECT * FROM `mxd_article` WHERE ( article_show=1 and ac_id=11 ) ORDER BY article_sort desc LIMIT 4   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `mxd_article` WHERE ( article_show=1 and ac_id=15 ) ORDER BY article_sort desc LIMIT 4   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mxd_article` WHERE ( article_show=1 and ac_id=2 ) ORDER BY article_sort desc LIMIT 4   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mxd_article` WHERE ( article_show=1 and ac_id=16 ) ORDER BY article_sort desc LIMIT 4   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mxd_seo` WHERE ( type='index' ) LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000143s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000208s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013462s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013509s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000171s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000223s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000408s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000459s ]
+
+[ 2017-05-04T14:16:16+08:00 ] 61.164.49.90 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000299s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000417s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000474s ]
+SQL: SHOW COLUMNS FROM `mxd_document` [ RunTime:0.0010s ]
+SQL: SELECT * FROM `mxd_document`  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mxd_seo` [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `mxd_article_class` [ RunTime:0.0006s ]
+SQL: SELECT * FROM `mxd_article_class` ORDER BY ac_sort asc  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mxd_adv_position` [ RunTime:0.0007s ]
+SQL: SELECT * FROM `mxd_adv_position` WHERE ( ap_code='banner' )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `mxd_adv_position` WHERE ( ap_code='index' ) LIMIT 4   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mxd_adv_position` WHERE ( ap_code='link' )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mxd_article` [ RunTime:0.0006s ]
+SQL: SELECT * FROM `mxd_article` WHERE ( article_show=1 and ac_id=11 ) ORDER BY article_sort desc LIMIT 4   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `mxd_article` WHERE ( article_show=1 and ac_id=15 ) ORDER BY article_sort desc LIMIT 4   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mxd_article` WHERE ( article_show=1 and ac_id=2 ) ORDER BY article_sort desc LIMIT 4   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mxd_article` WHERE ( article_show=1 and ac_id=16 ) ORDER BY article_sort desc LIMIT 4   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mxd_seo` WHERE ( type='index' ) LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000144s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000198s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014228s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014278s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000153s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000198s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000443s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000491s ]
+

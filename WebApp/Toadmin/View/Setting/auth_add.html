@@ -1,0 +1,91 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>权限管理</h3>
+      <ul class="tab-base">
+         <li><a href="{:U('Setting/auth_list')}"><span>管理</span></a></li>
+        <li><a href="JavaScript:void(0);" class="current"><span>添加</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form id="add_form" method="post" action="{:U('Setting/auth_list',array('op'=>'add'))}">
+    <table class="table tb-type2 nobdb">
+      <tbody>
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="validation" for="a_title">权限标题:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" id="a_title" name="a_title" value="" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>           
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="validation" for="a_name">权限名称:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" id="a_name" name="a_name" class="txt"></td>
+          <td class="vatop tips">格式为：控制器_方法</td>
+        </tr>
+         <tr class="noborder">
+          <td colspan="2" class="required"><label class="validation" for="a_sort">排序:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" id="a_sort" name="a_sort" value="10" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>           
+      </tbody>
+      <tfoot>
+        <tr class="tfoot">
+          <td colspan="2"><a href="JavaScript:void(0);" class="btn" id="submitBtn"><span>保存</span></a></td>
+        </tr>
+      </tfoot>
+    </table>
+  </form>
+</div>
+<script>
+//按钮先执行验证再提交表
+$(function(){$("#submitBtn").click(function(){
+    if($("#add_form").valid()){
+     $("#add_form").submit();
+	}
+	});
+});
+$(document).ready(function(){
+	$("#add_form").validate({
+		errorPlacement: function(error, element){
+			error.appendTo(element.parent().parent().prev().find('td:first'));
+        },
+        success: function(label){
+            label.addClass('valid');
+        },
+        rules : {
+			a_title : {
+			 	required : true,	
+			},
+            a_name : {
+                required : true,
+				remote	: {
+                    url : AdminUrl+'?c=Setting&a=check_auth_name',
+                    type:'get',
+                    data:{
+                    	a_name : function(){
+                            return $('#a_name').val();
+                        }
+                    }
+                }
+            }		
+        },
+        messages : {
+			a_title : {
+			 	required : '请输入标题',	
+			},			
+            a_name : {
+                required : '请输入权限名称',
+				remote	 : '此名称已存在'
+            }
+        }
+	});
+});
+</script> 
+<include file="Public/footer" />

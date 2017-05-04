@@ -1,0 +1,91 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>页面导航</h3>
+      <ul class="tab-base">
+        <li><a href="JavaScript:void(0);" class="current"><span>管理</span></a></li>
+        <li><a href="{:U('Navigation/navigation_add')}" ><span>新增</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form method="get" name="formSearch">
+    <table class="tb-type1 noborder search">
+      <tbody>
+        <tr>
+          <th><label for="search_nav_title">标题</label></th>
+          <td><input type="text" value="{$search['nav_title']}" name="nav_title" id="nav_title" class="txt"></td>
+          <th><label>所在位置</label></th>
+          <td><select name="nav_location">
+              <option value="">请选择...</option>
+              <option value="1" <if condition="$search['nav_location'] eq 1">selected="selected"</if>>头部</option>
+              <option value="2" <if condition="$search['nav_location'] eq 2">selected="selected"</if>>底部</option>
+            </select></td>
+          <td>
+            <a href="javascript:document.formSearch.submit();" class="btn-search tooltip" title="查询">&nbsp;</a>
+            <if condition="($search['nav_title'] neq '') OR ($search['nav_location'] neq '')">
+            <a class="btns" href="{:U('Navigation/navigation')}"><span>撤销查询</span></a>
+            </if>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+  <form method='post' id="form_nav">
+    <table class="table tb-type2">
+      <thead>
+        <tr class="space">
+          <th colspan="15">列表</th>
+        </tr>
+        <tr class="thead">
+          <th>&nbsp;</th>
+          <th>排序</th>
+          <th>标题</th>
+          <th>链接</th>
+          <th class="align-center">位置</th>
+          <th class="align-center">新窗口打开</th>
+          <th class="align-center">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <notempty name="list">
+        <volist name="list" id="v">
+        <tr class="hover">
+          <td class="w24"><input type="checkbox" name="del_id[]" value="{$v['nav_id']}" class="checkitem"></td>
+          <td class="w48 sort"><span title="可编辑" style="cursor:pointer;" ajax_control="Navigation" ajax_branch='nav_sort' datatype="number" fieldid="{$v['nav_id']}" fieldname="nav_sort" nc_type="inline_edit" class="editable">{$v['nav_sort']}</span></td>
+          <td>{$v['nav_title']}</td>
+          <td>{$v['nav_url']}</td>
+          <td class="w150 align-center">
+          <if condition="$v['nav_location'] eq 1">头部
+          <elseif condition="$v['nav_location'] eq 2"/>中部
+          <else/>底部
+          </if>
+          </td>
+          <td class="w150 align-center">
+          <if condition="$v['nav_new_open'] eq 1">是<else/>否</if>
+          </td>
+          <td class="w72 align-center"><a href="{:U('Navigation/navigation_edit',array('nav_id'=>$v['nav_id']))}">编辑</a></td>
+        </tr>
+        </volist>
+        <else /> 
+        <tr class="no_data">
+          <td colspan="15">暂无记录</td>
+        </tr>
+        </notempty>
+      </tbody>
+      <tfoot>
+        <notempty name="list">
+        <tr class="tfoot">
+          <td><input type="checkbox" class="checkall" id="checkallBottom"></td>
+          <td colspan="16"><label for="checkallBottom">全选</label>
+            &nbsp;&nbsp;<a href="JavaScript:void(0);" class="btn" onclick="if(confirm('确定要删除?')){$('#form_nav').submit();}"><span>删除</span></a>
+            <div class="pagination">{$show_page}</div></td>
+        </tr>
+        </notempty>
+      </tfoot>
+    </table>
+  </form>
+</div>
+<script type="text/javascript" src="__JS__/jquery.edit.js" charset="utf-8"></script>
+<include file="Public/footer" />

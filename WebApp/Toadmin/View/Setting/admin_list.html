@@ -1,0 +1,58 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>系统用户管理</h3>
+      <ul class="tab-base">
+        <li><a href="JavaScript:void(0);" class="current"><span>管理</span></a></li>
+        <li><a href="{:U('Setting/admin_list',array('op'=>'add'))}" ><span>添加</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form method="post" id="form_admin" action="{:U('Setting/admin_list',array('op'=>'del'))}">
+    <table class="table tb-type2">
+      <thead>
+        <tr class="space">
+          <th colspan="15" class="nobg"><?php echo $lang['nc_list'];?></th>
+        </tr>
+        <tr class="thead">
+          <th><input type="checkbox" class="checkall" id="checkallBottom" name="chkVal"></th>
+          <th>账号</th>
+          <th class="align-center">最近登录时间</th>
+          <th class="align-center">最近登录IP</th>
+          <th class="align-center">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <volist name="list" id="vo">
+        <tr class="hover">
+          <td class="w24">
+            <if condition="$vo['admin_id'] neq 1">
+            	<input type="checkbox" name="del_id[]" value="$vo['admin_id']" class="checkitem" onclick="javascript:chkRow(this);">
+            <else/>
+            	<input name="del_id[]" type="checkbox" value="$vo['admin_id']" disabled="disabled">
+            </if>
+            </td>
+          <td>{$vo['admin_name']}</td>
+          <td class="align-center">{$vo['admin_lg_time']|date='Y-m-d H:i:s',###}</td>
+          <td class="align-center">{$vo['admin_lg_ip']}</td>
+          <td class="w150 align-center">
+			<a href="{:U('Setting/admin_list',array('op'=>'edit','admin_id'=>$vo['admin_id']))}">编辑</a>
+            <if condition="$vo['admin_id'] neq 1">
+            &nbsp;|&nbsp;
+            <a href='javascript:if(confirm("您确定要删除吗？"))window.location="{:U('Setting/admin_list',array('op'=>'del','admin_id'=>$vo['admin_id']))}";'>删除</a>
+		  	</if>
+          </td>
+        </tr>
+        </volist>
+      </tbody>
+      <tfoot>
+        <tr class="tfoot">
+        <td colspan="16"></td>
+        </tr>
+      </tfoot>      
+    </table>
+  </form>
+</div>
+<include file="Public/footer" />

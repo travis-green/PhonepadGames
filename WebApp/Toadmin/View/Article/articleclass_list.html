@@ -1,0 +1,91 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>文章分类</h3>
+      <ul class="tab-base">
+        <li><a href="JavaScript:void(0);" class="current"><span>管理</span></a></li>
+        <li><a href="{:U('Article/article_class_add')}" ><span>添加</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <table class="table tb-type2" id="prompt">
+    <tbody>
+      <tr class="space odd">
+        <th class="nobg" colspan="12"><div class="title">
+            <h5>操作提示</h5>
+            <span class="arrow"></span></div></th>
+      </tr>
+      <tr>
+        <td><ul>
+            <li>管理员新增文章时，可选择文章分类，文章分类将在前台文章列表页显示</li>
+          </ul></td>
+      </tr>
+    </tbody>
+  </table>
+  <form method='post'>
+    <table class="table tb-type2">
+      <thead>
+        <tr class="thead">
+          <th class="w48"></th>
+          <th class="w48">排序</th>
+          <th>分类名称</th>
+          <th class="w96 align-center">操作</th>
+        </tr>
+      </thead>
+      <tbody id="treet1">
+        <notempty name="list">
+        <volist name="list" id="v">
+        <tr class="hover edit">
+          <td>
+            <input type="checkbox" name='check_ac_id[]' value="{$v['ac_id']}" class="checkitem">
+           </td>
+          <td class="sort">
+          	<span title="可编辑" ajax_control="Article" ajax_branch='article_class_sort' datatype="number" fieldid="{$v['ac_id']}" fieldname="ac_sort" nc_type="inline_edit" class="editable">{$v['ac_sort']}</span>
+          </td>
+          <td class="name">
+         	<span title="可编辑" ajax_control="Article" required="1" fieldid="{$v['ac_id']}" ajax_branch='article_class_name' fieldname="ac_name" nc_type="inline_edit" class="editable tooltip">{$v['ac_name']}</span>
+          </td>
+          <td class="align-center"><a href="{:U('Article/article_class_edit',array('ac_id'=>$v['ac_id']))}">编辑</a></td>
+        </tr>
+        
+           <volist name="v['sub']" id="vb"> 
+            <tr class="hover edit">
+              <td>
+                <input type="checkbox" name='check_ac_id[]' value="{$vb['ac_id']}" class="checkitem">
+               </td>
+              <td class="sort">
+                <span title="可编辑" ajax_control="Article" ajax_branch='article_class_sort' datatype="number" fieldid="{$vb['ac_id']}" fieldname="ac_sort" nc_type="inline_edit" class="editable">{$vb['ac_sort']}</span>
+              </td>
+              <td class="name">
+                <img src="__IMG__/tv-expandable1.gif" nc_type="flex" status="none" fieldid="4">
+                <span title="可编辑" ajax_control="Article" required="1" fieldid="{$vb['ac_id']}" ajax_branch='article_class_name' fieldname="ac_name" nc_type="inline_edit" class="editable tooltip">{$vb['ac_name']}</span>
+              </td>
+              <td class="align-center"><a href="{:U('Article/article_class_edit',array('ac_id'=>$vb['ac_id']))}">编辑</a></td>
+            </tr>
+           </volist>         
+        </volist>
+        <else/>
+        <tr class="no_data">
+          <td colspan="10">暂无记录</td>
+        </tr>
+        </notempty>
+      </tbody>
+      <tfoot>
+        <notempty name="list">
+        <tr>
+          <td><label for="checkall1">
+              <input type="checkbox" class="checkall" id="checkall_2">
+            </label></td>
+          <td colspan="16"><label for="checkall_2">全选</label>
+            &nbsp;&nbsp;<a href="JavaScript:void(0);" class="btn" onclick="if(confirm('你确定要删除？')){$('form:first').submit();}"><span>删除</span></a>
+          </td>
+        </tr>
+        </notempty>
+      </tfoot>
+    </table>
+  </form>
+</div>
+<script type="text/javascript" src="__JS__/jquery.edit.js" charset="utf-8"></script> 
+<include file="Public/footer" />

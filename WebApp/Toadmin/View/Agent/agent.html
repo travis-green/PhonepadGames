@@ -1,0 +1,123 @@
+<include file="Public/header" />
+<script type="text/javascript">
+function submit_delete_batch(){
+    /* 获取选中的项 */
+    var items = '';
+    $('.checkitem:checked').each(function(){
+        items += this.value + ',';
+    });
+    if(items != '') {
+        items = items.substr(0, (items.length - 1));
+        submit_delete(items);
+    } else {
+        alert('请选择要操作的对象');
+    }
+}
+
+function submit_delete(id){
+    if(confirm('确定要删除？')) {        
+        $('#goods_id').val(id);
+        $('#list_form').submit();
+    }
+}
+</script>
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>经销商管理</h3>
+      <ul class="tab-base">
+        <li><a href="javascript:void(0);" class="current"><span>管理</span></a></li>
+        <li><a href="{:U('Agent/agent_add')}"><span>新增</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form method="get" name="formSearch">
+    <table class="tb-type1 noborder search">
+      <tbody>
+        <tr>
+          <th>名称</th>
+          <td><input type="text" value="{$search['true_name']}" name="true_name" class="txt" ></td>
+          <td><a href="javascript:document.formSearch.submit();" class="btn-search tooltip" title="查询">&nbsp;</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+  <!-- 操作说明 -->
+  <table class="table tb-type2" id="prompt">
+    <tbody>
+      <tr class="space odd">
+        <th colspan="12" class="nobg"><div class="title">
+            <h5>操作提示</h5>
+            <span class="arrow"></span></div></th>
+      </tr>
+      <tr>
+        <td>
+        	<ul>
+            	<li>可以查看代理商信息，可以对代理商进行删除等操作</li>
+          	</ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <form id="list_form" method='post' action="{:U('Agent/agent_del')}">
+    <input id="id" name="id" type="hidden" />
+    <table class="table tb-type2">
+      <thead>
+        <tr class="space">
+          <th colspan="15" class="nobg">列表</th>
+        </tr>
+        <tr class="thead">
+          <th class="w24"></th>
+          <th class="w72">排序</th>
+          <th colspan="2">名称</th>
+          <th class="align-center">微信号</th>
+		  <th class="align-center">代理级别</th>
+		  <th class="align-center">添加时间</th>
+          <th class="w48 align-center">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <notempty name="list">
+        <volist name="list" id="val">
+        <tr class="hover edit">
+		  <td><input type="checkbox" value="{$val['id']}" class="checkitem"></td>
+          <td class="w48 sort"><span title="可编辑" ajax_branch="agent_sort" datatype="number" fieldid="{$val['id']}" ajax_control="Agent" fieldname="agent_sort" nc_type="inline_edit" class="editable tooltip">{$val['agent_sort']}</span></td>
+          <td class="w60 picture">
+          	<div class="size-56x56"><span class="thumb size-56x56"><i></i><img src="__UPLOADS__{$val['agent_pic']}" width="56" height="56"/></span></div>
+          </td>
+          <td class="goods-name w270">
+          	<p><span class="editable-tarea tooltip">{$val['true_name']}</span></p>
+          </td>
+		  <td class="align-center">{$val['wexin_id']}</td>
+		  <td class="align-center">{$val['level_name']}</td>
+		  <td class="align-center">{$val['agent_time']|date='Y-m-d',###}</td>
+		  <td class='w72 align-center'>
+		  <a href="{:U('Agent/agent_edit',array('id'=>$val['id']))}">编辑</a> | <a href='javascript:if(confirm("确定要删除？"))window.location = "{:U('Agent/agent_del',array('id'=>$val['id']))}";'>删除</a>
+		  </td>
+        </tr>
+        </volist>
+        <else/>
+        <tr class="no_data">
+          <td colspan="10">暂无记录</td>
+        </tr>
+        </notempty>
+      </tbody>
+      <notempty name="list">
+      <tfoot>
+        <tr class="tfoot">
+          <td><!--<input type="checkbox" class="checkall" id="checkall_1">--></td>
+          <td id="batchAction" colspan="15">
+          	<span class="all_checkbox">
+<!--            	<label for="checkall_1">全选</label>
+            	<a href="javascript:void(0)" class="btn" onclick="submit_delete_batch();"><span>删除</span></a>-->
+            </span>
+            <div class="pagination">{$page_show}</div>
+        </tr>
+      </tfoot>
+     </notempty>
+    </table>
+  </form>
+</div>
+<script type="text/javascript" src="__JS__/jquery.edit.js" charset="utf-8"></script> 
+<include file="Public/footer" />

@@ -1,0 +1,44 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>生成sitemap.xml</h3>
+    </div>
+  </div>
+  <table class="table tb-type2" id="prompt">
+    <tbody>
+      <tr class="space odd">
+        <th colspan="12" class="nobg"><div class="title">
+            <h5>操作提示</h5>
+            <span class="arrow"></span></div></th>
+      </tr>
+      <tr>
+        <td>
+        	<ul>
+            	<li>生成以资讯等为内容的sitemap.xml方便搜索引擎更好的抓取网站内容</li>
+          	</ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>  
+    <form name="sitemap_from" id="sitemap_from" method="post" action="{:U('Tool/sitemap')}">
+    <table class="table tb-type2 nobdb">
+    	<tbody>      
+    		<tr class="hover">
+    			<td class="w150">&nbsp;</td>
+    			<td><a href="JavaScript:void(0);" class="btn" id="submitBtn"><span>一键更新生成</span></a></td>
+                <td>&nbsp;</td>
+   			</tr>      		
+            
+    	</tbody>
+    </table>
+    </form>
+</div>
+
+<script>
+$(function(){
+	$("#submitBtn").click(function(){
+		$("#sitemap_from").submit();
+	});
+});
+</script>

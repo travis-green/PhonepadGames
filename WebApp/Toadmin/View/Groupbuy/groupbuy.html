@@ -1,0 +1,181 @@
+<include file="Public/header" />
+<script type="text/javascript">
+function submit_delete_batch(type){
+    /* 获取选中的项 */
+    var items = '';
+    $('.checkitem:checked').each(function(){
+        items += this.value + ',';
+    });
+
+    if(items != '') {
+        items = items.substr(0, (items.length - 1));
+        submit_delete(items,type);
+    }  
+    else {
+        alert('请选择要操作的对象');
+    }
+}
+function submit_delete(id,type){
+    if(confirm('确定进行该操作？')){
+		if(type == 'recommend'){
+        	$('#op_type').val(1);
+        }else{
+        	$('#op_type').val(2);
+        }
+        
+        $('#group_id').val(id);
+        $('#list_form').submit();
+    }
+}
+</script>
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>团购管理</h3>
+      <ul class="tab-base">
+        <li><a href="javascript:void(0);" class="current"><span>管理</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form method="get" name="formSearch">
+    <table class="tb-type1 noborder search">
+      <tbody>
+        <tr>
+		  <td>
+			<input type="text" name="group_name" placeholder="团购名称" value="{$search['group_name']}">
+		  </td>
+		  <td>
+			  <select name='groupbuy_state'>
+			    <option value="">团购状态</option>
+				<option value="1" <if condition="$search['groupbuy_state'] eq 1">selected</if>>即将开始</option>
+				<option value="2" <if condition="$search['groupbuy_state'] eq 2">selected</if>>正在进行</option>
+				<option value="3" <if condition="$search['groupbuy_state'] eq 3">selected</if>>已经结束</option>
+			  </select>
+		  </td>
+		  <td>
+		  	<select name="is_audit">
+		  		<option value="">审核状态</option>
+		  		<option value="1" <if condition="$search['is_audit'] eq 1">selected</if>>待审核</option>
+		  		<option value="2" <if condition="$search['is_audit'] eq 2">selected</if>>已通过</option>
+		  		<option value="3" <if condition="$search['is_audit'] eq 3">selected</if>>未通过</option>
+		  	</select>
+		  </td>
+          <td><a href="javascript:document.formSearch.submit();" class="btn-search tooltip" title="查询">&nbsp;</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+  <!-- 操作说明 -->
+  <table class="table tb-type2" id="prompt">
+    <tbody>
+      <tr class="space odd">
+        <th colspan="12" class="nobg">
+	        <div class="title">
+	            <h5>操作提示</h5>
+	            <span class="arrow"></span>
+	        </div>
+        </th>
+      </tr>
+      <tr>
+        <td>
+		  <ul>
+            <li>可以查看团购券，可以停用、删除团购项目，可以按照团购状态进行搜索，设置推荐到首页</li>
+            <li>列表显示团购名称、团购时间、商铺、原价、团购价格等信息</li>
+          </ul>
+		</td>
+      </tr>
+    </tbody>
+  </table>
+  <form id="list_form" method='post' action="{:U('Groupbuy/recommend')}">
+    <input id="group_id" name="group_id" type="hidden" />
+    <input id="op_type" name="op_type" type="hidden" />
+    <table class="table tb-type2">
+      <thead>
+        <tr class="space">
+          <th colspan="14" class="nobg">列表</th>
+        </tr>
+        <tr class="thead">
+          <th class="w48"></th>
+          <th class="w200">团购名称</th>
+		  <th class="w120">团购时间</th>
+		  <th class="w120">商铺</th>
+		  <th class="w48">过期退款</th>
+		  <th class="w48">原价</th>
+		  <th class="w48">团购价</th>
+          <th class="w48">团购数量</th>
+		  <th class="w48">购买上限</th>
+		  <th class="w48">购买数量</th>
+		  <th class="w48">分佣比例</th>
+		  <th class="w48">审核</th>
+		  <th class="w48">团购状态</th>
+		  <th class="w150 align-center">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <notempty name="list">
+        <volist name="list" id="val">
+        <tr class="hover edit">
+          <td class="w48"><input type="checkbox" value="{$val['group_id']}" class="checkitem"></td>
+		  <td class="w200"><a href="#" target="_blank">{$val['group_name']}</a></td>
+		  <td class="w120">{$val['start_time']|date='Y-m-d',###}&nbsp;~&nbsp;{$val['end_time']|date='Y-m-d',###}</td>
+		  <td class="w120">{$val['store_name']}</td>
+		  <td class="w48">{$val['is_refund']==1?'是':'否'}</td>
+		  <td class="w48">{$val['original_price']}</td>
+		  <td class="w48"><span style="color:#E64D5E;font-weight:bold;font-size:14px">{$val['group_price']}</span>元</td>
+		  <td class="w48">{$val['buyer_count']}</td>
+		  <td class="w48">{$val['buyer_limit']}</td>
+		  <td class="w48">{$val['buyer_num']}</td>
+		  <td class="w48">{$val['settle']}%</td>
+		  <td class="w48">
+            <if condition="$val['is_audit'] eq 1">待审核
+            <elseif condition="$val['is_audit'] eq 2"/>已通过
+            <elseif condition="$val['is_audit'] eq 3"/>不通过
+            <else/>
+            </if>
+		  </td>
+		  <td class="w48">
+            <if condition="$val['groupbuy_state'] eq 1">即将开始
+            <elseif condition="$val['groupbuy_state'] eq 2"/>正在进行
+            <elseif condition="$val['groupbuy_state'] eq 3"/>已经结束
+			<else/>
+            </if>
+		  </td>
+		  <td class="w150 align-center">
+		  	<a href="{:U('Groupbuy/groupbuyvoucher',array('group_id'=>$val['group_id']))}">查看团购券</a>
+		    <if condition="$val['is_open'] eq 1">
+		  	&nbsp;|&nbsp;<a href='javascript:if(confirm("您确定停用该团购？"))window.location.href="{:U('Groupbuy/groupbuystate',array('is_open'=>2,'group_id'=>$val['group_id']))}";'>停用</a>
+		  	<else/>
+		  	&nbsp;|&nbsp;<a href='javascript:if(confirm("您确定启用该团购？"))window.location.href="{:U('Groupbuy/groupbuystate',array('is_open'=>1,'group_id'=>$val['group_id']))}";'>启用</a>
+		  	</if>
+		  	&nbsp;|&nbsp;
+		  	<if condition="$val['is_audit'] eq 1">
+            <a href="{:U('Groupbuy/groupbuyaudit',array('group_id'=>$val['group_id']))}">审核</a>
+		  	<else/>
+            <span style="color:#ccc">审核</span>
+		  	</if>
+		  </td>
+        </tr>
+        </volist>
+        <else/>
+        <tr class="no_data">
+          <td colspan="10">暂无记录</td>
+        </tr>
+        </notempty>
+      </tbody>
+      <notempty name="list">
+      <tfoot>
+        <tr class="tfoot">
+          <td><input type="checkbox" class="checkall" id="checkall_1"></td>
+          <td id="batchAction" colspan="15">
+          	<span class="all_checkbox"><label for="checkall_1">全选</label></span>
+           	&nbsp;<a href="javascript:void(0)" class="btn" onclick="submit_delete_batch('recommend');"><span>推荐</span></a>
+           	&nbsp;<a href="javascript:void(0)" class="btn" onclick="submit_delete_batch('not_recommend');"><span>取消推荐</span></a>
+            <div class="pagination">{$page_show}</div>
+        </tr>
+      </tfoot>
+      </notempty>
+    </table>
+  </form>
+</div>
+<include file="Public/footer" />

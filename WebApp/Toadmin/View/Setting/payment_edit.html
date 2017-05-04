@@ -1,0 +1,78 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>支付管理</h3>
+      <ul class="tab-base">
+        <li><a href="{:U('Setting/payment')}"><span>管理</span></a></li>
+        <li><a href="JavaScript:void(0);" class="current"><span>编辑</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form id="add_form" method="post" action="{:U('Setting/payment',array('op'=>'edit'))}">
+    <table class="table tb-type2 nobdb">
+      <tbody>
+        <tr class="noborder">
+          <td colspan="2" class="required">支付方式名称: </td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform">{$vo['payment_name']}</td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required">支付宝支付账号: </td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform">
+            <input type="hidden" name="config_name" value="alipay_service,alipay_account,alipay_key,alipay_partner" />
+          	<input type="hidden" name="alipay_service" value="create_direct_pay_by_user" />
+            <input name="alipay_account" id="alipay_account" value="{$config_array['alipay_account']}" class="txt" type="text"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required">交易安全校验码（key）: </td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input name="alipay_key" id="alipay_key" value="{$config_array['alipay_key']}" class="txt" type="text"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required">合作者身份（partner ID）: </td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input name="alipay_partner" id="alipay_partner" value="{$config_array['alipay_partner']}" class="txt" type="text"></td>
+          <td class="vatop tips"></td>
+        </tr>
+       	<tr>
+          <td colspan="2" class="required">启用状态: </td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform onoff">
+          	<label for="payment_state1" class="cb-enable <if condition="$vo['payment_state'] eq 1">selected</if>" ><span>开启</span></label>
+            <label for="payment_state2" class="cb-disable <if condition="$vo['payment_state'] eq 2">selected</if>" ><span>关闭</span></label>
+            <input type="radio" <if condition="$vo['payment_state'] eq 1">checked="checked"</if> value="1" name="payment_state" id="payment_state1">
+            <input type="radio" <if condition="$vo['payment_state'] eq 2">checked="checked"</if> value="2" name="payment_state" id="payment_state2">
+          </td>
+          <td class="vatop tips"></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr class="tfoot">
+          <td colspan="2">
+          	<input type="hidden" name="payment_id" value="{$vo['payment_id']}" />
+          	<a href="JavaScript:void(0);" class="btn" id="submitBtn"><span>保存</span></a>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </form>
+</div>
+<script type="text/javascript">
+//按钮先执行验证再提交表
+$(function(){$("#submitBtn").click(function(){
+ $("#add_form").submit();
+});
+});
+</script> 
+<include file="Public/footer" />

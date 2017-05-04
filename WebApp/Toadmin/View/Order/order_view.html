@@ -1,0 +1,107 @@
+<include file="Public/header" />
+
+<div class="page">
+  <table class="table tb-type2 order">
+    <tbody>
+      <tr class="space">
+        <th colspan="15">订单状态</th>
+      </tr>
+      <tr>
+        <td colspan="2"><ul>
+            <li><strong>订单号:</strong>{$vo['order_sn']}</li>
+            <li><strong>订单状态:</strong>{$vo['order_state']|get_order_state_name}</li>
+            <li><strong>订单总额:</strong><span class="red_common">{$vo['order_amount']}</span></li>
+            <li><strong>运费:</strong>{$vo['shipping_fee']}</li>
+          </ul></td>
+      </tr>
+      <tr class="space">
+        <th colspan="2">订单详情</th>
+      </tr>
+      <tr>
+        <th>收货人及发货信息</th>
+      </tr>
+      <tr>
+        <td><ul>
+            <li><strong>收货人姓名:</strong>{$addr['true_name']}</li>
+            <li><strong>收货地址:</strong>{$addr['address']}</li>
+            <li><strong>邮政编码:</strong>{$addr['zip_code']}</li>
+            <li><strong>电话号码:</strong>{$addr['mob_phone']}</li>
+            <li><strong>发货状态:</strong>
+            	<if condition="$vo['order_state'] eq 30">已发货
+                <elseif condition="$vo['order_state'] eq 40"/>已收货 
+                <elseif condition="$vo['order_state'] eq 50"/>已完成
+                <else/>未知
+                </if> 
+            </li>
+            <li><strong>配送方式:</strong>{$vo['shipping_name']} {$vo['shipping_code']}</li>
+          </ul></td>
+      </tr>
+      <tr>
+        <th>商品信息</th>
+      </tr>
+      <tr>
+        <td><table class="table tb-type2 goods ">
+            <tbody>
+              <tr>
+                <th></th>
+                <th>商品信息</th>
+                <th class="align-center">规格</th>
+                <th class="align-center">单价</th>
+                <th class="align-center">数量</th>
+              </tr>
+              <volist name="vo['OrderGoods']" id="gd">
+              <tr>
+                <td class="w60 picture"><div class="size-56x56"><span class="thumb size-56x56"><i></i><img src="__UPLOADS__{$gd['goods_image']}" width="56" height="56"/></span></div></td>
+                <td class="w50pre">{$gd['goods_name']}</td>
+                <td class="w96 align-center">{$gd['spec_info']}</td>
+                <td class="w96 align-center"><span class="red_common">{$gd['goods_price']}</span></td>
+                <td class="w96 align-center">{$gd['goods_num']}</td>
+              </tr>
+              </volist>
+            </tbody>
+          </table></td>
+      </tr>
+      <tr>
+      	<th>发货处理</th>
+      </tr>
+      <tr>
+          <td>
+  <!-- S 发货处理 -->
+         <if condition="$vo['order_state'] eq 20">
+          <form action="{:U('Order/order_op',array('order_id'=>$vo['order_id']))}" method="post" id="fh_form" name="fh_form"> 
+		  	快递公司：
+            <select name="shipping_name" id="shipping_name">
+            	<volist name="express" id="ep">
+            	<option value="{$ep['e_name']}">{$ep['e_name']}</option>
+                </volist>
+            </select>
+            运单号:<input name="shipping_code" id="shipping_code" value="" type="text" />
+            <a href="JavaScript:void(0);" class="btn" onclick="check_fh()"><span>提交</span></a>
+          </form>	
+          <script language="javascript">
+		  function check_fh()
+		  {
+			  var shipping_code = $("#shipping_code").val();
+			  if(shipping_code == '')
+			  {
+				 alert('请输入运单号');  
+			  }else{
+				 $("#fh_form").submit(); 	  
+		      }
+		  }
+		  </script>
+          </if>
+  <!-- E 发货处理 -->
+
+          </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr class="tfoot">
+        <td><a href="JavaScript:void(0);" class="btn" onclick="history.go(-1)"><span>返回</span></a></td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
+<include file="Public/footer" />

@@ -1,0 +1,51 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>地区设置</h3>
+      <ul class="tab-base">
+        <li><a href="{:U('Setting/district')}"><span>地区管理</span></a></li>
+        <li><a href="JavaScript:void(0);" class="current"><span>常用地区管理</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  
+
+    
+  <form method='post'>
+    <table class="table tb-type2">
+      <thead>
+        <tr class="thead">
+          <th>排序</th>
+          <th>地区名称</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody id="district_list">
+         <volist name="list" id="vo">        
+          <tr class="hover edit">      
+          <td class="w48 sort">
+          <span title="可编辑" ajax_branch="displayorder" ajax_control="Setting" datatype="number" fieldid="{$vo.id}" fieldname="displayorder" nc_type="inline_edit" class="editable tooltip">{$vo.displayorder}</span>
+          </td>
+          <td class="w50pre name">
+          <span title="可编辑" ajax_branch="name" ajax_control="Setting" required="1" fieldid="{$vo.id}"  fieldname="name" nc_type="inline_edit" class="editable tooltip">{$vo.name}</span>
+          </td>
+          <td class="power-onoff">  
+            <if condition="$vo.usetype eq 0">
+            <a href="JavaScript:void(0);" class="tooltip disabled" fieldvalue="0" fieldid="{$vo.id}" ajax_control="Setting" ajax_branch="usetype" fieldname="usetype" nc_type="inline_edit" title="取消常用城市">
+            <img src="__IMG__/transparent.gif"></a>
+            <else />
+            <a href="JavaScript:void(0);" class="tooltip enabled" fieldvalue="1" fieldid="{$vo.id}" ajax_control="Setting" ajax_branch="usetype" fieldname="usetype" nc_type="inline_edit" title="取消常用城市">
+            <img src="__IMG__/transparent.gif"></a>
+            </if>
+          </td>
+          </tr>
+          </volist>
+        
+        </tbody>
+      </table>
+  </form>
+</div>
+<script type="text/javascript" src="__JS__/jquery.edit.js" charset="utf-8"></script> 
+<include file="Public/footer" />

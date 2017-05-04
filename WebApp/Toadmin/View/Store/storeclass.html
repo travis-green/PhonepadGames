@@ -1,0 +1,190 @@
+<include file="Public/header" />
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".class_parent").click(function(){
+            if($(this).attr("status") == "open"){
+                $(this).attr("status","close");
+                $(this).attr("src",SiteUrl+"/Public/admin/images/tv-collapsable.gif");
+                $("."+$(this).attr("class_id")).show();
+            }else{
+                $(this).attr("status","open");
+                $(this).attr("src",SiteUrl+"/Public/admin/images/tv-expandable.gif");
+                $("."+$(this).attr("class_id")).hide();
+            }
+        });
+        //行内ajax编辑
+        $('.inline_edit').blur(function(){
+            var class_id = $(this).attr("class_id");
+            var value = $(this).val();
+            var type = $(this).attr("edit_type");
+            var old_value = $(this).attr("old_value");
+			if(value)
+			{
+			  $.getJSON("{:U('Store/ajax_update_class')}?type="+type+"&class_id="+class_id+'&value='+value, function(result){
+				if(result.done == false)
+				{
+					$(this).val(old_value);
+					alert(result.msg);
+				}
+			  });
+			}
+        });
+    });
+function submit_delete_batch()
+{
+    /* 获取选中的项 */
+    var items = '';
+    $('.checkitem:checked').each(function(){
+        items += this.value + ',';
+    });
+    if(items != '') {
+        items = items.substr(0, (items.length - 1));
+        submit_delete(items);
+    }  
+    else {
+        alert('请选择要操作的对象');
+    }
+}
+function submit_delete(id)
+{
+    if(confirm('确认删除')){
+        $('#class_id').val(id);
+        $('#list_form').submit();
+    }
+}
+function ajax_set_recommend(stat,class_id)
+{
+	$.getJSON("{:U('Store/ajax_recommend')}?class_id="+class_id+"&stat="+stat, function(result){
+		if(result.done){
+			if(stat == 1){
+				var stat_show = '是';
+				var rechange_tip = '取消推荐';
+				var new_rcstat = 0;
+			}else{
+				var stat_show = '否';
+				var rechange_tip = '设为推荐';
+				var new_rcstat = 1;
+			}
+			$('#re_stat_'+class_id).html(stat_show);
+			$('a[re_change="'+class_id+'"]').html("["+rechange_tip+"]").attr("href","javascript:ajax_set_recommend("+new_rcstat+","+class_id+");");
+        }else{
+            alert('分类推荐状态修改失败');
+        }
+	});
+}
+</script>
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>商户分类</h3>
+      <ul class="tab-base">
+        <li><a href="javascript:void(0);" class="current"><span>管理</span></a></li>
+		<li><a href="{:U('Store/storeclass_add')}"><span>添加</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <!-- 操作说明 -->
+  <table class="table tb-type2" id="prompt">
+    <tbody>
+      <tr class="space odd">
+        <th colspan="12" class="nobg"><div class="title">
+            <h5>操作提示</h5>
+            <span class="arrow"></span></div></th>
+      </tr>
+      <tr>
+        <td><ul>
+            <li>通过修改排序数字可以控制前台线下商城分类的显示顺序，数字越小越靠前</li>
+            <li>可以设置分类是否被推荐到首页的热门分类区进行展示（最多显示6个一级分类组）</li>
+			<li>点击行首的"+"号，可以展开下级分类</li>
+			<li>二级分类的分佣比例为空不设置，则默认采用一级分类的分佣比例</li>
+          </ul></td>
+      </tr>
+    </tbody>
+  </table>
+  <form id="list_form" method='post' action="{:U('Store/storeclass_del')}">
+    <input id="class_id" name="class_id" type="hidden" />
+    <table class="table tb-type2">
+      <thead>
+        <tr class="space">
+          <th colspan="15" class="nobg">列表</th>
+        </tr>
+        <tr class="thead">
+          <th class="w48"></th>
+          <th class="w48">排序</th>
+          <th class="w48">分佣比例(%)</th>
+          <th>分类名称</th>
+          <th>首页推荐</th>
+          <th class="w200 align-center">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <notempty name="list">
+        <volist name="list" id="vo">
+        <if condition="$vo['class_pid'] eq 0">
+        <tr class="hover edit">
+          <td><input type="checkbox" value="{$vo['class_id']}" class="checkitem">
+            <img class="class_parent" class_id="class_id{$vo['class_id']}" status="open" src="__IMG__/tv-expandable.gif"></td>
+          <td class="w48 sort">
+          	<input type="text" edit_type="class_sort"  value="{$vo['class_sort']}" oldvalue="{$vo['class_sort']}" class="inline_edit" class_id="{$vo['class_id']}" />
+          </td>
+          <td class="w48 sort">
+          	<input type="text" edit_type="class_settle" value="{$vo['class_settle']}" oldvalue="{$vo['class_settle']}" class="inline_edit" class_id="{$vo['class_id']}" />
+          </td>
+          <td class="name">
+          <input type="text" edit_type="class_name" value="{$vo['class_name']}" oldvalue="{$vo['class_name']}" class="inline_edit" class_id="{$vo['class_id']}" /> 
+          <a class="btn-add-nofloat marginleft" href="{:U('Store/storeclass_add',array('class_pid'=>$vo['class_id']))}"><span>新增下级</span></a>
+          </td>
+          <td>
+          <span id="re_stat_{$vo['class_id']}">{$vo['class_recommend']?'是':'否'}</span>
+          <a re_change="{$vo['class_id']}" class="marginleft" href="javascript:ajax_set_recommend({$vo['class_recommend']?'0':'1'},{$vo['class_id']});">[{$vo['class_recommend']?'取消推荐':'设为推荐'}]</a>
+          </td>
+          <td class="align-center">
+          <a href="{:U('Store/storeclass_edit',array('class_id'=>$vo['class_id']))}">编辑</a> | <a href="javascript:submit_delete({$vo['class_id']})">删除</a>														          </t>
+        </tr>
+         <volist name="list" id="val">
+         <if condition="$val['class_pid'] eq $vo['class_id']">
+        <tr class="hover edit class_id{$vo['class_id']}" style="display:none;">
+          <td class="w48"><input type="checkbox" value="{$val['class_id']}" class="checkitem"></td>
+          <td class="w48 sort">
+          	<input type="text" edit_type="class_sort" value="{$val['class_sort']}" oldvalue="$val['class_sort']" class="inline_edit" class_id="{$val['class_id']}" />
+          </td>
+          <td class="w48 sort">
+          	<input type="text" edit_type="class_settle" value="{$val['class_settle']}" oldvalue="$val['class_settle']" class="inline_edit" class_id="{$val['class_id']}" />
+          </td>
+          <td class="name">
+          <input type="text" edit_type="class_name" value="{$val['class_name']}"  oldvalue="{$val['class_name']}" class="inline_edit" class_id="{$val['class_id']}" />
+          </td>
+          <td>
+          <span id="re_stat_{$val['class_id']}">{$val['class_recommend']?'是':'否'}</span>
+          <a re_change="{$val['class_id']}" class="marginleft" href="javascript:ajax_set_recommend({$val['class_recommend']?'0':'1'},{$val['class_id']});">[{$val['class_recommend']?'取消推荐':'设为推荐'}]</a>
+          </td>
+          <td class="w200 align-center">
+              <a href="{:U('Store/storeclass_edit',array('class_id'=>$val['class_id']))}">编辑</a> | <a href="javascript:submit_delete({$val['class_id']})">删除</a>
+          </td>
+        </tr>
+        </if>
+        </volist>
+        </if>
+        </volist>
+        <else/>
+        <tr class="no_data">
+          <td colspan="10">暂无数据</td>
+        </tr>
+      </notempty>
+      </tbody>
+      <notempty name="list">
+      <tfoot>
+        <tr class="tfoot">
+          <td><input type="checkbox" class="checkall" id="checkall_1"></td>
+          <td id="batchAction" colspan="15"><span class="all_checkbox">
+            <label for="checkall_1">全选</label>
+            </span>&nbsp;&nbsp; <a href="javascript:void(0)" class="btn" onclick="submit_delete_batch();"><span>删除</span></a>
+            <div class="pagination"></div>
+        </tr>
+      </tfoot>
+      </notempty>
+    </table>
+  </form>
+</div>
+<include file="Public/footer" />

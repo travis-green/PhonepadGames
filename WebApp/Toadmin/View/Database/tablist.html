@@ -1,0 +1,64 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>数据库备份</h3>
+      <ul class="tab-base">
+        <li><a href="{:U('Database/index')}"><span>管理</span></a></li>
+        <li><a href='javascript:if(confirm("确定要备份所有数据?"))window.location ="{:U('Database/backall')}";'><span>备份所有数据</span></a></li>
+        <li><a href="JavaScript:void(0);" class="current"><span>备份部分数据</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+    <table class="table tb-type2" id="prompt">
+    <tbody>
+      <tr class="space odd">
+        <th class="nobg" colspan="12"><div class="title"><h5>操作提示</h5><span class="arrow"></span></div></th>
+      </tr>
+      <tr>
+        <td>
+        <ul>
+            <li>数据库备份和数据还原.</li>
+            <li><font color="red">警告:请谨慎操作!</font></li>
+            <li><font color="red">非紧急特殊情况下请不要还原数据,避免数据丢失!</font></li>
+          </ul></td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="table tb-type2 nobdb">
+    <thead>
+      <tr class="thead">
+        <th>数据表名</th>
+        <th class="align-center">类型</th>
+        <th class="align-center">记录</th>
+        <th class="align-center">大小</th>
+        <th class="align-center">上次更新时间</th>
+        <th class="align-center">属性</th>
+        <th class="align-center">备注</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <notempty name="list">
+      <volist name="list" id="v">
+      <tr class="hover">
+        <td >{$v['name']}</td>
+        <td class="align-center">{$v['engine']}</td>
+        <td class="align-center">{$v['rows']}</td>
+        <td class="align-center">{$v['index_length']+$v['data_length']}B</td>
+        <td class="align-center">{$v['update_time']}</td>
+        <td class="align-center">{$v['collation']}</td>
+        <td class="w25pre align-center">{$v['comment']}</td>
+        <td><a href='javascript:if(confirm("确定要备份该表？"))window.location ="{:U('Database/backtables',array('tab'=>$v['name']))}";'>备份</a></td>
+      </tr>
+      </volist>
+      <else/>
+      <tr class="no_data">
+        <td colspan="15">暂无记录</td>
+      </tr>
+      </notempty>
+    </tbody>
+  </table>
+</div>
+<include file="Public/footer" />

@@ -1,0 +1,349 @@
+[ 2017-05-04T14:03:13+08:00 ] 61.164.49.90 /Toadmin/Setting/cache_clear
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000317s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000525s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000639s ]
+SQL: SHOW COLUMNS FROM `mxd_admin` [ RunTime:0.0008s ]
+SQL: SELECT `admin_auth` FROM `mxd_admin` WHERE ( admin_issuper <> 1 AND admin_id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [2] Missing argument 1 for Muxiangdao\Dir::__construct(), called in /data/www/rockweb/WebApp/Toadmin/Controller/SettingController.class.php on line 535 and defined /data/www/rockweb/ThinkYun/Library/Muxiangdao/Dir.class.php 第 25 行.
+NOTIC: [8] Undefined variable: path /data/www/rockweb/ThinkYun/Library/Muxiangdao/Dir.class.php 第 27 行.
+NOTIC: [8] Undefined variable: path /data/www/rockweb/ThinkYun/Library/Muxiangdao/Dir.class.php 第 27 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000043s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000089s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.043921s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.043981s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000192s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000234s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000479s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000522s ]
+
+[ 2017-05-04T14:03:14+08:00 ] 61.164.49.90 /Toadmin/Setting/cache_clear
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000351s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000434s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000491s ]
+SQL: SHOW COLUMNS FROM `mxd_admin` [ RunTime:0.0009s ]
+SQL: SELECT `admin_auth` FROM `mxd_admin` WHERE ( admin_issuper <> 1 AND admin_id=1 ) LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000058s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000111s ]
+NOTIC: [8] Use of undefined constant CHARSET - assumed 'CHARSET' /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/8272133d13be89ac6ccad770bad8b09c.php 第 4 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006268s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006333s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000121s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000160s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000429s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000471s ]
+
+[ 2017-05-04T14:03:14+08:00 ] 61.164.49.90 /Toadmin/Database/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000342s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000394s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000445s ]
+SQL: SHOW COLUMNS FROM `mxd_admin` [ RunTime:0.0058s ]
+SQL: SELECT `admin_auth` FROM `mxd_admin` WHERE ( admin_issuper <> 1 AND admin_id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: time /data/www/rockweb/WebApp/Toadmin/Controller/DatabaseController.class.php 第 57 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000065s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000123s ]
+NOTIC: [8] Use of undefined constant CHARSET - assumed 'CHARSET' /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/77ab328200d82c2a293b197492a2bd1f.php 第 4 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007524s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007571s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000273s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000331s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000503s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000552s ]
+
+[ 2017-05-04T14:03:16+08:00 ] 61.164.49.90 /Toadmin/Tool/sitemap
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000391s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000463s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000523s ]
+SQL: SHOW COLUMNS FROM `mxd_admin` [ RunTime:0.0008s ]
+SQL: SELECT `admin_auth` FROM `mxd_admin` WHERE ( admin_issuper <> 1 AND admin_id=1 ) LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000079s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000138s ]
+NOTIC: [8] Use of undefined constant CHARSET - assumed 'CHARSET' /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/d615f86eb65e702a821c061bad79b808.php 第 4 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005541s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005597s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000176s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000232s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000446s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000488s ]
+
+[ 2017-05-04T14:03:17+08:00 ] 61.164.49.90 /Toadmin/Setting/aboutus
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000296s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000379s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000425s ]
+SQL: SHOW COLUMNS FROM `mxd_admin` [ RunTime:0.0012s ]
+SQL: SELECT `admin_auth` FROM `mxd_admin` WHERE ( admin_issuper <> 1 AND admin_id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `mxd_setting` [ RunTime:0.0006s ]
+SQL: SELECT `value` FROM `mxd_setting` WHERE ( name='site_version' ) LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000053s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000098s ]
+NOTIC: [8] Use of undefined constant CHARSET - assumed 'CHARSET' /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/a30d6db8aaf432ad5c7cb00c530f18ad.php 第 4 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006303s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006356s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000120s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000159s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000486s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000526s ]
+
+[ 2017-05-04T14:03:18+08:00 ] 61.164.49.90 /Toadmin/Setting/seo_information
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000322s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000432s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000482s ]
+SQL: SHOW COLUMNS FROM `mxd_admin` [ RunTime:0.0009s ]
+SQL: SELECT `admin_auth` FROM `mxd_admin` WHERE ( admin_issuper <> 1 AND admin_id=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mxd_seo` [ RunTime:0.0005s ]
+NOTIC: [8] Undefined index: type /data/www/rockweb/WebApp/Toadmin/Controller/SettingController.class.php 第 207 行.
+SQL: SELECT * FROM `mxd_seo` WHERE ( type='index' ) LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000051s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000096s ]
+NOTIC: [8] Use of undefined constant CHARSET - assumed 'CHARSET' /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/9f318e2973857e6b2d65284287e5fec9.php 第 4 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007565s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007632s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000124s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000162s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000430s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000470s ]
+
+[ 2017-05-04T14:03:22+08:00 ] 61.164.49.90 /Toadmin/Setting/seo_information/type/news.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000314s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000396s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000450s ]
+SQL: SHOW COLUMNS FROM `mxd_admin` [ RunTime:0.0008s ]
+SQL: SELECT `admin_auth` FROM `mxd_admin` WHERE ( admin_issuper <> 1 AND admin_id=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mxd_seo` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `mxd_seo` WHERE ( type='news' ) LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000058s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000109s ]
+NOTIC: [8] Use of undefined constant CHARSET - assumed 'CHARSET' /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/9f318e2973857e6b2d65284287e5fec9.php 第 4 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007860s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007910s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000150s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000190s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000448s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000493s ]
+
+[ 2017-05-04T14:03:23+08:00 ] 61.164.49.90 /Toadmin/Setting/seo_information/type/about.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000292s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000376s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000424s ]
+SQL: SHOW COLUMNS FROM `mxd_admin` [ RunTime:0.0008s ]
+SQL: SELECT `admin_auth` FROM `mxd_admin` WHERE ( admin_issuper <> 1 AND admin_id=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mxd_seo` [ RunTime:0.0004s ]
+SQL: SELECT * FROM `mxd_seo` WHERE ( type='about' ) LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000055s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000104s ]
+NOTIC: [8] Use of undefined constant CHARSET - assumed 'CHARSET' /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/9f318e2973857e6b2d65284287e5fec9.php 第 4 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007467s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007514s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000125s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000162s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000424s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000467s ]
+
+[ 2017-05-04T14:03:24+08:00 ] 61.164.49.90 /Toadmin/Setting/seo_information/type/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000321s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000384s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000444s ]
+SQL: SHOW COLUMNS FROM `mxd_admin` [ RunTime:0.0009s ]
+SQL: SELECT `admin_auth` FROM `mxd_admin` WHERE ( admin_issuper <> 1 AND admin_id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `mxd_seo` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `mxd_seo` WHERE ( type='index' ) LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000059s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000109s ]
+NOTIC: [8] Use of undefined constant CHARSET - assumed 'CHARSET' /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/9f318e2973857e6b2d65284287e5fec9.php 第 4 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007959s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000127s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000164s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000477s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000519s ]
+
+[ 2017-05-04T14:03:27+08:00 ] 61.164.49.90 /Toadmin/Article/article_class
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000328s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000398s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000475s ]
+SQL: SHOW COLUMNS FROM `mxd_admin` [ RunTime:0.0044s ]
+SQL: SELECT `admin_auth` FROM `mxd_admin` WHERE ( admin_issuper <> 1 AND admin_id=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mxd_article` [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `mxd_article_class` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `mxd_article_class` WHERE ( ac_parent_id=0 ) ORDER BY ac_sort asc  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `mxd_article_class` WHERE ( ac_parent_id=11 ) ORDER BY ac_sort asc  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mxd_article_class` WHERE ( ac_parent_id=15 ) ORDER BY ac_sort asc  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mxd_article_class` WHERE ( ac_parent_id=2 ) ORDER BY ac_sort asc  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mxd_article_class` WHERE ( ac_parent_id=16 ) ORDER BY ac_sort asc  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000090s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000140s ]
+NOTIC: [8] Use of undefined constant CHARSET - assumed 'CHARSET' /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/22d2744f69ceb69772a1f5dd096f909d.php 第 4 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010239s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010283s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000132s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000171s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000535s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000590s ]
+
+[ 2017-05-04T14:09:38+08:00 ] 61.164.49.90 /Toadmin/Setting/aboutus
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000021s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000378s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000440s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000487s ]
+SQL: SHOW COLUMNS FROM `mxd_admin` [ RunTime:0.0009s ]
+SQL: SELECT `admin_auth` FROM `mxd_admin` WHERE ( admin_issuper <> 1 AND admin_id=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mxd_setting` [ RunTime:0.0005s ]
+SQL: SELECT `value` FROM `mxd_setting` WHERE ( name='site_version' ) LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000056s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000109s ]
+NOTIC: [8] Use of undefined constant CHARSET - assumed 'CHARSET' /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/a30d6db8aaf432ad5c7cb00c530f18ad.php 第 4 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007510s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007564s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000128s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000165s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000511s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000561s ]
+
+[ 2017-05-04T14:09:39+08:00 ] 61.164.49.90 /Toadmin/Setting/seo_information
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000334s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000439s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000487s ]
+SQL: SHOW COLUMNS FROM `mxd_admin` [ RunTime:0.0009s ]
+SQL: SELECT `admin_auth` FROM `mxd_admin` WHERE ( admin_issuper <> 1 AND admin_id=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mxd_seo` [ RunTime:0.0005s ]
+NOTIC: [8] Undefined index: type /data/www/rockweb/WebApp/Toadmin/Controller/SettingController.class.php 第 207 行.
+SQL: SELECT * FROM `mxd_seo` WHERE ( type='index' ) LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000061s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000119s ]
+NOTIC: [8] Use of undefined constant CHARSET - assumed 'CHARSET' /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/9f318e2973857e6b2d65284287e5fec9.php 第 4 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008209s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008271s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000133s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000175s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000430s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000475s ]
+
+[ 2017-05-04T14:09:53+08:00 ] 61.164.49.90 /Toadmin/Setting/seo_information
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000300s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000380s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000429s ]
+SQL: SHOW COLUMNS FROM `mxd_admin` [ RunTime:0.0009s ]
+SQL: SELECT `admin_auth` FROM `mxd_admin` WHERE ( admin_issuper <> 1 AND admin_id=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mxd_seo` [ RunTime:0.0005s ]
+SQL: UPDATE `mxd_seo` SET `title`='摇滚时代手游官网-击破次元壁灵魂摇滚',`keywords`='摇滚,摇滚年代,摇滚时代手游,摇滚时代官网,ygtime,yaogunshidai,游戏资讯,访问蜂派',`description`='摇滚时代全新音乐卡牌对战游戏！击破次元壁灵魂摇滚！萝莉伪娘大长腿、傲娇御姐双马尾总有一款适合你！' WHERE ( type='index' ) [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000041s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000087s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.004829s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.004876s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000121s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000159s ]
+
+[ 2017-05-04T14:09:54+08:00 ] 61.164.49.90 /Toadmin/Setting/seo_information
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000018s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000362s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000400s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000448s ]
+SQL: SHOW COLUMNS FROM `mxd_admin` [ RunTime:0.0009s ]
+SQL: SELECT `admin_auth` FROM `mxd_admin` WHERE ( admin_issuper <> 1 AND admin_id=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mxd_seo` [ RunTime:0.0005s ]
+NOTIC: [8] Undefined index: type /data/www/rockweb/WebApp/Toadmin/Controller/SettingController.class.php 第 207 行.
+SQL: SELECT * FROM `mxd_seo` WHERE ( type='index' ) LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000081s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000156s ]
+NOTIC: [8] Use of undefined constant CHARSET - assumed 'CHARSET' /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/9f318e2973857e6b2d65284287e5fec9.php 第 4 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008501s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008555s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000141s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000180s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000467s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000512s ]
+

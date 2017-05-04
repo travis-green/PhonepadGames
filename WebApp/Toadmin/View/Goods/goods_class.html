@@ -1,0 +1,73 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>主题分类</h3>
+      <ul class="tab-base">
+        <li><a href="JavaScript:void(0);" class="current"><span>管理</span></a></li>
+        <li><a href="{:U('Goods/goods_class_add')}" ><span>新增</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form method='post'>
+    <input type="hidden" name="form_submit" value="ok" />
+    <input type="hidden" name="submit_type" id="submit_type" value="" />
+     <table class="table tb-type2">
+          <thead>
+            <tr class="thead">
+              <th></th>
+              <th>排序</th>
+              <th>分类名称</th>
+              <th></th>
+              <th class="align-center"></th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <notempty name="class_list">
+            <volist name="class_list" id="v">
+            <tr class="hover edit">
+              <td class="w48"><input type="checkbox" name="check_gc_id[]" value="{$v['gc_id']}" class="checkitem">
+                <if condition="$v.have_child eq 1">
+                <img fieldid="{$v['gc_id']}" status="open" nc_type="flex" src="__IMG__/tv-expandable.gif">
+                <else />
+                <img fieldid="{$v['gc_id']}" status="close" nc_type="flex" src="__IMG__/tv-item.gif">
+                </if>
+              </td>
+              <td class="w48 sort"><span title="可编辑" ajax_branch="gc_sort" datatype="number" fieldid="{$v['gc_id']}" ajax_control="Goods" fieldname="gc_sort" nc_type="inline_edit" class="editable tooltip">{$v['gc_sort']}</span></td>
+              <td class="w50pre name">
+              <span title="可编辑" required="1" fieldid="{$v['gc_id']}" ajax_branch="gc_name" ajax_control="Goods" fieldname="gc_name" nc_type="inline_edit" class="editable tooltip">{$v['gc_name']}</span>
+             <!-- <a class="btn-add-nofloat marginleft" href="{:U('Goods/goods_class_add',array('gc_parent_id'=>$v['gc_id']))}"><span>新增下级</span></a>-->
+              </td>
+              <td></td>
+              <td class="align-center power-onoff"></td>
+              <td class="w84"><a href="{:U('Goods/goods_class_edit',array('gc_id'=>$v['gc_id']))}">编辑</a>
+              <if condition="($v['gc_id'] neq 16) AND ($v['gc_id'] neq 19) AND ($v['gc_id'] neq 20) AND ($v['gc_id'] neq 21)">
+               | <a href='javascript:if(confirm("您确定要删除？"))window.location ="{:U('Goods/goods_class_del',array('gc_id'=>$v['gc_id']))}";'>删除</a>
+              </if> 
+               </td>
+            </tr>
+            </volist>
+            <else /> 
+            <tr class="no_data">
+              <td colspan="10">暂无记录</td>
+            </tr>
+            </notempty>
+          </tbody>
+           <notempty name="class_list">
+          <tfoot>
+            <tr class="tfoot">
+              <td><!--<input type="checkbox" class="checkall" id="checkall_1">--></td>
+              <td id="batchAction" colspan="15">
+              <!--<span class="all_checkbox"><label for="checkall_2">选择所有</label></span>&nbsp;&nbsp;<a href="JavaScript:void(0);" class="btn" onclick="if(confirm('您确定要删除？')){$('#submit_type').val('del');$('form:first').submit();}"><span>删除</span></a>-->
+             </td>
+            </tr>
+          </tfoot>
+          </notempty>
+        </table>   
+  </form>
+</div>
+<script type="text/javascript" src="__JS__/jquery.edit.js" charset="utf-8"></script> 
+<script type="text/javascript" src="__JS__/jquery.goods_class.js" charset="utf-8"></script>
+<include file="Public/footer" />

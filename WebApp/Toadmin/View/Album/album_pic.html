@@ -1,0 +1,50 @@
+<include file="Public/header" />
+<style>
+.normal{float:left; height:160px; }
+.normal dt { width:180px; }
+.editInput1{ width:156px; border:none;}
+.buttons{  /*height:26px; padding-top:5px;*/}
+.delete{ position:relative; top:-8px;}
+</style>
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>图片管理</h3>
+      <ul class="tab-base">
+        <li><a href="javascript:void(0);" class="current"><span>管理</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form id="list_form" method='post' action="{:U('Album/album_del')}">
+
+    <ul class="picture-list">
+    	
+       <volist name="list" id="vo">
+        
+        <li class="normal">
+            <dl>
+            <dt>
+            <div class="picture"><span class="thumb size160"><i></i><a href=""><img id="img_203" src="__UPLOADS__{$vo['apic_cover']}" width="160" height="90"></a></span></div>
+            <input id="C1" name="id[]" value="203" type="checkbox" class="checkbox" style="display:none"/>
+            <input id="203" class="editInput1" readonly onDblClick="$(this).unbind();_focus($(this));" value="{$vo['apic_name']}" style="cursor:pointer;">
+            <span class="edit-ico" onDblClick="_focus($(this).prev());" ></span> 
+            </dt>
+            <dd class="buttons"> 
+            <span class="change-btn">
+           	<iframe src="{:U('Album/replace_img_upload',array('apic_id'=>$vo['apic_id']))}" width="84" height="26" scrolling="no" frameborder="0"></iframe>
+            </span>
+            <a class="delete" href='javascript:if(confirm("确定要删除？"))window.location = "{:U('Album/album_pic_del',array('apic_id'=>$vo['apic_id']))}";'>删除图片</a>
+            </dd>
+            </dl>
+        </li>  
+         
+      </volist>  
+           
+    </ul>
+              
+  </form>
+</div>
+
+<script type="text/javascript" src="__JS__/jquery.edit.js" charset="utf-8"></script> 
+<include file="Public/footer" />

@@ -1,0 +1,49 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>团购审核</h3>
+      <ul class="tab-base">
+      	<li><a href="{:U('Groupbuy/groupbuy')}"><span>管理</span></a></li>
+      	<li><a href="javascript:void(0);" class="current"><span>审核</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form method="post" enctype="multipart/form-data" name='form1'>
+    <input type="hidden" name="group_id" value="{$vo['group_id']}"/>
+    <table class="table tb-type2">
+      <tbody>     
+        <tr>
+          <td colspan="2" class="required">该团购是否通过审核:</td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform onoff">
+          	<label for="is_audit2" class="cb-enable selected" ><span>通过</span></label>
+            <label for="is_audit3" class="cb-disable" ><span>不通过</span></label>
+            <input id="is_audit2" name="is_audit"  value="2" type="radio" checked>
+            <input id="is_audit3" name="is_audit"  value="3" type="radio">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><label for="settle">分佣比例:</label></td>
+        </tr>    
+        <tr class="noborder">
+          <td class="vatop rowform"><input name="settle" type="text" id="settle" value="{$vo['settle']}" style="width:50px"> %</td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><label for="audit_reason">原因:</label></td>
+        </tr>    
+        <tr class="noborder">
+          <td class="vatop rowform"><textarea name="audit_reason" rows="6" id="audit_reason" >{$vo['audit_reason']}</textarea></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr class="tfoot">
+          <td colspan="2" ><a href="JavaScript:void(0);" class="btn" onclick="document.form1.submit()"><span>提交</span></a></td>
+        </tr>
+      </tfoot>
+    </table>
+  </form>
+</div>
+<include file="Public/footer" />
