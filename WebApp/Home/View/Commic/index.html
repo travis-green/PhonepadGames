@@ -1,0 +1,16 @@
+﻿
+<include file="Public/header" />
+</head>
+<body>
+	<div class="pagination">{$page}</div> //基本样式
+	<div class="pagination pagination-large">{$page}</div>//大号数字样式
+	<div class="nav_main clearfix">
+		<a href="__APP__" class="menu <if condition="$curr">current</if>">首 页</a>
+		<volist name="cateres" id="vo">
+			<a href="__MODULE__/<if condition="$vo['type'] eq 1">List<elseif condition="$vo['type'] eq 2" />Page<else />Topic</if>/index/cateid/{$vo.id}" class="menu <if condition="$current eq $vo['id']">current</if>">{$vo.catename}</a>
+		</volist>
+		<span class="icon_hot"></span>
+	</div>
+</body>
+</html>
+

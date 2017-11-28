@@ -1,64 +1,171 @@
 ﻿<include file="Public/header" /> 
 </head>
 <body>
-	<include file="Public/nav" /> 
+	<include file="Public/nav" />
 
-	<div class="wrap">
-		<div class="con-box">
-			<img class="star glintFlash" src="__IMG__/star.png" alt="">
-			<a class="video playflash" href="javascript:showView()"><img src="__IMG__/music.png" alt="{$web_stting['site_name']}"></a>
-			<div class="app-down clearfix">
-				<span class="fr"><img class="wx" src="__UPLOADS__/{$web_stting['weixin_qrcode']}" alt="{$web_stting['site_name']}"></span>
-				<span class="ios fr"><a target="_blank"></a></span>
-				<span class="android fr"><a target="_blank"> </a></span>
+	<div class="slide-box">
+		<div id="myCarousel" class="carousel slide">
+			<!-- 轮播（Carousel）指标 -->
+
+
+			<!-- 轮播（Carousel）项目 -->
+			<div class="carousel-inner">
+				<div class="app-down clearfix ">
+					<div class="cell"><span class="ios"><a target="_blank" href="#"></a></span></div>
+					<div class="cell"><span class="android"><a target="_blank" href="#"> </a></span></div>
+					<div class="cell-fenge"><span class="cell-fenge"><a target="_blank" href="#"> </a></span></div>
+					<div class="cell"><span class="weibo"><a target="_blank" href="#"> </a></span></div>
+				</div>
+
+				<div class="fullSlide">
+					<div class="bd">
+						<ul>
+							<li><a target="_blank"><img src="__IMG__/Banner-1.jpg"/></a></li>
+							<li><a target="_blank"><img src="__IMG__/Banner-1.jpg"/></a></li>
+							<li><a target="_blank"><img src="__IMG__/Banner-1.jpg"/></a></li>
+							<li><a target="_blank"><img src="__IMG__/Banner-1.jpg"/></a></li>
+							<li><a target="_blank"><img src="__IMG__/Banner-1.jpg"/></a></li>
+						</ul>
+					</div>
+					<div class="hd" style="display: none"><ul></ul></div>
+					<a class="prev" href="javascript:void(0)"></a>
+					<a class="next" href="javascript:void(0)"></a>
+				</div>
 			</div>
+			<div class="slide-bar">
+				<volist>
+					<ul>
+						<li><span class="shouye"><a  href="carousel-inner" >首页</a></span></li>
+						<li><span><a   href="carousel-inner" >角色</a></span></li>
+						<li><span><a   href="carousel-inner" >攻略</a></span></li>
+						<li><span><a   href="carousel-inner" >新曲</a></span></li>
+						<li><span><a   href="carousel-inner" >图库</a></span></li>
+						<li><span><a   href="carousel-inner" >活动</a></span></li>
+						<li><span><a   href="carousel-inner" >返回</a></span></li>
+					</ul>
+				</volist>
+			</div>
+			<volist>
+				<div class="connectlist">
+					<ul>
+						<li class="connectweixin" id="weixin"><a href="#"></a></li>
+						<li class="connectqq" id="qq" onclick="javascript:window.location.href='http://wpa.qq.com/msgrd?v=3&uin=969336291&site=qq&menu=yes'"><li>
+						<li class="connectfaq" id="FAQ"><a href="#"></a></li>
+					</ul>
+					<div class="connectother">
+						<ul >
+						</ul>
+					</div>
+					<div class="weixin" onmouseover="this.className = 'weixin on';" onmouseout="this.className = 'weixin';">
+						<a href="javascript:;"></a>
+						<div class="weixin_nr">
+							<div class="arrow"></div>
+							<img src="__IMG__/qrcode.png" width="100" height="100" />
+							关注官方微信
+						</div>
+					</div>
+				</div>
+			</volist>
+			<div class="news-box clearfix newswidth">
+				<div class="fl newRoll newscontent-left">
+					<div class="bd">
+						<ul>
+							<volist name="banner" id="bn">
+								<li><a href="{$bn['ap_link']}" target="_blank"><img src="__UPLOADS__/{$bn['ap_pic']}" alt="{$bn['ap_intro']}"></a>
+									<div class="luce"></div></li>
+							</volist>
+						</ul>
 
-			<div class="news-box clearfix">
-				<div class="fl newRoll">
-					 <div class="bd">
-					 	<ul>
-						<volist name="banner" id="bn">
-					 		<li><a href="{$bn['ap_link']}" target="_blank"><img src="__UPLOADS__/{$bn['ap_pic']}" alt="{$bn['ap_intro']}"></a></li>
-                        </volist>
-					 	</ul>
-					 </div>
-					 <ol class="ol">
-					 	<li></li>
-					 </ol>
-				  <div class="luce"></div>
-				</div>	
-				<div class="fr newList">
+					</div>
+					<ol class="ol">
+						<li></li>
+					</ol>
+				</div>
+
+				<div class="fr newList newscontent-right">
 					<div class="list">
 						<div class="head clearfix">
 							<ol id="inde">
-                            <volist name="article_class" id="ac"> 
-								<li <if condition="$i eq 1">class="on"</if>><a href="{:U('Index/news',array('ac_id'=>$ac['ac_id']))}">{$ac['ac_name']}</a></li>
-							</volist>	
+								<volist name="article_class" id="ac">
+									<li <if condition="$i eq 1">class="on"</if>><a href="{:U('Index/news',array('ac_id'=>$ac['ac_id']))}">{$ac['ac_name']}</a></li>
+								</volist>
 							</ol>
 							<a href="{:U('Index/news')}" class="more"> </a>
 						</div>
 
 						<div class="main">
-						<volist name="article_class" id="at"> 	
-							<div class="con-item" <if condition="$i eq 1">style="display:block"</if>>
-                            <ul>
-                            <volist name="art_arr[$at['ac_id']]" id="art"> 
-                            <li><a href="{:U('Index/news_view',array('id'=>$art['article_id']))}">{$art['article_title']|cutstr=30}</a> <span>{$art['article_time']|date='m-d',###}</span></li>
-                            </volist>
-                            </ul>
-							</div>
-                        </volist>
+							<volist name="article_class" id="at">
+								<div class="con-item"<if condition="$i eq 1">style="display:block"</if>>
+								<ul>
+									<volist name="art_arr[$at['ac_id']]" id="art">
+										<li><a href="{:U('Index/news_view',array('id'=>$art['article_id']))}">{$art['article_title']|cutstr=30}</a> <span>{$art['article_time']|date='m-d',###}</span></li>
+									</volist>
+								</ul>
 						</div>
-
+						</volist>
 					</div>
-				</div>	
+				</div>
 			</div>
+		</div>
 
-			<div class="other-box clearfix">
+			<!-- 轮播（Carousel）导航 -->
+			<a class="carousel-control left" href="#myCarousel" data-slide="prev"></a>
+			<a class="carousel-control right" href="#myCarousel" data-slide="next"></a>
+		</div>
+
+		<!-- 控制按钮 -->
+
+	</div>
+	<table cellpadding=3 cellspacing=5>
+		<volist name="list" id="vo">
+			<tr>
+				<td >[ {$vo.create_time|date='Y-m-d H:i:s',###} ] {$vo.title} </td>
+			</tr>
+		</volist>
+		<tr>
+		</tr>
+	</table>
+	<div class="result page">{$page}</div>
+	<div class="wrap">
+		<div class="con-box">
+			<!--<img class="star glintFlash" src="__IMG__/star.png" alt="">-->
+			<!--<a class="video playflash" href="javascript:showView()"><img src="__IMG__/music.png" alt="{$web_stting['site_name']}"></a>-->
+			<!--<span class="fr"><img class="wx" src="__UPLOADS__/{$web_stting['weixin_qrcode']}" alt="{$web_stting['site_name']}"></span>-->
+
+			<div class="character-box clearfix">
 				<ul>
                 <volist name="index_ad" id="i_ad">
-                    <li><a href="{$i_ad['ap_link']}" target="_blank"><img src="__UPLOADS__/{$i_ad['ap_pic']}" onMouseOver="this.src='__UPLOADS__/{$i_ad["ap_pic_2"]}'" onMouseOut="this.src='__UPLOADS__/{$i_ad["ap_pic"]}'" alt="{$i_ad['ap_intro']}"></a></li>
-                </volist>                    
+
+                </volist>
+				</ul>
+			</div>
+		<div class="guidance-box clearfix">
+			<ul>
+				<volist name="index_ad" id="i_ad">
+						攻略栏
+				</volist>
+			</ul>
+		</div>
+
+		<div class="gallery-box clearfix">
+			<ul>
+				<volist name="index_ad" id="i_ad">
+					图库栏
+				</volist>
+			</ul>
+		</div>
+			<div class="event-box clearfix">
+				<ul>
+					<volist name="index_ad" id="i_ad">
+					活动栏
+					</volist>
+				</ul>
+			</div>
+			<div class="other-box clearfix">
+				<ul>
+					<volist name="index_ad" id="i_ad">
+						<li><a href="{$i_ad['ap_link']}" target="_blank"><img src="__UPLOADS__/{$i_ad['ap_pic']}" onMouseOver="this.src='__UPLOADS__/{$i_ad["ap_pic_2"]}'" onMouseOut="this.src='__UPLOADS__/{$i_ad["ap_pic"]}'" alt="{$i_ad['ap_intro']}"></a></li>
+					</volist>
 				</ul>
 			</div>
 			<!-- 友情链接 -->
@@ -98,3 +205,10 @@
 		});
 	});
 </script>
+<script type="text/javascript">
+    jQuery(".fullSlide").slide({ titCell:".hd ul", mainCell:".bd ul", vis:"auto", autoPlay:true, autoPage:true, interTime:3200,mouseOverStop:false,effect:"left",});
+</script>
+<script>window.jQuery || document.write('<script src="__JS__/jquery-1.11.3.min.js"><\/script>')</script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+

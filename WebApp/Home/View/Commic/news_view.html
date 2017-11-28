@@ -1,0 +1,57 @@
+﻿<include file="Public/header" /> 
+</head>
+<body style="background:url(__IMGS__/list_b.jpg) no-repeat center top;">
+	<include file="Public/nav" /> 
+	<div class="wrap">
+		<div class="con-box" style="background:url(__IMGS__/list.jpg) no-repeat left top; padding:0;">
+			 <img class="place glintFlash" src="__IMG__/xi.png">
+			<div class="app-down clearfix" style="padding:490px 0 0 0">
+				<span class="fr"><img class="wx" src="__UPLOADS__/{$web_stting['weixin_qrcode']}" alt="{$web_stting['site_name']}"></span>
+				<span class="ios fr"><a href="{$web_stting['ios_url']}" target="_blank"> </a></span>
+				<span class="android fr"><a href="{$web_stting['android_url']}" target="_blank"> </a></span>
+			</div>
+		</div>
+	</div>
+
+<div class="new-main">	
+	<div class="wrap">
+		<div class="container clearfix">
+ 			<div class="details-main">
+ 				<h1 class="head"><a href="{$Think.config.SiteUrl}">首页</a> > <a href="{:U('Index/news')}">游戏资讯</a> <if condition="count($ac_info) gt 0">> {$ac_info['ac_name']}</if></h1>
+ 				<div class="text-box">
+ 					<h2 class="title">{$art_info['article_title']}</h2>
+ 					<div class="time">发布于：<span>{$art_info['article_time']|date='Y-m-d H:i:s',###}</span></div>
+ 					<div class="edit-container">
+ 						{$art_info['article_content']}
+ 					</div>
+ 				</div>
+ 			</div>
+		</div>
+	</div>	
+</div>
+
+<include file="Public/footer" /> 
+
+</body>
+</html>
+
+ <!-- 滚动图js -->
+<script>jQuery(".newRoll").slide({mainCell:".bd ul",effect:"fold",autoPlay:true,autoPage:true,titCell:".ol"});</script>
+<script>jQuery(".link-box .main").slide({ mainCell:".con",autoPage:true,effect:"top",autoPlay:true,vis:1});
+</script>
+ 
+
+ <!-- tab 切换 -->
+<script>
+	$(function(){
+		$('#inde li').mouseover(function(){
+			var n = $(this).index();
+			$('#inde li').removeClass('on');
+			$(this).addClass('on');
+			$('.con-item').each(function(){
+				$(this).hide();
+			});
+			$('.con-item').eq(n).show();
+		});
+	});
+</script>

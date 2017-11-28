@@ -8,7 +8,7 @@ a:hover { text-decoration: none; }
 li { list-style: none;}
 img {border: 0;}
 textarea,input,select { font-family: "Microsoft Yahei";}
-body{background:url(../images/back.jpg) no-repeat center top;}
+body{background:url(../images/back.png) no-repeat center top;}
 .ellipsis {white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .clear { clear: both;}
 .wrap { width: 1200px; margin: 0 auto;}
@@ -16,10 +16,10 @@ body{background:url(../images/back.jpg) no-repeat center top;}
 .fr { float: right}
 .tc{ text-align: center;}
 .clearfix:after{ content: ""; clear: both; display: block;}
-.video {  position: absolute; top: 150px; right: -7px;  width: 219px; height: 316px;}
+.video {  position: absolute; top: 150px; right: -7px; }
 .video:hover { -webkit-animation-play-state: paused;animation-play-state: paused;}
 .back-w { background: #fff; }
-.con-box{ position: relative; z-index: 0; background: url(../images/center.jpg) no-repeat left top;  padding-bottom: 20px;}
+.con-box{ position: relative; z-index: 0; padding-bottom: 20px;}
 .logo { position: relative; z-index: 1;}
 .top-nav{ height: 67px; width: 100%;  z-index: 1; background:url(../img/navback.png) repeat-x; position: absolute; top: 0; left: 0; }
 .top-nav ul li{ padding-bottom: 5px; position: relative; float: left; width: 170px; text-align: center; margin: 0 33px;border-bottom: 0px solid #67f0f9; transition:all 0.2s ease-in 0s;} 
@@ -121,6 +121,8 @@ body{background:url(../images/back.jpg) no-repeat center top;}
 .bounceIn {
   -webkit-animation: bounceIn 1.5s 0.5s;
   animation: bounceIn 1.5s 0.5s;
+  right: 50em;
+  top:10em;
 }
 
 .playflash {

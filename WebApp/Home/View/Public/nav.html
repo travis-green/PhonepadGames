@@ -1,15 +1,19 @@
 <div class="top-nav">
     <div class="wrap tc">
-        <a href="{$Think.config.SiteUrl}"><img class="logo bounceIn" src="__UPLOADS__/{$web_stting['site_logo']}" alt="{$web_stting['site_name']}" title="{$web_stting['site_name']}"></a>
         <div class="nav">
             <ul>
                 <li <if condition="$action_name eq 'index'">class="on"</if>><a href="{$Think.config.SiteUrl}">官网首页</a></li>
                 <li <if condition="$action_name neq 'index'">class="on"</if>><a href="{:U('Index/news')}">游戏资讯</a></li>
-                <volist name="document" id="dc">
-                <li <if condition="$i eq 1">class="spec"</if>><a href="{$dc['doc_key']}" target="_blank">{$dc['doc_title']}</a></li>
-                </volist>
+                <li <if condition="$action_name neq 'index'">class="on"</if>><a href="{:U('Index/news')}">游戏攻略</a></li>
+                <li <if condition="$action_name neq 'index'">class="on"</if>><a href="{:U('Index/news')}">官方渠道</a></li>
+                <li <if condition="$action_name neq 'index'">class="on"</if>><a href="{:U('Index/news')}">访问蜂派</a></li>
+                <!--<volist name="document" id="dc">-->
+                <!--<li <if condition="$i eq 1">class="spec"</if>><a href="{$dc['doc_key']}" target="_blank">{$dc['doc_title']}</a></li>-->
+                <!--</volist>-->
             </ul>
 		<span class="sign"></span>
         </div> 
     </div>
+    <a href="{$Think.config.SiteUrl}"><img class="logo bounceIn" src="__UPLOADS__/{$web_stting['site_logo']}" alt="{$web_stting['site_name']}" title="{$web_stting['site_name']}"></a>
+
 </div>

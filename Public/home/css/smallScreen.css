@@ -8,7 +8,7 @@ a:hover { text-decoration: none; }
 li { list-style: none;}
 img {border: 0;}
 textarea,input,select { font-family: "Microsoft Yahei";}
-body{background:url(../images/back.jpg) no-repeat center top;}
+body{background:url(../images/back.png) no-repeat center top;}
 .ellipsis {white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .clear { clear: both;}
 .wrap { width: 1200px; margin: 0 auto;}
@@ -16,11 +16,11 @@ body{background:url(../images/back.jpg) no-repeat center top;}
 .fr { float: right}
 .tc{ text-align: center;}
 .clearfix:after{ content: ""; clear: both; display: block;}
-.video {  position: absolute; top: 150px; right: -7px;  width: 219px; height: 316px;}
+.video {  position: absolute; top: 150px; right: -7px;}
 .video:hover { -webkit-animation-play-state: paused;animation-play-state: paused;}
 .back-w { background: #fff; }
-.con-box{ position: relative; z-index: 0; background: url(../images/center.jpg) no-repeat left top;  padding-bottom: 20px;}
-.logo { position: relative; z-index: 1;}
+.con-box{ position: relative; z-index: 0; padding-bottom: 20px;}
+.logo { position: relative; z-index: 1; margin-top: 8%; margin-left: 4%;width: 14%;}
 .top-nav{ height: 67px; width: 100%;  z-index: 1; background:url(../img/navback.png) repeat-x; position: absolute; top: 0; left: 0; }
 .top-nav ul li{ padding-bottom: 5px; position: relative; float: left; width: 170px; text-align: center; margin: 0 33px;border-bottom: 0px solid #67f0f9; transition:all 0.2s ease-in 0s;} 
 /*.top-nav ul li:hover{ border-bottom: 5px solid #67f0f9;}*/
@@ -30,23 +30,42 @@ body{background:url(../images/back.jpg) no-repeat center top;}
 .top-nav ul li.on{  }
 .top-nav ul li a { color: #fff; display: block; font-size: 18px;line-height: 55px; transition:all 0.5s;}
 .top-nav ul li a:hover{ color: #67f0f9}
-.app-down { padding-top: 500px; padding-bottom: 23px;}
+.app-down {text-align: center; margin: 0 auto;}
 .app-down .wx {  margin-right: 15px; margin-left: 25px; border: 7px solid #FFDA00; border-radius: 5px;}
-.app-down .ios,.app-down .android { margin-top: 100px; width: 190px; height: 56px;}
-.app-down .ios a,.app-down .android a {display: inline-block; width: 190px; height: 56px;}
-.app-down .android { background: url(../img/android.png) no-repeat;}
-.app-down .android:hover { background: url(../img/android_hover.png) no-repeat;}
+.app-down .ios,.app-down .android { margin-top: 100px; width: 227px; height: 65px;}
+.app-down .ios a,.app-down .android a {display: inline-block; width: 227px; height: 65px;margin-left: 75px;}
+.app-down .android { background: url(../img/weibo.png) no-repeat;}
+.app-down .android:hover { background: url(../img/weibo_hover.png) no-repeat;}
 .app-down .ios { background: url(../img/ios.png) no-repeat;}
 .app-down .ios:hover { background: url(../img/ios_hover.png) no-repeat;}
-
+.weibo { margin-top: 100px; width: 270px; height: 65px;margin-left: 75px;}
+.weibo a {display: inline-block; width: 227px; height: 65px;}
+.app-down .weibo { background: url(../img/android.png) no-repeat;}
+.app-down .weibo:hover { background: url(../img/android_hover.png) no-repeat;}
+.fenge { margin-top: 100px; width: 37px; height: 57px;margin-left: 75px;}
+.fenge a {display: inline-block; width: 37px; height: 57px;}
+.newswidth {width: 80%; left: 0;  top: 65em;  right: 0; margin: auto;position: absolute;}
+.app-down .fenge { background: url(../img/fenge.png) no-repeat;}
 .news-box,.link-box { padding:13.5px; background: url(../img/strip.png) repeat-x; border-radius: 10px;}
 .news-box .newRoll { width: 580px; height: 330px; position: relative;}
 .news-box .newRoll .luce {   width: 100%; background:rgba(0,0,0,0.5); height: 46px; position: absolute; bottom: 0; left: 0;}
 .news-box .newRoll .ol { position: absolute; z-index: 1;  bottom: 11px; left: 40%}
 .news-box .newRoll .ol li { cursor: pointer; margin: 0 8px;  background: #fff; float: left; width: 15px; height: 15px; overflow: hidden; border-radius: 50%; text-indent: 9999px;border: 2px solid #FFFFFF;}
 .news-box .newRoll .ol li.on { background: #31b5d0; }
-.news-box .newList { width: 580px; height: 330px; background: #fff;}
+.news-box .newList { width: 580px; height: 330px; }
 .news-box .newList .list { margin: 15px;}
+*{zoom:1}
+.fullSlide{ position:relative; background:#000; margin:0 auto; }
+.fullSlide .bd{ position:relative; z-index:0; }
+.fullSlide .bd li img{width:100%; vertical-align:top;  }
+.fullSlide .hd{position:relative; z-index:1; margin-top:-30px; height:30px; line-height:30px;  text-align:center;
+    background:#000; filter:alpha(opacity=60);opacity:0.6
+}
+.fullSlide .hd ul{ text-align:center;  padding-top:5px;  }
+.fullSlide .hd ul li{ cursor:pointer; display:inline-block; *display:inline; zoom:1; width:8px; height:8px; margin:5px; background:url(images/tg_flash_p.png) -18px 0; overflow:hidden;
+    font-size:0;
+}
+.fullSlide .hd ul .on{ background-position:0 0; }
 .news-box .newList .head ol li { float: left; margin-right: 15px;}
 .news-box .newList .head { border-bottom: 3px solid #FFB927;  padding: 10px 0 15px;}
 .news-box .newList .head .more {  border-radius: 4px;  width: 36px; height: 36px; background:url(../img/more.png) no-repeat center center #dcdcdc; color: #7d7d7d; float: right;}
@@ -91,7 +110,7 @@ body{background:url(../images/back.jpg) no-repeat center top;}
 .details-main .text-box .title { font-weight: 500; text-align: center;  padding: 25px 0;}
 .details-main .text-box .time { text-align: center;}
 .edit-container { padding: 15px;}
-.fooder { height: 200px; background: #3c9fb1; color: #fff;}
+.fooder { height: 200px; background: #575262; color: #fff;}
 .fooder .main{ padding: 0 100px; padding-top: 50px;}
 .fooder .main .hint p { line-height: 23px;}
 .fooder .pic1 {vertical-align: top; margin-top: 28px;  margin-left: 33px;}

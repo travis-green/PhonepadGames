@@ -14,7 +14,7 @@ return array(
     'DB_HOST'   => '127.0.0.1',         // 数据库服务器地址
     'DB_NAME'   => 'ygsd_db',           // 数据库名
     'DB_USER'   => 'root',              // 登录用户名
-    'DB_PWD'    => '%Phone@pad123',        // 登录密码
+    'DB_PWD'    => '',        // 登录密码
     'DB_PORT'   => '3306',              // 端口
     'DB_PREFIX' => 'mxd_',              // 数据库表前缀	
 	/* 数据库备份*/

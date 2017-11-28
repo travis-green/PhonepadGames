@@ -9,7 +9,7 @@ a{ text-decoration: none; color: #fff;}
 .con { margin-top: 32%; text-align: center; position: relative;}
 .con img { width: 75%;  }
 .logo {text-align: center;  }
-.logo img { width: 47%;}
+.logo img { width: 47%; }
 .download { text-align: center;}
 .download a { border: 1px solid #E9E9E9; display: inline-block; width: 60%; background-color: #ffda00; border-radius: 10px; text-align: center; box-shadow: 1px 1px 1px #cfcfcf;}
 .download a img { vertical-align: middle; width: 49%; padding: 3% 0;}
