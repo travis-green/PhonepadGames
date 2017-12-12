@@ -1,0 +1,394 @@
+[ 2017-12-11T16:20:58+08:00 ] 61.164.49.90 /Toadmin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000300s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000380s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000428s ]
+
+[ 2017-12-11T16:20:58+08:00 ] 61.164.49.90 /Toadmin/Public/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000332s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000462s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000522s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000049s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000102s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005046s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005096s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000130s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000167s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000462s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000503s ]
+
+[ 2017-12-11T16:20:58+08:00 ] 61.164.49.90 /Toadmin/Public/verify/id/1.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000302s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000430s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000483s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000491s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000554s ]
+
+[ 2017-12-11T16:22:07+08:00 ] 61.164.49.90 /Toadmin/Public/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000301s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000403s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000453s ]
+SQL: SHOW COLUMNS FROM `mxd_admin` [ RunTime:0.0009s ]
+SQL: SELECT * FROM `mxd_admin` WHERE `admin_name` = 'admin' LIMIT 1   [ RunTime:0.0003s ]
+SQL: UPDATE `mxd_admin` SET `admin_lg_time`='1512980527',`admin_lg_oldtime`='1512440026',`admin_lg_ip`='61.164.49.90',`admin_lg_oldip`='61.164.49.90' WHERE ( admin_id=1 ) [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000060s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000114s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005137s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005183s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000130s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000169s ]
+
+[ 2017-12-11T16:22:08+08:00 ] 61.164.49.90 /Toadmin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000351s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000396s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000448s ]
+SQL: SHOW COLUMNS FROM `mxd_admin` [ RunTime:0.0009s ]
+SQL: SELECT `admin_auth` FROM `mxd_admin` WHERE ( admin_issuper <> 1 AND admin_id=1 ) LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000138s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000187s ]
+NOTIC: [8] Use of undefined constant CHARSET - assumed 'CHARSET' /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/c1a60a83e4deecad50805ac120bde268.php 第 4 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009403s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009449s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000153s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000193s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000407s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000453s ]
+
+[ 2017-12-11T16:22:09+08:00 ] 61.164.49.90 /Toadmin/Setting/aboutus
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000327s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000510s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000566s ]
+SQL: SHOW COLUMNS FROM `mxd_admin` [ RunTime:0.0008s ]
+SQL: SELECT `admin_auth` FROM `mxd_admin` WHERE ( admin_issuper <> 1 AND admin_id=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mxd_setting` [ RunTime:0.0004s ]
+SQL: SELECT `value` FROM `mxd_setting` WHERE ( name='site_version' ) LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000057s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000110s ]
+NOTIC: [8] Use of undefined constant CHARSET - assumed 'CHARSET' /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/a30d6db8aaf432ad5c7cb00c530f18ad.php 第 4 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006101s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006148s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000127s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000168s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000477s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000545s ]
+
+[ 2017-12-11T16:22:10+08:00 ] 61.164.49.90 /Toadmin/Setting/aboutus
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000021s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000365s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000522s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000575s ]
+SQL: SHOW COLUMNS FROM `mxd_admin` [ RunTime:0.0008s ]
+SQL: SELECT `admin_auth` FROM `mxd_admin` WHERE ( admin_issuper <> 1 AND admin_id=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mxd_setting` [ RunTime:0.0004s ]
+SQL: SELECT `value` FROM `mxd_setting` WHERE ( name='site_version' ) LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000058s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000107s ]
+NOTIC: [8] Use of undefined constant CHARSET - assumed 'CHARSET' /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/a30d6db8aaf432ad5c7cb00c530f18ad.php 第 4 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006120s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006167s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000127s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000168s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000466s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000511s ]
+
+[ 2017-12-11T16:22:12+08:00 ] 61.164.49.90 /Toadmin/Article/article_class
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000304s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000411s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000459s ]
+SQL: SHOW COLUMNS FROM `mxd_admin` [ RunTime:0.0009s ]
+SQL: SELECT `admin_auth` FROM `mxd_admin` WHERE ( admin_issuper <> 1 AND admin_id=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mxd_article` [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `mxd_article_class` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `mxd_article_class` WHERE ( ac_parent_id=0 ) ORDER BY ac_sort asc  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `mxd_article_class` WHERE ( ac_parent_id=11 ) ORDER BY ac_sort asc  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mxd_article_class` WHERE ( ac_parent_id=15 ) ORDER BY ac_sort asc  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mxd_article_class` WHERE ( ac_parent_id=2 ) ORDER BY ac_sort asc  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mxd_article_class` WHERE ( ac_parent_id=16 ) ORDER BY ac_sort asc  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000111s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000188s ]
+NOTIC: [8] Use of undefined constant CHARSET - assumed 'CHARSET' /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/22d2744f69ceb69772a1f5dd096f909d.php 第 4 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010940s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011035s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000149s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000233s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000413s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000455s ]
+
+[ 2017-12-11T16:22:22+08:00 ] 61.164.49.90 /Toadmin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000358s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000623s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000718s ]
+
+[ 2017-12-11T16:22:22+08:00 ] 61.164.49.90 /Toadmin/Public/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000322s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000403s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000459s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000047s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000099s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005332s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005382s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000151s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000190s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000451s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000494s ]
+
+[ 2017-12-11T16:22:22+08:00 ] 61.164.49.90 /Toadmin/Public/verify/id/1.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000359s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000558s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000615s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000458s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000516s ]
+
+[ 2017-12-11T16:22:29+08:00 ] 61.164.49.90 /Toadmin/Article/article
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000298s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000410s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000456s ]
+SQL: SHOW COLUMNS FROM `mxd_admin` [ RunTime:0.0009s ]
+SQL: SELECT `admin_auth` FROM `mxd_admin` WHERE ( admin_issuper <> 1 AND admin_id=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mxd_article` [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `mxd_article_class` [ RunTime:0.0005s ]
+NOTIC: [8] Undefined index: article_title /data/www/rockweb/WebApp/Toadmin/Controller/ArticleController.class.php 第 134 行.
+NOTIC: [8] Undefined index: ac_id /data/www/rockweb/WebApp/Toadmin/Controller/ArticleController.class.php 第 135 行.
+NOTIC: [8] Undefined index: article_show /data/www/rockweb/WebApp/Toadmin/Controller/ArticleController.class.php 第 136 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `mxd_article` LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mxd_article` ORDER BY article_sort desc LIMIT 0,10   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `mxd_article_class` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `mxd_article_class` WHERE ( 1=1 AND ac_id='11' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mxd_article_class` WHERE ( 1=1 AND ac_id='16' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mxd_article_class` WHERE ( 1=1 AND ac_id='2' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mxd_article_class` WHERE ( 1=1 AND ac_id='15' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mxd_article_class` ORDER BY ac_parent_id asc,ac_sort asc,ac_id asc  [ RunTime:0.0002s ]
+NOTIC: [8] Undefined variable: link_page /data/www/rockweb/ThinkYun/Library/Think/Page.class.php 第 142 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000082s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000150s ]
+NOTIC: [8] Use of undefined constant CHARSET - assumed 'CHARSET' /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/aae1e442ee9097a97933b367a0fe0587.php 第 4 行.
+NOTIC: [8] Undefined index: article_title /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/aae1e442ee9097a97933b367a0fe0587.php 第 33 行.
+NOTIC: [8] Undefined index: ac_id /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/aae1e442ee9097a97933b367a0fe0587.php 第 37 行.
+NOTIC: [8] Undefined index: ac_id /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/aae1e442ee9097a97933b367a0fe0587.php 第 37 行.
+NOTIC: [8] Undefined index: ac_id /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/aae1e442ee9097a97933b367a0fe0587.php 第 37 行.
+NOTIC: [8] Undefined index: ac_id /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/aae1e442ee9097a97933b367a0fe0587.php 第 37 行.
+NOTIC: [8] Undefined index: article_show /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/aae1e442ee9097a97933b367a0fe0587.php 第 42 行.
+NOTIC: [8] Undefined index: article_show /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/aae1e442ee9097a97933b367a0fe0587.php 第 43 行.
+NOTIC: [8] Undefined index: article_title /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/aae1e442ee9097a97933b367a0fe0587.php 第 48 行.
+NOTIC: [8] Undefined index: ac_id /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/aae1e442ee9097a97933b367a0fe0587.php 第 48 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010834s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010880s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000172s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000211s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000445s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000486s ]
+
+[ 2017-12-11T16:22:34+08:00 ] 61.164.49.90 /Toadmin/Article/article_add.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000316s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000423s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000479s ]
+SQL: SHOW COLUMNS FROM `mxd_admin` [ RunTime:0.0057s ]
+SQL: SELECT `admin_auth` FROM `mxd_admin` WHERE ( admin_issuper <> 1 AND admin_id=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mxd_article` [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `mxd_article_class` [ RunTime:0.0007s ]
+SQL: SELECT * FROM `mxd_article_class` ORDER BY ac_parent_id asc,ac_sort asc,ac_id asc  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000103s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000154s ]
+NOTIC: [8] Use of undefined constant CHARSET - assumed 'CHARSET' /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/0c09ed8fb293b256dea9a47ea81aea2c.php 第 4 行.
+NOTIC: [8] Undefined variable: rs /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/0c09ed8fb293b256dea9a47ea81aea2c.php 第 69 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008654s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008704s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000130s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000169s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000444s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000493s ]
+
+[ 2017-12-11T16:25:25+08:00 ] 61.164.49.90 /Toadmin/Article/article_add.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000322s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000439s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000500s ]
+SQL: SHOW COLUMNS FROM `mxd_admin` [ RunTime:0.0008s ]
+SQL: SELECT `admin_auth` FROM `mxd_admin` WHERE ( admin_issuper <> 1 AND admin_id=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mxd_article` [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `mxd_article_class` [ RunTime:0.0005s ]
+NOTIC: [8] Undefined index: article_url /data/www/rockweb/WebApp/Toadmin/Controller/ArticleController.class.php 第 174 行.
+SQL: INSERT INTO `mxd_article` (`article_title`,`ac_id`,`article_key`,`article_desc`,`article_url`,`article_show`,`article_sort`,`article_content`,`article_time`) VALUES ('《绝对音域》新服[S4-摇滚时代]12月15日10点开启','2','','','','1','10','<p style=\"margin-left:0.0000pt;text-indent:21.0000pt;text-align:left;\">
+	<span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>亲爱的玩家</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>：</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"></span>
+</p>
+<p style=\"margin-left:0.0000pt;text-indent:21.0000pt;text-align:left;\">
+	<span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>《绝对音域》是一款青春偶像题材的休闲养成音乐竞技手游，游戏创新的将养成与实时音乐竞技相结合，加上丰富曲折的剧情与多元的培养玩法，定将带给你未曾有过的全新体验。另外，游戏收纳了大量的原创歌曲以及有知名度的热门单曲并且拥有所有歌曲的正版授权。</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"></span>
+</p>
+<p style=\"margin-left:0.0000pt;text-indent:21.0000pt;text-align:left;\">
+	<span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>【开启时间】</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"></span>
+</p>
+<p style=\"margin-left:0.0000pt;text-indent:21.0000pt;text-align:left;\">
+	<span style=\"font-family:微软雅黑;font-size:10.5000pt;\">12月15日10:00开启新服【S4-绝对音域】</span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"></span>
+</p>
+<p style=\"margin-left:0.0000pt;text-indent:21.0000pt;text-align:left;\">
+	<span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>【新服享受活动】</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"></span>
+</p>
+<p style=\"margin-left:0.0000pt;text-indent:21.0000pt;text-align:left;\">
+	<span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>一、</span>12月社员活动—“治愈少女养成记”进行中</span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"></span>
+</p>
+<p style=\"margin-left:0.0000pt;text-indent:21.0000pt;text-align:left;\">
+	<span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>完成相应的任务即可免费获得版本最强治愈系和声</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\">“传说荆云江”。</span>
+</p>
+<p style=\"margin-left:0.0000pt;text-indent:21.0000pt;text-align:left;\">
+	<br />
+<span style=\"font-family:微软雅黑;font-size:10.5000pt;\"></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"></span>
+</p>
+<p style=\"margin-left:0.0000pt;text-indent:21.0000pt;text-align:left;\">
+	<img src=\"/Uploads/edit/20171211/5a2e40ee326f2.png\" alt=\"\" /><br />
+<span style=\"font-family:微软雅黑;font-size:10.5000pt;\">&nbsp;</span>
+</p>
+<p style=\"margin-left:0.0000pt;text-indent:21.0000pt;text-align:left;\">
+	<span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>二</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>、</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>新服超值歌曲包</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"></span>
+</p>
+<p style=\"margin-left:0.0000pt;text-indent:21.0000pt;text-align:left;\">
+	<span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>新服期间所有歌曲打包低折出售</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>，</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>玩家通过游戏产出的钻石即可购买</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>，</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>快速收集新歌</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>。</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"></span>
+</p>
+<p style=\"margin-left:0.0000pt;text-indent:21.0000pt;text-align:left;\">
+	<span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>三</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>、新服三榜排行活动</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"></span>
+</p>
+<p style=\"margin-left:0.0000pt;text-indent:21.0000pt;text-align:left;\">
+	<span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>这里不</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>只</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>比拼乐队战力</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>，</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>还比拼看剧能力</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>，</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>音游操作</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>。</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>真正让所有玩家都有展示自己的机会</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>。</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"></span>
+</p>
+<p style=\"margin-left:0.0000pt;text-indent:21.0000pt;text-align:left;\">
+	<span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>四</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>、</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>扭蛋积分活动</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"></span>
+</p>
+<p style=\"margin-left:0.0000pt;text-indent:21.0000pt;text-align:left;\">
+	<span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>新服期间</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>，帅气</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>学长欧阳翼限时登场</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>，</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>谁将获得他的青睐</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>？</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"></span>
+</p>
+<p style=\"margin-left:0.0000pt;text-indent:21.0000pt;text-align:left;\">
+	<span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>近期版本更新将推出朋友圈</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>，</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>圣诞节任务等有趣玩法</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"><span>。《绝对音域》绝对创新，绝对好玩，期待您的加入！</span></span><span style=\"font-family:微软雅黑;font-size:10.5000pt;\"></span>
+</p>
+<br />','1512980725') [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000044s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000098s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.004930s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.004983s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000124s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000161s ]
+
+[ 2017-12-11T16:25:26+08:00 ] 61.164.49.90 /Toadmin/Article/article.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000302s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000383s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000429s ]
+SQL: SHOW COLUMNS FROM `mxd_admin` [ RunTime:0.0009s ]
+SQL: SELECT `admin_auth` FROM `mxd_admin` WHERE ( admin_issuper <> 1 AND admin_id=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mxd_article` [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `mxd_article_class` [ RunTime:0.0005s ]
+NOTIC: [8] Undefined index: article_title /data/www/rockweb/WebApp/Toadmin/Controller/ArticleController.class.php 第 134 行.
+NOTIC: [8] Undefined index: ac_id /data/www/rockweb/WebApp/Toadmin/Controller/ArticleController.class.php 第 135 行.
+NOTIC: [8] Undefined index: article_show /data/www/rockweb/WebApp/Toadmin/Controller/ArticleController.class.php 第 136 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `mxd_article` LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mxd_article` ORDER BY article_sort desc LIMIT 0,10   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `mxd_article_class` [ RunTime:0.0006s ]
+SQL: SELECT * FROM `mxd_article_class` WHERE ( 1=1 AND ac_id='11' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mxd_article_class` WHERE ( 1=1 AND ac_id='16' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mxd_article_class` WHERE ( 1=1 AND ac_id='2' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mxd_article_class` WHERE ( 1=1 AND ac_id='15' ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `mxd_article_class` WHERE ( 1=1 AND ac_id='2' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mxd_article_class` ORDER BY ac_parent_id asc,ac_sort asc,ac_id asc  [ RunTime:0.0002s ]
+NOTIC: [8] Undefined variable: link_page /data/www/rockweb/ThinkYun/Library/Think/Page.class.php 第 142 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000107s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000158s ]
+NOTIC: [8] Use of undefined constant CHARSET - assumed 'CHARSET' /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/aae1e442ee9097a97933b367a0fe0587.php 第 4 行.
+NOTIC: [8] Undefined index: article_title /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/aae1e442ee9097a97933b367a0fe0587.php 第 33 行.
+NOTIC: [8] Undefined index: ac_id /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/aae1e442ee9097a97933b367a0fe0587.php 第 37 行.
+NOTIC: [8] Undefined index: ac_id /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/aae1e442ee9097a97933b367a0fe0587.php 第 37 行.
+NOTIC: [8] Undefined index: ac_id /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/aae1e442ee9097a97933b367a0fe0587.php 第 37 行.
+NOTIC: [8] Undefined index: ac_id /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/aae1e442ee9097a97933b367a0fe0587.php 第 37 行.
+NOTIC: [8] Undefined index: article_show /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/aae1e442ee9097a97933b367a0fe0587.php 第 42 行.
+NOTIC: [8] Undefined index: article_show /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/aae1e442ee9097a97933b367a0fe0587.php 第 43 行.
+NOTIC: [8] Undefined index: article_title /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/aae1e442ee9097a97933b367a0fe0587.php 第 48 行.
+NOTIC: [8] Undefined index: ac_id /data/www/rockweb/WebApp/Runtime/Cache/Toadmin/aae1e442ee9097a97933b367a0fe0587.php 第 48 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011230s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011278s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000132s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000170s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000442s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000495s ]
+

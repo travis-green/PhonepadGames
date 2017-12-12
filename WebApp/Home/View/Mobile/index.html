@@ -19,15 +19,15 @@
 		<div class="logo"><img src="__UPLOADS__/{$web_stting['m_site_logo']}"></div>
 			<div class="con">
 				 <img class="bounceIn" src="__MIMG__/contai.png" alt="">
-				 <div class="music playflash"><a href="javascript:showView()"><img src="__MIMG__/music.png" alt=""></a></div>
+				 <div class="music playflash"><img src="__MIMG__/music.png" alt=""></a></div>
 			</div>
 
 			<div class="download">
-				<a class="" href="{$web_stting['app_url']}" target="_blank"><img src="__MIMG__/dow.png" alt=""></a>
+				<a class="downloadbtn" href="{$web_stting['app_url']}" target="_blank"><img src="__MIMG__/dow.png" alt=""></a>
 			</div>
 
 			<div class="distan">
-				<div class="trans">
+				<div class="trans" style="display:none;">
 					<div class="inter">
 						<div class="title"><img src="__MIMG__/title.png" alt=""></div>
 						<div class="pic-link">
@@ -41,9 +41,6 @@
 				</div>
 			</div>
 
-			<div class="download">
-				<a class="" href="{$web_stting['lingqu_url']}" target="_blank"><img src="__MIMG__/dow1.png" alt=""></a>
-			</div>
 
 			<div class="distan">
 				<div class="trans sroll">
@@ -77,8 +74,8 @@
 					<img class="bj" src="__MIMG__/servers.png" alt="">
 					<div class="adc">
 						<p>客服热线：{$web_stting['m_tel']}</p>
-						<p>客服QQ1：{$web_stting['m_qq1']}</p>
-						<p>客服QQ2：{$web_stting['m_qq2']}</p>
+						<p onclick="javascript:window.location.href='http://wpa.qq.com/msgrd?v=3&uin=969336291&site=qq&menu=yes'">客服QQ1：{$web_stting['m_qq1']}</p>
+						<p onclick="javascript:window.location.href='http://wpa.qq.com/msgrd?v=3&uin=969336291&site=qq&menu=yes'">客服QQ2：{$web_stting['m_qq2']}</p>
 						<p>官方QQ群：{$web_stting['m_qq_qun']}</p>
 					</div>
 				</div>
@@ -97,7 +94,7 @@
 				</div>
 			</div>
 
-			<div class="download">
+			<div class="download hidden">
 				<a class="" href="#top"><img src="__MIMG__/dow2.png" alt=""></a>
 			</div>
 			
@@ -122,4 +119,20 @@ function Close(){
     document.getElementById('Popup').style.display='none';
 }
 </script>
+<script type="text/javascript">
+ $(".downloadbtn").click(function() {
+        var u = navigator.userAgent;
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+		var isbrowser= u.indexOf("Opera") > -1||u.indexOf("Chrome") > -1||u.indexOf("Firefox")||u.indexOf("compatible") > -1&&userAgent.indexOf("MSIE") > -1 && !isOpera ||u.indexOf("Safari") > -1;
+          if (isAndroid) { 
+				$(".downloadbtn").attr('href', 'https://www.taptap.com/app/58741'); 
+			} else if (isiOS) {    
+				$(".downloadbtn").attr('href', 'http://a.app.qq.com/o/simple.jsp?pkgname=com.tencent.tmgp.ppgames.timetorock ');
+									}
+		     else if  (isbrowser){
+				$(".downloadbtn").attr('href', 'http://ygtime.cn');
+			 }
+			})
+	  </script>
 </html>

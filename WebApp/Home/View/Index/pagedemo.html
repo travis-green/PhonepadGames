@@ -1,0 +1,475 @@
+﻿<include file="Public/Demo/header" /> 
+</head>
+<body>
+	<include file="Public/Demo/nav" /> 
+	<div class="wrap">
+	<header>
+	<script src="js/modernizr.js"></script> <!-- Modernizr -->
+	<section class="cd-hero">
+	<ul class="cd-hero-slider autoplay">
+	<li class="selected" id="lefthead"> 
+	<div class="cd-full-width" >
+	<h2>BREAKING INSIDE YOU</h2>
+	<p>ROCK IS TRUE</p>
+	</div> 
+	</li>
+	<li class="selected" id="lefthead">
+	<div class="cd-full-width">
+	<h2>BREAKING INSIDE YOU</h2>
+	<p>ROCK IS TRUE</p>
+	</div> <!-- .cd-full-width -->
+	</li>
+	<li class="selected" id="lefthead">
+	<div class="cd-full-width">
+	<h2>BREAKING INSIDE YOU</h2>
+	<p>ROCK IS TRUE</p>
+	</div> <!-- .cd-full-width -->
+	</li>
+	<li class="selected" id="lefthead">
+	<div class="cd-full-width">
+	<h2>BREAKING INSIDE YOU</h2>
+	<p>ROCK IS TRUE</p>
+	</div> <!-- .cd-full-width -->
+	</li>
+	</ul> <!-- .cd-hero-slider -->
+	<div class="cd-slider-nav" style="display: none;">
+	<nav>
+	<span class="cd-marker item-1"></span>
+	<ul>
+	<li class="selected"><a href="#0"></a></li>
+	<li><a href="#0"></a></li>
+	<li><a href="#0"></a></li>
+	<li><a href="#0"></a></li>
+	<li><a href="#0"></a></li>
+	</ul>
+	</nav>
+	</div> <!-- .cd-slider-nav -->
+	 <div class="navlogo"></div>
+	<div class="connectlist">
+    <ul>
+	<li class="connectweixin" id="weixin"><a href="#"></a></li>
+        <li class="connectqq" id="qq" onclick="javascript:window.location.href='http://wpa.qq.com/msgrd?v=3&uin=969336291&site=qq&menu=yes'"><li>
+        <li class="connectfaq" id="FAQ"><a href="#"></a></li>
+    </ul>
+    <div class="connectother">
+    <ul >
+    </ul>
+  </div>
+	<div class="weixin" onmouseover="this.className = 'weixin on';" onmouseout="this.className = 'weixin';">
+    <a href="javascript:;"></a>
+    <div class="weixin_nr">
+      <div class="arrow"></div>
+      <img src="__IMG__/qrcode.png" width="100" height="100" />
+      关注官方微信
+    </div>
+  </div>
+</div>
+	</section> <!-- .cd-hero -->
+	<script src="js/jquery-2.1.1.js"></script>
+	<script src="js/main.js"></script> <!-- Resource jQuery -->
+</header>
+<!--		<div class="con-box">
+			<img class="star glintFlash" src="__IMG__/star.png" alt="">
+			<a class="video playflash" href="javascript:showView()"><img src="__IMG__/music.png" alt="{$web_stting['site_name']}"></a> 
+			<div class="app-down clearfix downloadbox">
+				<span class="fr"><img class="wx" src="__UPLOADS__/{$web_stting['weixin_qrcode']}" alt="{$web_stting['site_name']}"></span>
+			<span class="ios fr"><a target="_blank" href="http://ygtime.cn/mobile/testflight"></a></span>
+				<span class="android fr"><a target="_blank" href="http://update.p8games.com/rocktimes/RockTimes.apk"> </a></span>
+			</div>
+	
+			<div id="warplogo">
+			</div>
+			<div id="musicbtn"></div>
+-->
+			<div class="download">
+			<div class="container">
+			<div class="grid">
+				<div class="effect-oscar">
+				<a href="http://ygtime.cn/mobile/testflight"><img src="__IMG__/iphonedownload.png" alt="iphonedownload"/></a>
+  				<a id="androiddownloadbtn" href="http://update.p8games.com/rocktimes/RockTimes.apk"><img src="__IMG__/androiddownload.png" alt="androiddownload"/></a>
+				 <a class="pause" ><img src="__IMG__/pause.png" alt="pause"/></a>
+				<a id="weibotarget" href="http://weibo.com/u/6275602923?refer_flag=1001030201_&is_hot=1"><img src="__IMG__/weibotarget.png" alt="weibotarget"/></a>
+				<!--	<figcaption>
+						<h2><span>IOS版下载</span></h2>
+						<p>安装包大小：</p>
+						<a href="" target="_blank">View more</a>
+					</figcaption>
+				-->
+				</div>
+			</div>
+		</div>                       
+
+</div>
+			<div class="news-box clearfix">
+				<div class="fl newRoll">
+					 <div class="bd">
+					 	<ul>
+						<volist name="banner" id="bn">
+					 		<li><a href="{$bn['ap_link']}" target="_blank"><img src="__UPLOADS__/{$bn['ap_pic']}" alt="{$bn['ap_intro']}"></a></li>
+                       				 </volist>
+		 	</ul>
+					 </div>
+					
+					 <ol class="ol">
+					 	<li></li>
+					 </ol>
+				  <div class="luce"></div>
+				</div>	
+				<div class="fr newList">
+					<div class="list">
+						<div class="head clearfix">
+							<ol id="inde">
+                            <volist name="article_class" id="ac"> 
+								<li <if condition="$i eq 1">class="on"</if>><a href="{:U('Index/news',array('ac_id'=>$ac['ac_id']))}">{$ac['ac_name']}</a></li>
+							</volist>	
+							</ol>
+							<a href="{:U('Index/news')}" class="more" style="display:none"> </a>
+						</div>
+
+						<div class="main">
+						<volist name="article_class" id="at"> 	
+							<div class="con-item"<if condition="$i eq 1">style="display:block"</if>
+                            <ul>
+                            <volist name="art_arr[$at['ac_id']]" id="art"> 
+                            <li><a href="{:U('Index/news_view',array('id'=>$art['article_id']))}">[{$ac['ac_name']}]{$art['article_title']|cutstr=30}</a> <span>{$art['article_time']|date='m-d',###}</span></li>
+                            </volist>
+                            </ul>
+							</div>
+                        </volist>
+						</div>
+
+					</div>
+				</div>	
+			</div>
+			<div class="other-box clearfix"style="display:none">
+				<ul>
+                <volist name="index_ad" id="i_ad">
+                    <li><a href="{$i_ad['ap_link']}" target="_blank"><img src="__UPLOADS__/{$i_ad['ap_pic']}" onMouseOver="this.src='__UPLOADS__/{$i_ad["ap_pic_2"]}'" onMouseOut="this.src='__UPLOADS__/{$i_ad["ap_pic"]}'" alt="{$i_ad['ap_intro']}"></a></li>
+                </volist>                    
+				</ul>
+			</div>
+			<!-- 友情链接 -->
+			<div class="activesession">
+						<div class="character">
+        <div class="twelve columns">
+            <div class='tabs tabs_controls'>
+              <a class="next"><img src="__IMG__/guitar.png"></a>
+              <span class='clear'></span>
+              <ul class='horizontal'>
+                  <li><a href="#tab-1">全部 </a></li>
+                  <li style="display: none"><a href="#tab-2"></a></li>
+                  <li style="display: none"><a href="#tab-3"></a></li>
+                  <li><a href="#tab-4">/ &nbsp&nbsp主唱 </a></li>
+                  <li><a href="#tab-5">/ &nbsp&nbsp吉他 </a></li>
+                  <li><a href="#tab-6">/ &nbsp&nbsp贝斯 </a></li>
+                  <li><a href="#tab-7">/ &nbsp&nbsp鼓手 </a></li>
+                  <li><a href="#tab-8">/ &nbsp&nbsp和声</a></li>
+                  <li><a href="#tab-9">/ &nbsp&nbsp键盘</a></li>
+              </ul>
+                <div id='tab-1'>
+                    <a id="xiaxiaotu"  href="#"><img src="__IMG__/xiaxiaotu.png"></a>
+                    <a id="fenglang" href="#"><img src="__IMG__/fenglang.png"></a>
+                    <a id="jingyunjiang" href="#"><img src="__IMG__/jingyunjiang.png"></a>
+                    <a id="ouyangling" href="#"><img src="__IMG__/ouyangling.png"></a>
+                    <a id="yinlechen" href="#"><img src="__IMG__/yinlechen.png"></a>
+                    <a id="zixuan" href="#"><img src="__IMG__/zixuan.png"></a>
+                    <a id="youyou" href="#"><img src="__IMG__/youyou.png"></a>
+                    <a id="ajie" href="#"><img src="__IMG__/ajie.png"></a>
+                </div>
+              <div id='tab-2'>
+                  <a id="luola"  href="#"><img src="__IMG__/luola.png"></a>
+                  <a id="ouyangyi" href="#"><img src="__IMG__/fenglang.png"></a>
+                  <a id="qinchuan" href="#"><img src="__IMG__/qinchuan.png"></a>
+                  <a id="jinghe" href="#"><img src="__IMG__/jinghe.png"></a>
+                  <a id="naxisai" href="#"><img src="__IMG__/naxisai.png"></a>
+                  <a id="sutang" href="#"><img src="__IMG__/sutang.png"></a>
+                  <a id="anpo" href="#"><img src="__IMG__/anpo.png"></a>
+                  <a id="gumange" href="#"><img src="__IMG__/gumange.png"></a>
+              </div>
+              <div id='tab-3'>
+                  <a id="liumengshu"  href="#"><img src="__IMG__/liumengshu.png"></a>
+                  <a id="lanshan" href="#"><img src="__IMG__/lanshan.png"></a>
+              </div>
+                <div id='tab-4'>
+                    <a class="xiaxiaotu" href="#"><img src="__IMG__/xiaxiaotu.png"></a>
+                    <a class="luola" href="#"><img src="__IMG__/luola.png"></a>
+                    <a class="fenglang" href="#"><img src="__IMG__/fenglang.png"></a>
+                </div>
+                <div id='tab-5'>
+                    <a class="ouyangling" href="#"><img src="__IMG__/ouyangling.png"></a>
+                    <a class="ouyangyi" href="#"><img src="__IMG__/ouyangyi.png"></a>
+                    <a class="qinchuan" href="#"><img src="__IMG__/qinchuan.png"></a>
+                </div>
+                <div id='tab-6'>
+                    <a class="youyou" href="#"><img src="__IMG__/youyou.png"></a>
+                    <a class="jinghe" href="#"><img src="__IMG__/jinghe.png"></a>
+                    <a class="naxisai" href="#"><img src="__IMG__/naxisai.png"></a>
+                </div>
+                <div id='tab-7'>
+                    <a class="sutang" href="#"><img src="__IMG__/sutang.png"></a>
+                    <a class="anpo" href="#"><img src="__IMG__/anpo.png"></a>
+                    <a class="ajie" href="#"><img src="__IMG__/ajie.png"></a>
+                </div>
+                <div id='tab-8'>
+                    <a class="jingyunjiang" href="#"><img src="__IMG__/jingyunjiang.png"></a>
+                    <a class="gumange" href="#"><img src="__IMG__/gumange.png"></a>
+                    <a class="yinlechen" href="#"><img src="__IMG__/yinlechen.png"></a>
+                </div>
+                <div id='tab-9'>
+                    <a class="liumengshu" href="#"><img src="__IMG__/liumengshu.png"></a>
+                    <a class="zixuan" href="#"><img src="__IMG__/zixuan.png"></a>
+                    <a class="lanshan" href="#"><img src="__IMG__/lanshan.png"></a>
+                </div>
+      </div>
+	</div>
+  </section>
+	<script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
+	<script type="text/javascript" src="js/jquery.tabslet.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+			$('.tabs_default').tabslet();
+
+			$('.tabs_active').tabslet({
+				active: 2
+			});
+
+			$('.tabs_hover').tabslet({
+				mouseevent: 'hover',
+				attribute: 'href',
+				animation: false
+			});
+
+			$('.tabs_animate').tabslet({
+				mouseevent: 'click',
+				attribute: 'href',
+				animation: true
+			});
+
+			$('.tabs_rotate').tabslet({
+				autorotate: true,
+				delay: 3000
+			});
+
+			$('.tabs_controls').tabslet();
+
+			$('.before_event').tabslet();
+			$('.before_event').on("_before", function() {
+				alert('This alert comes before the tab change!')
+			});
+
+			$('.after_event').tabslet({
+				animation: true
+			});
+			$('.after_event').on("_after", function() {
+				alert('This alert comes after the tab change!')
+			});
+		});
+	</script>
+				</div>				
+			</div>
+		</div>
+	</div>
+		<div class="showbox">
+		    <div class="garllery">
+			    <div class="slideGroup" style="margin:0 auto">
+    <div class="parHd">
+        <ul><li>1</li><li>2</li><li>3</li></ul>
+    </div>
+    <div class="parBd">
+            <div class="slideBox">
+                <a class="sPrev" href="javascript:void(0)"></a>
+                <ul>
+                    <li>
+                        <div class="pic"><a href="#" target="_blank"><img src="__IMG__/test.png" /></a></div>
+                    </li>
+                    <li>
+                        <div class="pic"><a href="#" target="_blank"><img src="__IMG__/test.png" /></a></div>
+                    </li>
+                    <li>
+                        <div class="pic"><a href="#" target="_blank"><img src="__IMG__/test.png" /></a></div>
+                    </li>
+                    <li>
+                        <div class="pic"><a href="#" target="_blank"><img src="__IMG__/test.png" /></a></div>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <div class="pic"><a href="#" target="_blank"><img src="__IMG__/test.png" /></a></div>
+                    </li>
+                    <li>
+                        <div class="pic"><a href="#" target="_blank"><img src="__IMG__/test.png" /></a></div>
+                    </li>
+                    <li>
+                        <div class="pic"><a href="#" target="_blank"><img src="__IMG__/test.png" /></a></div>
+                    </li>
+                    <li>
+                        <div class="pic"><a href="#" target="_blank"><img src="__IMG__/test.png" /></a></div>
+                    </li>
+
+                </ul>
+                <a class="sNext" href="javascript:void(0)"></a>
+            </div><!-- slideBox End -->
+
+            <div class="slideBox">
+                <a class="sPrev" href="javascript:void(0)"></a>
+                <ul>
+                    <li>
+                        <div class="pic"><a href="#" target="_blank"><img src="__IMG__/test.png" /></a></div>
+                    </li>
+                    <li>
+                        <div class="pic"><a href="#" target="_blank"><img src="__IMG__/test.png" /></a></div>
+                    </li>
+                    <li>
+                        <div class="pic"><a href="#" target="_blank"><img src="__IMG__/test.png" /></a></div>
+                    </li>
+                    <li>
+                        <div class="pic"><a href="#" target="_blank"><img src="__IMG__/test.png" /></a></div>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <div class="pic"><a href="#" target="_blank"><img src="__IMG__/test.png" /></a></div>
+                    </li>
+                    <li>
+                        <div class="pic"><a href="#" target="_blank"><img src="__IMG__/test.png" /></a></div>
+                    </li>
+                    <li>
+                        <div class="pic"><a href="#" target="_blank"><img src="__IMG__/test.png" /></a></div>
+                    </li>
+                    <li>
+                        <div class="pic"><a href="#" target="_blank"><img src="__IMG__/test.png" /></a></div>
+                    </li>
+                </ul>
+                <a class="sNext" href="javascript:void(0)"></a>
+            </div><!-- slideBox End -->
+
+            <div class="slideBox">
+                <a class="sPrev" href="javascript:void(0)"></a>
+                <ul>
+                    <li>
+                        <div class="pic"><a href="#" target="_blank"><img src="__IMG__/test.png" /></a></div>
+                    </li>
+                    <li>
+                        <div class="pic"><a href="#" target="_blank"><img src="__IMG__/test.png" /></a></div>
+                    </li>
+                    <li>
+                        <div class="pic"><a href="#" target="_blank"><img src="__IMG__/test.png" /></a></div>
+                    </li>
+                    <li>
+                        <div class="pic"><a href="#" target="_blank"><img src="__IMG__/test.png" /></a></div>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <div class="pic"><a href="#" target="_blank"><img src="__IMG__/test.png" /></a></div>
+                    </li>
+                    <li>
+                        <div class="pic"><a href="#" target="_blank"><img src="__IMG__/test.png" /></a></div>
+                    </li>
+                    <li>
+                        <div class="pic"><a href="#" target="_blank"><img src="__IMG__/test.png" /></a></div>
+                    </li>
+                    <li>
+                        <div class="pic"><a href="#" target="_blank"><img src="__IMG__/test.png" /></a></div>
+                    </li>
+                </ul>
+                <a class="sNext" href="javascript:void(0)"></a>
+            </div><!-- slideBox End -->
+    </div><!-- parBd End -->
+</div>
+			<div class="commic">
+                		</div>
+		</div>
+    		</div>
+		<div class="others">
+			<div class="event">
+                                </div>
+		</div>
+<include file="Public/Demo/footer" /> 
+
+<!-- 弹出层 669X344-->
+	<div id="Popup" class="modal-wrapper-bg" style="display:none">
+	        <div class="modal-dialog bounceInDown">
+				{$web_stting['video_info']|htmlspecialchars_decode}
+				<!-- 关闭按钮 -->
+	            <span onClick="Close()" id="close" class="close"></span>
+	        </div>
+	</div>
+</body>
+</html>
+<script>
+    // 滚动图js
+	jQuery(".newRoll").slide({mainCell:".bd ul",effect:"fold",autoPlay:true,autoPage:true,titCell:".ol"});
+	// 友情链接
+	jQuery(".link-box .main").slide({ mainCell:".con ul",autoPage:true,effect:"leftLoop",autoPlay:true,vis:5,delayTime:1000});
+</script>
+ <!-- tab 切换 -->
+<script>
+	$(function(){
+		$('#inde li').mouseover(function(){
+			var n = $(this).index();
+			$('#inde li').removeClass('on');
+			$(this).addClass('on');
+			$('.con-item').each(function(){
+				$(this).hide();
+			});
+			$('.con-item').eq(n).show();
+		});
+	});
+</script>
+   <script>
+       $(document).ready(function () {
+ 
+           $('body').css('zoom', 'reset');
+            $(document).keydown(function (event) {
+
+             if ((event.ctrlKey === true || event.metaKey === true)
+               && (event.which === 61 || event.which === 107
+                    || event.which === 173 || event.which === 109
+                   || event.which === 187  || event.which === 189))
+              {
+                  event.preventDefault();
+              }
+          });
+
+              $(window).bind('mousewheel DOMMouseScroll', function (event) {
+                 if (event.ctrlKey === true || event.metaKey) {
+                      event.preventDefault();
+                 }
+
+           });
+       });
+        document.addEventListener('DOMContentLoaded', function (event) {
+            document.body.style.zoom = 'reset';
+            document.addEventListener('keydown', function (event) {
+                if ((event.ctrlKey === true || event.metaKey === true)
+                && (event.which === 61 || event.which === 107
+                    || event.which === 173 || event.which === 109
+                    || event.which === 187  || event.which === 189))
+                    {
+                       event.preventDefault();
+                    }
+            }, false);
+            document.addEventListener('mousewheel DOMMouseScroll', function (event) {
+                if (event.ctrlKey === true || event.metaKey) {
+                    event.preventDefault();
+                }
+            }, false);
+        }, false);
+    </script>
+<script type="text/javascript">
+
+    jQuery(".slideGroup .slideBox").slide({
+		mainCell:"ul",
+		vis:6,
+		prevCell:".sPrev",
+		nextCell:".sNext",
+		effect:"leftLoop"
+		});
+    /* 外层tab切换 */
+    jQuery(".slideGroup").slide({
+		titCell:".parHd li",
+		mainCell:".parBd"
+		});
+</script>  

@@ -8,7 +8,7 @@ a:hover { text-decoration: none; }
 li { list-style: none;}
 img {border: 0;}
 textarea,input,select { font-family: "Microsoft Yahei";}
-body{background:url(../images/back.png) no-repeat center top;}
+body{background:url(../images/back1.jpg) no-repeat center top;}
 .ellipsis {white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .clear { clear: both;}
 .wrap { width: 1200px; margin: 0 auto;}
@@ -20,7 +20,7 @@ body{background:url(../images/back.png) no-repeat center top;}
 .video:hover { -webkit-animation-play-state: paused;animation-play-state: paused;}
 .back-w { background: #fff; }
 .con-box{ position: relative; z-index: 0; background:  padding-bottom:20px;}
-.logo { position: relative; z-index: 1; margin-top: 8%; margin-left: 4%;width: 14%;}
+.logo { position: absolute; z-index: 1; margin-top: 8%; margin-left: 4%;width: 14%;}
 .top-nav{ height: 67px; width: 100%;  z-index: 1; background:url(../img/navback.png) repeat-x; position: absolute; top: 0; left: 0; }
 .top-nav ul li{ padding-bottom: 5px; position: relative; float: left; width: 170px; text-align: center; margin: 0 33px;border-bottom: 0px solid #67f0f9; transition:all 0.2s ease-in 0s;} 
 /*.top-nav ul li:hover{ border-bottom: 5px solid #67f0f9;}*/
@@ -52,12 +52,12 @@ body{background:url(../images/back.png) no-repeat center top;}
 /*.app-down .fenge { background: url(../img/fenge.png) no-repeat;}*/
 /*.app-down .ios { background: url(../img/ios.png) no-repeat;}*/
 /*.app-down .ios:hover { background: url(../img/ios_hover.png) no-repeat;}*/
-.newswidth {width: 80%; left: 0;  top: 65em;  right: 0; margin: auto;position: absolute;}
+.newswidth {width: 89%; left: 0;  top: 65em;  right: 0; margin:0 auto;position: absolute;}
 .app-down span {position: absolute;}
 
 .newscontent-left {padding-left: 140px; }
 .newscontent-right {padding-right: 140px;}
-.news-box,.link-box { padding:13.5px; background: url(../img/strip.png) repeat-x; border-radius: 10px;}
+.news-box,.link-box { padding:13.5px; background: url(../img/strip.png) no-repeat; border-radius: 10px;}
 .news-box .newRoll { width: 580px; height: 330px; position: relative;}
 .news-box .newRoll .luce {   width: 100%; background:rgba(0,0,0,0.5); height: 46px; position: absolute; bottom: 0; left: 0;}
 .news-box .newRoll .ol { position: absolute; z-index: 1;  bottom: 11px; left: 40%;}
@@ -139,7 +139,7 @@ body{background:url(../images/back.png) no-repeat center top;}
   background:#000; filter:alpha(opacity=60);opacity:0.6
 }
 .fullSlide .hd ul{ text-align:center;  padding-top:5px;  }
-.fullSlide .hd ul li{ cursor:pointer; display:inline-block; *display:inline; zoom:1; width:8px; height:8px; margin:5px; background:url(images/tg_flash_p.png) -18px 0; overflow:hidden;
+.fullSlide .hd ul li{ cursor:pointer; display:inline-block; *display:inline; zoom:1; width:8px; height:8px; margin:5px; overflow:hidden;
   font-size:0;
 }
 .fullSlide .hd ul .on{ background-position:0 0; }
@@ -154,7 +154,7 @@ body{background:url(../images/back.png) no-repeat center top;}
 .link-box .con ul li img {   margin: 5px 0;}
 .link-box .con {   padding: 14px 0 3px;}
 .link-box .con ul { height: 160px;}
-.new-main { background: url(../img/xd.jpg) repeat-y center top;  padding: 25px 0;}
+.new-main { background: url(../img/xd.png) repeat-y center top;  padding: 25px 0;}
 .new-main .container { background: rgba(255,255,255,0.5);  border-radius: 9px; padding: 15px; box-shadow: 2px 0px 8px rgba(203, 199, 199, 0.4),-2px 0px 2px rgba(203, 203, 203, 0.4),0px -1px 2px rgba(203, 203, 203, 0.4),0px 1px 5px rgba(189, 189, 189, 0.4);}
 .new-main .container .l-con,.new-main .container .r-con { background: #fff; }
 .new-main .container .l-con { padding: 20px; height: 770px; float: left;}
@@ -239,7 +239,9 @@ body{background:url(../images/back.png) no-repeat center top;}
     opacity: 1;
     -webkit-transform: scale3d(1.03, 1.03, 1.03);
     transform: scale3d(1.03, 1.03, 1.03);
-  } {
+  }
+
+60%{
     -webkit-transform: scale3d(1.1, 1.1, 1.1);
     transform: scale3d(1.1, 1.1, 1.1);
   }
@@ -443,20 +445,24 @@ a:hover,a:focus{
   }
 }
 .character-box{
-  height: 500px;
-  width: 100%;
-}
-.gallery-box{
-  height: 500px;
+  margin-top: 70px;
+  height: 650px;
   width: 100%;
 }
 .guidance-box{
-  height: 500px;
+  margin-top: 70px;
+  height: 700px;
   width: 100%;
 }
-.character-box{
-  height: 500px;
-  width: 100%;
+.gallery-box {
+
+}
+.event-box {
+  margin-top: 180px;
+  height:400px;
+  width:auto;
+  background-color: grey;
+  background-repeat : no-repeat;
 }
 .slide-bar ul li{
   margin-top: 12px;
@@ -469,6 +475,22 @@ a:hover,a:focus{
   right: 1%;
   top:38%;
 }
-.shouye {
+.slideGroup{ width:1250px; border:1px solid #ddd; text-align:left;position:relative;top:1.5em;left:-0.8em; }
+.slideGroup .parHd{ height:30px; line-height:30px; padding:0 20px; position:relative; width: 120px;position:absolute;right:7em;top:-2em;}
+.slideGroup .parHd ul{ float:right; position:absolute; left:20px; top:-1px; height:32px;   }
+.parHd ul  {list-style:none; margin: 0; padding: 0;}
+.slideGroup .parHd ul li{ float:left; padding:0 15px; cursor:pointer;  }
+.slideGroup .parHd ul li.on{ height:30px;  background:#fff; border:1px solid #ddd;  }
+.slideGroup .parBd{ padding:10px; zoom:1;  }
+.slideGroup .slideBox{ overflow:hidden; zoom:1; }
+.slideGroup .sPrev,.slideGroup .sNext{ display: none;width:30px; height:90px; float:left;  border:1px solid #ddd; background:url(images/icoLeft.gif) center center no-repeat #f4f4f4; }
+.slideGroup .sNext{ background:url(images/icoRight.gif) center center no-repeat #f4f4f4;  }
+.slideGroup .sPrev:hover,.slideGroup .sNext:hover{ border-color:#f60;  }
+.slideGroup .parBd .tempWrap{ float:left;  }
+.slideGroup .parBd ul{ overflow:hidden; zoom:1; float:left;  }
+.slideGroup .parBd ul li{ margin:0 8px; float:left; _display:inline; overflow:hidden; text-align:center;  }
+.slideGroup .parBd ul li .pic{ text-align:center; }
+.slideGroup .parBd ul li .pic img{ width:285px; height:164px; display:block;  padding:2px; border:1px solid #ccc; }
+.slideGroup .parBd ul li .pic a:hover img{ border-color:#999;  }
+.slideGroup .parBd ul li .title{ line-height:24px;   }
 
-}

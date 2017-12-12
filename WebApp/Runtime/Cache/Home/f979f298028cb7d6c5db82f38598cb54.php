@@ -9,14 +9,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="baidu-site-verification" content="f7nqw8YR4G" />
 <link rel="shortcut icon" href="/Public/home/img/ico.jpg" type="image/x-icon">
-<link rel="stylesheet" href="/Phonepadgames/Public/home/css/style.css">
-
-<link rel="stylesheet" type="text/css" media="screen and (max-device-width: 400px)" href="/Phonepadgames/Public/home/css/tinyScreen.css" />
-<link rel="stylesheet" type="text/css" media="screen and (min-width: 400px) and (max-device-width: 600px)" href="/Phonepadgames/Public/home/css/smallScreen.css" />
-
-    <script src="/Phonepadgames/Public/home/js/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="/Phonepadgames/Public/home/js/jquery.SuperSlide.2.1.2.js"></script>
-    <script src="/Phonepadgames/Public/home/js/com.js"></script>
+<link rel="stylesheet" type="text/css" media="screen and (min-width:1680px) and (max-device-width: 2048px)" href="/Public/home/css/style.css" />
+<link rel="stylesheet" type="text/css" media="screen and (min-width: 720px) and (max-device-width: 1680px)" href="/Public/home/css/smallScreen.css" />
+<link rel="stylesheet" type="text/css" media="screen and (min-width: 0px) and (max-device-width: 720px)" href="/Public/home/css/tinyScreen.css" />
+<link rel="stylesheet" type="text/css" href="/Public/home/css/musicstyle.css" />
+<script type="text/javascript" src="js/myplaylist.js"></script>
+<script type="text/javascript" src="../plugin/jquery-jplayer/jquery.jplayer.js"></script>
+    <script type="text/javascript" src="../plugin/ttw-music-player-min.js"></script>
+    <script type="text/javascript" src="/Public/home/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/Public/home/js/jquery.SuperSlide.2.1.2.js"></script>
+    <script src="/Public/home/js/com.js"></script>
+<script src="/Public/home/js/BigPicture.js"></script>
 
 
  
@@ -28,9 +31,9 @@
             <ul>
                 <li <?php if($action_name == 'index'): ?>class="on"<?php endif; ?>><a href="<?php echo (C("SiteUrl")); ?>">官网首页</a></li>
                 <li <?php if($action_name != 'index'): ?>class="on"<?php endif; ?>><a href="<?php echo U('Index/news');?>">游戏资讯</a></li>
-                <li <?php if($action_name != 'index'): ?>class="on"<?php endif; ?>><a href="<?php echo U('Index/news');?>">游戏攻略</a></li>
-                <li <?php if($action_name != 'index'): ?>class="on"<?php endif; ?>><a href="<?php echo U('Index/news');?>">官方渠道</a></li>
-                <li <?php if($action_name != 'index'): ?>class="on"<?php endif; ?>><a href="<?php echo U('Index/news');?>">访问蜂派</a></li>
+                <li <?php if($action_name != 'index'): ?>class="on"<?php endif; ?>><a href="http://www.phonepadgames.com">游戏攻略</a></li>
+                <li <?php if($action_name != 'index'): ?>class="on"<?php endif; ?>><a href="https://tieba.baidu.com/f?ie=utf-8&kw=绝对音域&fr=search	">官方贴吧</a></li>
+                <li <?php if($action_name != 'index'): ?>class="on"<?php endif; ?>><a href="http://www.phonepadgames.com">访问蜂派</a></li>
                 <!--<?php if(is_array($document)): $i = 0; $__LIST__ = $document;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$dc): $mod = ($i % 2 );++$i;?>-->
                 <!--<li <?php if($i == 1): ?>class="spec"<?php endif; ?>><a href="<?php echo ($dc['doc_key']); ?>" target="_blank"><?php echo ($dc['doc_title']); ?></a></li>-->
                 <!--<?php endforeach; endif; else: echo "" ;endif; ?>-->
@@ -38,7 +41,7 @@
 		<span class="sign"></span>
         </div> 
     </div>
-    <a href="<?php echo (C("SiteUrl")); ?>"><img class="logo bounceIn" src="/Phonepadgames/Uploads/<?php echo ($web_stting['site_logo']); ?>" alt="<?php echo ($web_stting['site_name']); ?>" title="<?php echo ($web_stting['site_name']); ?>"></a>
+    <a><img class="logo bounceIn" src="/Uploads/<?php echo ($web_stting['site_logo']); ?>" alt="<?php echo ($web_stting['site_name']); ?>" title="<?php echo ($web_stting['site_name']); ?>"></a>
 
 </div>
 
@@ -51,20 +54,20 @@
 			<!-- 轮播（Carousel）项目 -->
 			<div class="carousel-inner">
 				<div class="app-down clearfix ">
-					<div class="cell"><span class="ios"><a target="_blank" href="#"></a></span></div>
-					<div class="cell"><span class="android"><a target="_blank" href="#"> </a></span></div>
-					<div class="cell-fenge"><span class="cell-fenge"><a target="_blank" href="#"> </a></span></div>
-					<div class="cell"><span class="weibo"><a target="_blank" href="#"> </a></span></div>
+					<div class="cell"><span class="ios"><a target="_blank" href="http://a.app.qq.com/o/simple.jsp?pkgname=com.tencent.tmgp.ppgames.timetorock"></a></span>
+					</div>
+					<div class="cell"><span class="android"><a target="_blank" href="http://l.taptap.com/dgFKYOZf"> </a></span></div>
+					<div class="cell-fenge"><span class="cell-fenge"><a target="_blank" > </a></span></div>
+					<div class="cell"><span class="weibo"><a target="_blank" href="https://weibo.com/u/6275602923?refer_flag=1001030101_&is_hot=1"> </a></span></div>
 				</div>
 
 				<div class="fullSlide">
 					<div class="bd">
 						<ul>
-							<li><a target="_blank"><img src="/Phonepadgames/Public/home/img/Banner-1.jpg"/></a></li>
-							<li><a target="_blank"><img src="/Phonepadgames/Public/home/img/Banner-1.jpg"/></a></li>
-							<li><a target="_blank"><img src="/Phonepadgames/Public/home/img/Banner-1.jpg"/></a></li>
-							<li><a target="_blank"><img src="/Phonepadgames/Public/home/img/Banner-1.jpg"/></a></li>
-							<li><a target="_blank"><img src="/Phonepadgames/Public/home/img/Banner-1.jpg"/></a></li>
+							<li><a target="_blank"><img src="/Public/home/img/Banner-1.jpg"/></a></li>
+							<li><a target="_blank"><img src="/Public/home/img/Banner-boy.png"/></a></li>
+							<li><a target="_blank"><img src="/Public/home/img/Banner-1.jpg"/></a></li>
+							<li><a target="_blank"><img src="/Public/home/img/Banner-boy.png"/></a></li>
 						</ul>
 					</div>
 					<div class="hd" style="display: none"><ul></ul></div>
@@ -72,7 +75,7 @@
 					<a class="next" href="javascript:void(0)"></a>
 				</div>
 			</div>
-			<div class="slide-bar">
+			<div class="slide-bar" style="display:none">
 				<volist>
 					<ul>
 						<li><span class="shouye"><a  href="carousel-inner" >首页</a></span></li>
@@ -85,7 +88,6 @@
 					</ul>
 				</volist>
 			</div>
-			<volist>
 				<div class="connectlist">
 					<ul>
 						<li class="connectweixin" id="weixin"><a href="#"></a></li>
@@ -100,17 +102,16 @@
 						<a href="javascript:;"></a>
 						<div class="weixin_nr">
 							<div class="arrow"></div>
-							<img src="/Phonepadgames/Public/home/img/qrcode.png" width="100" height="100" />
+							<img src="/Public/home/img/qrcode.png" width="100" height="100" />
 							关注官方微信
 						</div>
 					</div>
 				</div>
-			</volist>
 			<div class="news-box clearfix newswidth">
 				<div class="fl newRoll newscontent-left">
 					<div class="bd">
 						<ul>
-							<?php if(is_array($banner)): $i = 0; $__LIST__ = $banner;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$bn): $mod = ($i % 2 );++$i;?><li><a href="<?php echo ($bn['ap_link']); ?>" target="_blank"><img src="/Phonepadgames/Uploads/<?php echo ($bn['ap_pic']); ?>" alt="<?php echo ($bn['ap_intro']); ?>"></a>
+							<?php if(is_array($banner)): $i = 0; $__LIST__ = $banner;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$bn): $mod = ($i % 2 );++$i;?><li><a href="<?php echo ($bn['ap_link']); ?>" target="_blank"><img src="/Uploads/<?php echo ($bn['ap_pic']); ?>" alt="<?php echo ($bn['ap_intro']); ?>"></a>
 									<div class="luce"></div></li><?php endforeach; endif; else: echo "" ;endif; ?>
 						</ul>
 
@@ -158,9 +159,9 @@
 	<div class="result page"><?php echo ($page); ?></div>
 	<div class="wrap">
 		<div class="con-box">
-			<!--<img class="star glintFlash" src="/Phonepadgames/Public/home/img/star.png" alt="">-->
-			<!--<a class="video playflash" href="javascript:showView()"><img src="/Phonepadgames/Public/home/img/music.png" alt="<?php echo ($web_stting['site_name']); ?>"></a>-->
-			<!--<span class="fr"><img class="wx" src="/Phonepadgames/Uploads/<?php echo ($web_stting['weixin_qrcode']); ?>" alt="<?php echo ($web_stting['site_name']); ?>"></span>-->
+			<!--<img class="star glintFlash" src="/Public/home/img/star.png" alt="">-->
+			<!--<a class="video playflash" href="javascript:showView()"><img src="/Public/home/img/music.png" alt="<?php echo ($web_stting['site_name']); ?>"></a>-->
+			<!--<span class="fr"><img class="wx" src="/Uploads/<?php echo ($web_stting['weixin_qrcode']); ?>" alt="<?php echo ($web_stting['site_name']); ?>"></span>-->
 
 			<div class="character-box clearfix">
 				<ul>
@@ -168,24 +169,119 @@
 				</ul>
 			</div>
 		<div class="guidance-box clearfix">
-			<ul>
-				<?php if(is_array($index_ad)): $i = 0; $__LIST__ = $index_ad;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$i_ad): $mod = ($i % 2 );++$i;?>攻略栏<?php endforeach; endif; else: echo "" ;endif; ?>
-			</ul>
 		</div>
 
-		<div class="gallery-box clearfix">
-			<ul>
-				<?php if(is_array($index_ad)): $i = 0; $__LIST__ = $index_ad;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$i_ad): $mod = ($i % 2 );++$i;?>图库栏<?php endforeach; endif; else: echo "" ;endif; ?>
-			</ul>
-		</div>
-			<div class="event-box clearfix">
-				<ul>
-					<?php if(is_array($index_ad)): $i = 0; $__LIST__ = $index_ad;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$i_ad): $mod = ($i % 2 );++$i;?>活动栏<?php endforeach; endif; else: echo "" ;endif; ?>
-				</ul>
+		<div class="gallery-box clearfix" id="pic">
+			<div class="slideGroup" style="margin:0 auto">
+				<div class="parHd">
+					<ul><li>1</li><li>2</li><li>3</li></ul>
+				</div>
+				<div class="parBd">
+					<div class="slideBox">
+						<a class="sPrev" href="javascript:void(0)"></a>
+						<ul>
+							<li>
+								<div class="pic"><a  target="_blank"><img class="zoom" src="/Public/home/img/gallery-xiaxiaotu.jpg" /></a></div>
+							</li>
+							<li>
+								<div class="pic"><a  target="_blank"><img src="/Public/home/img/gallery-jingyunjiang.jpg" /></a></div>
+							</li>
+							<li>
+								<div class="pic"><a  target="_blank"><img src="/Public/home/img/gallery-fenglang.jpg" /></a></div>
+							</li>
+							<li>
+								<div class="pic"><a  target="_blank"><img src="/Public/home/img/gallery-anpo.jpg" /></a></div>
+							</li>
+						</ul>
+						<ul>
+							<li>
+								<div class="pic"><a target="_blank"><img src="/Public/home/img/gallery-ouyangling.jpg" /></a></div>
+							</li>
+							<li>
+								<div class="pic"><a  target="_blank"><img src="/Public/home/img/gallery-ouyangyi.jpg" /></a></div>
+							</li>
+							<li>
+								<div class="pic"><a  target="_blank"><img src="/Public/home/img/gallery-ajie.jpg" /></a></div>
+							</li>
+							<li>
+								<div class="pic"><a target="_blank"><img src="/Public/home/img/gallery-naxisai.jpg" /></a></div>
+							</li>
+
+						</ul>
+						<a class="sNext" href="javascript:void(0)"></a>
+					</div><!-- slideBox End -->
+
+					<div class="slideBox">
+						<a class="sPrev" href="javascript:void(0)"></a>
+						<ul>
+							<li>
+								<div class="pic"><a target="_blank"><img src="/Public/home/img/gallery-liumengshu.jpg" /></a></div>
+							</li>
+							<li>
+								<div class="pic"><a  target="_blank"><img src="/Public/home/img/gallery-gumange.jpg" /></a></div>
+							</li>
+							<li>
+								<div class="pic"><a target="_blank"><img src="/Public/home/img/gallery-jinghe.jpg" /></a></div>
+							</li>
+							<li>
+								<div class="pic"><a  target="_blank"><img src="/Public/home/img/gallery-lanshan.jpg" /></a></div>
+							</li>
+						</ul>
+						<ul>
+							<li>
+								<div class="pic"><a target="_blank"><img src="/Public/home/img/gallery-luola.jpg" /></a></div>
+							</li>
+							<li>
+								<div class="pic"><a target="_blank"><img src="/Public/home/img/gallery-qinchuan.jpg" /></a></div>
+							</li>
+							<li>
+								<div class="pic"><a  target="_blank"><img src="/Public/home/img/gallery-yinlechen.jpg" /></a></div>
+							</li>
+							<li>
+								<div class="pic"><a  target="_blank"><img src="/Public/home/img/gallery-youyou.jpg" /></a></div>
+							</li>
+						</ul>
+						<a class="sNext" href="javascript:void(0)"></a>
+					</div><!-- slideBox End -->
+
+					<div class="slideBox">
+						<a class="sPrev" href="javascript:void(0)"></a>
+						<ul>
+							<li>
+								<div class="pic"><a target="_blank"><img src="/Public/home/img/gallery-zixuan.jpg" /></a></div>
+							</li>
+							<li>
+								<div class="pic"><a target="_blank"><img src="/Public/home/img/guochang-1.jpg" /></a></div>
+							</li>
+							<li>
+								<div class="pic"><a target="_blank"><img src="/Public/home/img/guochang-2.jpg" /></a></div>
+							</li>
+							<li>
+								<div class="pic"><a target="_blank"><img src="/Public/home/img/guochang-3.jpg" /></a></div>
+							</li>
+						</ul>
+						<ul>
+							<li>
+								<div class="pic"><a target="_blank"><img src="/Public/home/img/guochang-4.jpg" /></a></div>
+							</li>
+							<li>
+								<div class="pic"><a target="_blank"><img src="/Public/home/img/guochang-5.jpg" /></a></div>
+							</li>
+							<li>
+								<div class="pic"><a target="_blank"><img src="/Public/home/img/guochang-6.jpg" /></a></div>
+							</li>
+							<li>
+								<div class="pic"><a target="_blank"><img src="/Public/home/img/guochang-7.jpg" /></a></div>
+							</li>
+						</ul>
+						<a class="sNext" href="javascript:void(0)"></a>
+					</div><!-- slideBox End -->
+				</div><!-- parBd End -->
 			</div>
+		</div>
 			<div class="other-box clearfix">
 				<ul>
-					<?php if(is_array($index_ad)): $i = 0; $__LIST__ = $index_ad;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$i_ad): $mod = ($i % 2 );++$i;?><li><a href="<?php echo ($i_ad['ap_link']); ?>" target="_blank"><img src="/Phonepadgames/Uploads/<?php echo ($i_ad['ap_pic']); ?>" onMouseOver="this.src='/Phonepadgames/Uploads/<?php echo ($i_ad["ap_pic_2"]); ?>'" onMouseOut="this.src='/Phonepadgames/Uploads/<?php echo ($i_ad["ap_pic"]); ?>'" alt="<?php echo ($i_ad['ap_intro']); ?>"></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
+					<?php if(is_array($index_ad)): $i = 0; $__LIST__ = $index_ad;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$i_ad): $mod = ($i % 2 );++$i;?><li><a href="<?php echo ($i_ad['ap_link']); ?>" target="_blank"><img src="/Uploads/<?php echo ($i_ad['ap_pic']); ?>" onMouseOver="this.src='/Uploads/<?php echo ($i_ad["ap_pic_2"]); ?>'" onMouseOut="this.src='/Uploads/<?php echo ($i_ad["ap_pic"]); ?>'" alt="<?php echo ($i_ad['ap_intro']); ?>"></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
 				</ul>
 			</div>
 			<!-- 友情链接 -->
@@ -195,8 +291,8 @@
 <div class="fooder">
 	<div class="wrap">
 		<div class="main">
-			<img class="pic1" src="/Phonepadgames/Uploads/<?php echo ($web_stting['member_logo']); ?>">
-			<img class="pic2" src="/Phonepadgames/Uploads/<?php echo ($web_stting['seller_logo']); ?>">
+			<img class="pic1" src="/Uploads/<?php echo ($web_stting['member_logo']); ?>">
+			<img class="pic2" src="/Uploads/<?php echo ($web_stting['seller_logo']); ?>">
 			<div class="hint fr" style="width: 490px; text-align: justify;">
 			<?php echo ($web_stting['footer_info']); ?>
 			</div>
@@ -248,5 +344,96 @@ var _hmt = _hmt || [];
 <script type="text/javascript">
     jQuery(".fullSlide").slide({ titCell:".hd ul", mainCell:".bd ul", vis:"auto", autoPlay:true, autoPage:true, interTime:3200,mouseOverStop:false,effect:"left",});
 </script>
-<script>window.jQuery || document.write('<script src="/Phonepadgames/Public/home/js/jquery-1.11.3.min.js"><\/script>')</script>
+<script>window.jQuery || document.write('<script src="/Public/home/js/jquery-1.11.3.min.js"><\/script>')</script>
 <script src="http://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+    jQuery(".slideGroup .slideBox").slide({
+        mainCell:"ul",
+        vis:6,
+        prevCell:".sPrev",
+        nextCell:".sNext",
+        effect:"leftLoop"
+    });
+	/* 外层tab切换 */
+    jQuery(".slideGroup").slide({
+        titCell:".parHd li",
+        mainCell:".parBd"
+    });
+</script>
+<script>
+  (function() {
+
+	function setClickHandler(id, fn) {
+	  document.getElementById(id).onclick = fn;
+	}
+
+	setClickHandler('pic', function(e) {
+	  e.target.tagName === 'IMG' && BigPicture({
+		el: e.target,
+		imgSrc: e.target.src.replace('_thumb', '')
+	  });
+	});
+
+	setClickHandler('local_image_container', function(e) {
+	  (e.target.tagName === 'IMG' || e.target.className === 'background-image') &&
+		BigPicture({
+		  el: e.target
+		});
+	});
+
+	setClickHandler('video_container', function(e) {
+	  var className = e.target.className;
+	  ~className.indexOf('htmlvid') &&
+		BigPicture({
+		  el: e.target,
+		  vidSrc: e.target.getAttribute('vidSrc')
+		});
+	  ~className.indexOf('vimeo') &&
+		BigPicture({
+		  el: e.target,
+		  vimeoSrc: e.target.getAttribute('vimeoSrc')
+		});
+	  ~className.indexOf('youtube') &&
+		BigPicture({
+		  el: e.target,
+		  ytSrc: e.target.getAttribute('ytSrc')
+		});
+	})
+
+	setClickHandler('broken_container', function(e) {
+	  e.target.id === 'broken_image' &&
+		BigPicture({
+		  el: e.target,
+		  imgSrc: '/nopic.jpg'
+		});
+	  e.target.id === 'broken_vid' &&
+		BigPicture({
+		  el: e.target,
+		  vidSrc: '/novid.mp4'
+		});
+	  ~e.target.className.indexOf('vimeo') &&
+		BigPicture({
+		  el: e.target,
+		  vimeoSrc: 'ajoiejlkr'
+		})
+	  ~e.target.className.indexOf('youtube') &&
+		BigPicture({
+		  el: e.target,
+		  ytSrc: 'oijlksdjf'
+		})
+	});
+
+  })();
+</script>
+<script type="text/javascript">
+        $(document).ready(function(){
+            var description = ' ';
+            $('body').ttwMusicPlayer(myPlaylist, {
+                autoPlay:false, 
+                description:description,
+                jPlayer:{
+                }
+            });
+        })
+    </script>

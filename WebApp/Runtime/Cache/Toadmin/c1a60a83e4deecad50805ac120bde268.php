@@ -1,0 +1,231 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type" content="text/html;" charset="<?php echo CHARSET;?>">
+<title>管理中心</title>
+<link href="/Public/admin/css/skin_0.css" rel="stylesheet" type="text/css" id="cssfile"/>
+<script type="text/javascript" SRC="/Public/static/jquery.js"></script>
+<script type="text/javascript" src="/Public/static/jquery.validation.min.js"></script>
+<script type="text/javascript" src="/Public/admin/js/jquery.cookie.js"></script>
+<script type="text/javascript">
+//设置按钮 点击展开和收缩
+$(document).ready(function () {
+    $('span.bar-btn').click(function () {
+	$('ul.bar-list').toggle('fast');
+    });
+});
+$(document).ready(function(){
+	var pagestyle = function() {
+		var iframe = $("#workspace");
+		var h = $(window).height() - iframe.offset().top;
+		var w = $(window).width() - iframe.offset().left;
+		if(h < 300) h = 300;
+		if(w < 973) w = 973;
+		iframe.height(h);
+		iframe.width(w);
+	}
+	pagestyle();
+	$(window).resize(pagestyle);
+	//turn location
+	if($.cookie('now_location_act') != null){
+		openItem($.cookie('now_location_op')+','+$.cookie('now_location_act')+','+$.cookie('now_location_nav'));
+	}else{
+		$('#mainMenu>ul').first().css('display','block');
+		//第一次进入后台时，默认定到欢迎界面
+		$('#item_base_information').addClass('selected');			
+		$('#workspace').attr('src','/Toadmin/Setting/aboutus');
+	}
+	$('#iframe_refresh').click(function(){
+		var fr = document.frames ? document.frames("workspace") : document.getElementById("workspace").contentWindow;;
+		fr.location.reload();
+	});
+
+});
+
+function openItem(args){
+	//cookie
+	if($.cookie('admin_id') === null){
+		location.href = '/Toadmin/Public/login';
+		return false;
+	}
+	spl = args.split(',');
+	op  = spl[0];
+	try {
+		act = spl[1];
+		nav = spl[2];
+	}
+	catch(ex){}
+	if (typeof(act)=='undefined'){var nav = args;}
+	$('.actived').removeClass('actived');
+	$('#nav_'+nav).parent('li').addClass('actived');
+
+	$('.selected').removeClass('selected');	
+
+	//show
+	$('#mainMenu ul').css('display','none');
+	$('#sort_'+nav).css('display','block');	
+
+	if (typeof(act)=='undefined'){
+		//顶部菜单事件
+		var html = $('#sort_'+nav+'>li').first().html();
+		
+		str = html.match(/openItem\('(.*)'\)/ig);
+		arg = str[0].split("'");
+		spl = arg[1].split(',');
+		op  = spl[0];
+		act = spl[1];
+		nav = spl[2];
+		first_obj = $('#sort_'+nav+'>li').first().children('a');
+		$(first_obj).addClass('selected');		
+		//crumbs
+		$('#crumbs').html('<span>'+$('#nav_'+nav+' > span').html()+'</span><span class="arrow">&nbsp;</span><span>'+$(first_obj).text()+'</span>');		
+	}else{
+		//左侧菜单事件
+		//location
+		$.cookie('now_location_nav',nav);
+		$.cookie('now_location_act',act);
+		$.cookie('now_location_op',op);
+//		$("#item_"+op).addClass('selected');//使用name，不使用ID，因为ID有重复的
+        
+		$("a[name='item_"+op+act+"']").addClass('selected');
+		//crumbs
+		$('#crumbs').html('<span>'+$('#nav_'+nav+' > span').html()+'</span><span class="arrow">&nbsp;</span><span>'+$('#item_'+op).html()+'</span>');
+	}
+	//控制器Index 方法welcome  
+	src = '/Toadmin/'+act+'/'+op;
+	$('#workspace').attr('src',src);
+}
+//点击一级类别展开和收缩二级类别
+$(function(){
+		bindAdminMenu();
+		})
+		function bindAdminMenu(){
+	
+		$("[nc_type='parentli']").click(function(){
+			var key = $(this).attr('dataparam');
+			if($(this).find("dd").css("display")=="none"){
+				$("[nc_type='"+key+"']").slideDown("fast");
+				$(this).find('dt').css("background-position","-322px -170px");
+				$(this).find("dd").show();
+			}else{
+				$("[nc_type='"+key+"']").slideUp("fast");
+				$(this).find('dt').css("background-position","-483px -170px");
+				$(this).find("dd").hide();
+			}
+		});
+	}
+</script>
+</head>
+
+<body style="margin: 0px;" scroll="no">
+<table style="width: 100%;" id="frametable" height="100%" width="100%" cellpadding="0" cellspacing="0">
+  <tbody>
+    <tr>
+      <td colspan="2" height="90" class="mainhd"><div class="layout-header"> <!-- Title/Logo - can use text instead of image -->
+          <div id="title"><a href="index.php"></a></div>
+          <!-- Top navigation -->
+          <div id="topnav" class="top-nav">
+            <ul>
+              <li class="adminid" title="您好:<?php echo ($admin_name); ?>">您好&nbsp;:&nbsp;<strong><?php echo ($admin_name); ?></strong></li>
+              <li><a href="<?php echo U('Public/logout');?>" title="退出"><span>退出</span></a></li>
+              <li><a href="<?php echo (C("SiteUrl")); ?>" target="_blank" title="首页"><span>首页</span></a></li>
+            </ul>
+          </div>
+          <!-- End of Top navigation --> 
+          <!-- Main navigation -->
+          <nav id="nav" class="main_nav">
+            <ul>
+              <li class='actived' onclick="javascript:openItem('setting');"><i class="i01"></i><a href="javascript:void(0);" id='nav_setting' onclick="javascript:openItem('setting');">设置</a></li>
+              <!--<li onclick="javascript:openItem('store');"><i class="i05" ></i><a href="javascript:void(0);" id='nav_store' onclick="javascript:openItem('store');"><span>商户管理</span></a></li>-->
+              <!--<li onclick="javascript:openItem('goods');"><i class="i02" ></i><a href="javascript:void(0);" id='nav_goods' onclick="javascript:openItem('goods');"><span>主题</span></a> </li>-->
+<!--              <li onclick="javascript:openItem('member');"><i class="i03" ></i><a href="javascript:void(0);" id='nav_member' onclick="javascript:openItem('member');"><span>会员</span></a> </li>
+              <li onclick="javascript:openItem('order');"><i class="i08"></i><a href="javascript:void(0);" id='nav_order' onclick="javascript:openItem('order');"><span>交易</span></a></li>-->
+              <!--<li onclick="javascript:openItem('coupon');"><i class="i07"></i><a href="javascript:void(0);" id='nav_coupon' onclick="javascript:openItem('coupon');"><span>优惠管理</span></a> </li>-->
+              <li onclick="javascript:openItem('website')"><i class="i10"></i><a href="javascript:void(0);" id='nav_website' onclick="javascript:openItem('website')">网站</a></li>
+              <li onclick="javascript:openItem('circle')"><i class="i04"></i><a href="javascript:void(0);" id='nav_circle' onclick="javascript:openItem('circle')">数据</a></li>
+              <!--<li onclick="javascript:openItem('weixin')"><i class="i09"></i><a href="javascript:void(0);" id='nav_weixin' onclick="javascript:openItem('weixin')">微信</a></li>-->
+            </ul>
+          </nav>
+        </div></td>
+    </tr>
+    <tr>
+      <td class="menutd" valign="top" width="161"><div id="mainMenu" class="main-menu">
+          <ul id='sort_setting' style="display:block;">
+            <li><a href="javascript:void(0);" class="selected" id="item_aboutusSetting" name='item_aboutusSetting' onclick="javascript:openItem('aboutus,Setting,setting')">关于我们</a></li>
+            <li><a href="javascript:void(0);"  id="item_base_informationSetting" name='item_base_informationSetting' onclick="javascript:openItem('base_information,Setting,setting')">站点设置</a></li>
+            <li><a href="javascript:void(0);"  id="item_seo_informationSetting" name='item_seo_informationSetting' onclick="javascript:openItem('seo_information,Setting,setting')">SEO设置</a></li>
+		    <!--<li><a href="javascript:void(0);"  id="item_short_messageSetting" name='item_short_messageSetting' onclick="javascript:openItem('short_message,Setting,setting')">短信设置</a></li>-->
+            <!--<li><a href="javascript:void(0);"  id="item_email_informationSetting" name='item_email_informationSetting' onclick="javascript:openItem('email_information,Setting,setting')">邮箱设置</a></li>-->
+
+            <li><a href="javascript:void(0);"  id="item_admin_listSetting" name='item_admin_listSetting' onclick="javascript:openItem('admin_list,Setting,setting')">系统用户</a></li>
+            <!--<li><a href="javascript:void(0);"  id="item_auth_listSetting" name='item_auth_listSetting' onclick="javascript:openItem('auth_list,Setting,setting')">权限管理</a></li>-->
+		    <!--<li><a href="javascript:void(0);"  id="item_paymentSetting" name='item_paymentSetting' onclick="javascript:openItem('payment,Setting,setting')">支付方式</a></li>	-->
+            <!--<li><a href="javascript:void(0);"  id="item_districtSetting" name='item_districtSetting' onclick="javascript:openItem('district,Setting,setting')">区域管理</a></li>-->
+            <!--<li><a href="javascript:void(0);"  id="item_express_listExpress" name='item_express_listExpress' onclick="javascript:openItem('express_list,Express,setting')">快递公司</a></li>-->
+            <!--  
+            <li><a href="javascript:void(0);"  id="item_loginsetting" name='item_loginsetting' onclick="javascript:openItem('qqlogin,setting,setting')">登陆方式</a></li>
+            -->
+          </ul>
+          <ul id='sort_store' style="display:none;">
+            <li><a href="javascript:void(0);" class="selected" id="item_storelistStore" name='item_storelistStore' onclick="javascript:openItem('storelist,Store,store')">商户管理</a></li>
+            <li><a href="javascript:void(0);" id="item_storeclassStore" name='item_storeclassStore' onclick="javascript:openItem('storeclass,Store,store')">商户分类</a></li>
+			<!--<li><a href="javascript:void(0);" id="item_appointlistAppoint" name='item_appointlistAppoint' onclick="javascript:openItem('appointlist,Appoint,store')">预约管理</a></li>-->
+            <li><a href="javascript:void(0);" id="item_commentlistComment" name='item_commentlistComment' onclick="javascript:openItem('commentlist,Comment,store')">评论管理</a></li>
+          </ul>
+          <ul id='sort_goods' style="display:none;">
+            <li><a href="javascript:void(0);" id="item_goods_classGoods" name="item_goods_classGoods" onclick="javascript:openItem('goods_class,Goods,goods');" class="selected">主题分类</a></li>
+<!--            <li><a href="javascript:void(0);" id="item_specSpec" name="item_specSpec" onclick="javascript:openItem('spec,Spec,goods');" >规格管理</a></li>
+            <li><a href="javascript:void(0);" id="item_albumAlbum" name="item_albumAlbum" onclick="javascript:openItem('album,Album,goods');" >相册管理</a></li>-->
+            <li><a href="javascript:void(0);" id="item_goodsGoods" name="item_goodsGoods" onclick="javascript:openItem('goods,Goods,goods');" >主题管理</a></li>
+            <!--<li><a href="javascript:void(0);" id="item_gift_manageGift" name="item_gift_manageGift" onclick="javascript:openItem('gift_manage,Gift,goods');">积分商城</a></li>-->
+          </ul>
+          <ul id='sort_member' style="display:none;">
+            <li><a href="javascript:void(0);" id="item_memberMember" name="item_memberMember" onclick="javascript:openItem('member,Member,member')" class="selected">会员管理</a></li>
+<!--            <li><a href="javascript:void(0);" id="item_degreeMember" name="item_degreeMember" onclick="javascript:openItem('degree,Member,member')">等级设置</a></li>
+            <li><a href="javascript:void(0);" id="item_scoreMember" name="item_scoreMember" onclick="javascript:openItem('score,Member,member')">分数设置</a></li>
+            <li><a href="javascript:void(0);" id="item_predepositMember" name="item_predepositMember" onclick="javascript:openItem('predeposit,Member,member')">预存款管理</a></li>-->
+          </ul>
+          <ul id='sort_order' style="display:none;">
+            <li><a href="javascript:void(0);" class="selected" id="item_orderOrder" name="item_orderOrder" onclick="javascript:openItem('order,Order,order');">订单管理</a></li>
+            <!--<li><a href="javascript:void(0);" id='item_groupbuyorderGroupbuy' name='item_groupbuyorderGroupbuy' onclick="javascript:openItem('groupbuyorder,Order,order');">团购订单</a></li>-->
+            <!--<li><a href="javascript:void(0);" id='item_groupbuyrefundGroupbuy' name='item_groupbuyrefundGroupbuy' onclick="javascript:openItem('groupbuyrefund,Order,order');">退款管理</a></li>-->
+          </ul>
+          <ul id='sort_coupon' style="display:none;">
+            <li><a href="javascript:void(0);" class="selected" id="item_couponCoupon" name="item_couponCoupon" onclick="javascript:openItem('coupon,Coupon,coupon');">优惠券管理</a></li>
+            <li><a href="javascript:void(0);" id="item_coupon_downloadCoupon" name="item_coupon_downloadCoupon" onclick="javascript:openItem('coupon_download,Coupon,coupon');">优惠券下载</a></li>
+          </ul>
+          <ul id='sort_website' style="display:none;">
+<!--            <li><a href="javascript:void(0);" class="selected" id="item_activityActivity" name="item_activityActivity" onclick="javascript:openItem('activity,Activity,website');">活动管理</a></li>
+       -->
+            <li><a href="javascript:void(0);" id="item_article_classArticle" name="item_article_classArticle" onclick="javascript:openItem('article_class,Article,website');">文章分类</a></li>
+            <li><a href="javascript:void(0);" id="item_articleArticle" name="item_articleArticle" onclick="javascript:openItem('article,Article,website');">文章管理</a></li>
+            <li><a href="javascript:void(0);" class="selected" id="item_documentArticle" name="item_documentArticle" onclick="javascript:openItem('document,Article,website');">导航链接</a></li>
+            <li><a href="javascript:void(0);" id="item_adv_positionAdv" name="item_adv_positionAdv" onclick="javascript:openItem('adv_position,Adv,website');">广告管理</a></li>
+            
+            <!--<li><a href="javascript:void(0);" id="item_agentAgent" name="item_agentAgent" onclick="javascript:openItem('agent,Agent,website');">经销商管理</a></li>-->
+<!--            <li><a href="javascript:void(0);" id="item_navigationNavigation" name="item_navigationNavigation" onclick="javascript:openItem('navigation,Navigation,website');">页面导航</a></li>
+            <li><a href="javascript:void(0);" id="item_settle_manageSettle" name="item_settle_manageSettle" onclick="javascript:openItem('settle_manage,Settle,website');">结算管理</a></li>-->
+          </ul>
+          
+          <ul id='sort_circle' style="display:none;">
+            <li><a href="javascript:void(0);" class="selected" id="item_cache_clearSetting" name='item_cache_clearSetting' onclick="javascript:openItem('cache_clear,Setting,circle')">清理缓存</a></li>
+            <li><a href="javascript:void(0);" id="item_sitemapTool" name='item_sitemapTool' onclick="javascript:openItem('sitemap,Tool,circle')">站点地图</a></li>
+            <li><a href="javascript:void(0);" id="item_indexDatabase" name='item_indexDatabase' onclick="javascript:openItem('index,Database,circle')">数据备份</a></li>
+          </ul>
+          
+          <ul id='sort_weixin' style="display:none;">
+            <li><a href="javascript:void(0);" class="selected" id="item_gzh_settingWeixin" name="item_gzh_settingWeixin" onclick="javascript:openItem('gzh_setting,Weixin,weixin');">微信配置</a></li>
+            <li><a href="javascript:void(0);" id="item_wx_menuWeixin" name="item_wx_menuWeixin" onclick="javascript:openItem('wx_menu,Weixin,weixin');">菜单管理</a></li>
+            <li><a href="javascript:void(0);" id="item_wx_msgWeixin" name="item_wx_msgWeixin" onclick="javascript:openItem('wx_msg,Weixin,weixin');">消息回复</a></li
+          ></ul>          
+          
+        </div>
+      </td>
+      <td valign="top" width="100%">
+      <iframe src="" id="workspace" name="workspace" style="overflow: visible;" frameborder="0" width="100%" height="100%" scrolling="yes" onload="window.parent"></iframe>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

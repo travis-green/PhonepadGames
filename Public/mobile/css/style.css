@@ -6,15 +6,15 @@ ul, form, p, h1, h2, h3, h4, h5, h6, div, input, text, textarea, dl, dt, dd { pa
 ul,li{ list-style: none;}
 a{ text-decoration: none; color: #fff;}
 .wrapp { /*background: url(../img/back.jpg) no-repeat top center; background-size:100%;*/}
-.con { margin-top: 32%; text-align: center; position: relative;}
+.con { margin-top: 62%; text-align: center; position: relative;}
 .con img { width: 75%;  }
-.logo {text-align: center;  }
+.logo {text-align: center;display:none;}
 .logo img { width: 47%; }
 .download { text-align: center;}
-.download a { border: 1px solid #E9E9E9; display: inline-block; width: 60%; background-color: #ffda00; border-radius: 10px; text-align: center; box-shadow: 1px 1px 1px #cfcfcf;}
+.download a { border: 1px solid #E9E9E9; display: inline-block; width: 60%; background-color: #44423a; border-radius: 10px; text-align: center; box-shadow: 1px 1px 1px #cfcfcf;}
 .download a img { vertical-align: middle; width: 49%; padding: 3% 0;}
-.distan { padding: 0 20px; margin: 15px 0;}
-.trans { background:rgba(255,255,255,0.5); padding: 10px; border-radius: 4px;}
+.distan { padding: 0 20px; margin: 35px 0;}
+.trans { background:rgba(255,255,255,0.5); padding: 10px; border-radius: 4px;display;none;position:relative;top:42px;}
 .inter { background: #fff;  padding-bottom: 29px;}
 .title { text-align: center; padding: 34px 0 20px 0;}
 .title img { width: 85%;}
@@ -22,7 +22,8 @@ a{ text-decoration: none; color: #fff;}
 .pic-link ul:after{ content: ""; clear: both; display: block;}
 .pic-link ul{ display: -webkit-box; display: -moz-box; }
 .pic-link ul li { width: 1px; -webkit-box-flex:1; -moz-box-flex:1; text-align: center; padding: 3px;}
-
+.hidden {display:none;}
+#hidden {display:none;}
 .pic-link ul li img { border-radius: 5px; width: 100%;}
 .banner ul li img { width: 100%;}
 .banner ul li { line-height:0;}
@@ -43,7 +44,7 @@ a{ text-decoration: none; color: #fff;}
 .atten ul li:first-child { margin-right: 15px;}
 .atten ul li a { display: block; }
 .atten ul li a img { width: 100%;}
-.back {width: 100%; background: url(../img/ck.jpg) no-repeat; margin-top: -5px;}
+.back {width: 100%; display:none;}
 .qj { width: 100%; position: absolute; top: 0; z-index: -1;}
 .distan .swiper-pagination-bullet { opacity: 1; background: #fff; width: 10px; height: 10px;}
 .distan .swiper-pagination-bullet-active { background: #31b5d0; border: 1px solid #fff;}
@@ -209,3 +210,4 @@ a{ text-decoration: none; color: #fff;}
 
   }
 }
+

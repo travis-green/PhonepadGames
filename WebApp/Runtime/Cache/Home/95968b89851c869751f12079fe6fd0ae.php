@@ -9,26 +9,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="baidu-site-verification" content="f7nqw8YR4G" />
 <link rel="shortcut icon" href="/Public/home/img/ico.jpg" type="image/x-icon">
-<link rel="stylesheet" href="/PhonepadGames/Public/home/css/style.css">
-<link rel="stylesheet" type="text/css" media="screen and (max-device-width: 400px)" href="/PhonepadGames/Public/home/css/tinyScreen.css" />
-<link rel="stylesheet" type="text/css" media="screen and (min-width: 400px) and (max-device-width: 600px)" href="/PhonepadGames/Public/home/css/smallScreen.css" />
+<link rel="stylesheet" type="text/css" media="screen and (min-width:1680px) and (max-device-width: 2048px)" href="/Public/home/css/style.css" />
+<link rel="stylesheet" type="text/css" media="screen and (min-width: 720px) and (max-device-width: 1680px)" href="/Public/home/css/smallScreen.css" />
+<link rel="stylesheet" type="text/css" media="screen and (min-width: 0px) and (max-device-width: 720px)" href="/Public/home/css/tinyScreen.css" />
+<link rel="stylesheet" type="text/css" href="/Public/home/css/musicstyle.css" />
+<script type="text/javascript" src="js/myplaylist.js"></script>
+<script type="text/javascript" src="../plugin/jquery-jplayer/jquery.jplayer.js"></script>
+    <script type="text/javascript" src="../plugin/ttw-music-player-min.js"></script>
+    <script type="text/javascript" src="/Public/home/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/Public/home/js/jquery.SuperSlide.2.1.2.js"></script>
+    <script src="/Public/home/js/com.js"></script>
+<script src="/Public/home/js/BigPicture.js"></script>
 
-    <script src="/PhonepadGames/Public/home/js/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="/PhonepadGames/Public/home/js/jquery.SuperSlide.2.1.2.js"></script>
-    <script src="/PhonepadGames/Public/home/js/com.js"></script>
 
  
 </head>
-<body style="background:url(/PhonepadGames/Public/home/images/list_b.jpg) no-repeat center top;">
+<body style="width:100%;height:100%;">
 	<div class="top-nav">
     <div class="wrap tc">
         <div class="nav">
             <ul>
                 <li <?php if($action_name == 'index'): ?>class="on"<?php endif; ?>><a href="<?php echo (C("SiteUrl")); ?>">官网首页</a></li>
                 <li <?php if($action_name != 'index'): ?>class="on"<?php endif; ?>><a href="<?php echo U('Index/news');?>">游戏资讯</a></li>
-                <li <?php if($action_name != 'index'): ?>class="on"<?php endif; ?>><a href="<?php echo U('Index/news');?>">游戏攻略</a></li>
-                <li <?php if($action_name != 'index'): ?>class="on"<?php endif; ?>><a href="<?php echo U('Index/news');?>">官方渠道</a></li>
-                <li <?php if($action_name != 'index'): ?>class="on"<?php endif; ?>><a href="<?php echo U('Index/news');?>">访问蜂派</a></li>
+                <li <?php if($action_name != 'index'): ?>class="on"<?php endif; ?>><a href="http://www.phonepadgames.com">游戏攻略</a></li>
+                <li <?php if($action_name != 'index'): ?>class="on"<?php endif; ?>><a href="https://tieba.baidu.com/f?ie=utf-8&kw=绝对音域&fr=search	">官方贴吧</a></li>
+                <li <?php if($action_name != 'index'): ?>class="on"<?php endif; ?>><a href="http://www.phonepadgames.com">访问蜂派</a></li>
                 <!--<?php if(is_array($document)): $i = 0; $__LIST__ = $document;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$dc): $mod = ($i % 2 );++$i;?>-->
                 <!--<li <?php if($i == 1): ?>class="spec"<?php endif; ?>><a href="<?php echo ($dc['doc_key']); ?>" target="_blank"><?php echo ($dc['doc_title']); ?></a></li>-->
                 <!--<?php endforeach; endif; else: echo "" ;endif; ?>-->
@@ -36,18 +41,13 @@
 		<span class="sign"></span>
         </div> 
     </div>
-    <a href="<?php echo (C("SiteUrl")); ?>"><img class="logo bounceIn" src="/PhonepadGames/Uploads/<?php echo ($web_stting['site_logo']); ?>" alt="<?php echo ($web_stting['site_name']); ?>" title="<?php echo ($web_stting['site_name']); ?>"></a>
+    <a><img class="logo bounceIn" src="/Uploads/<?php echo ($web_stting['site_logo']); ?>" alt="<?php echo ($web_stting['site_name']); ?>" title="<?php echo ($web_stting['site_name']); ?>"></a>
 
 </div>
  
-	<div class="wrap">
-		<div class="con-box" style="background:url(/PhonepadGames/Public/home/images/list.jpg) no-repeat left top; padding:0;">
-			 <img class="place glintFlash" src="/PhonepadGames/Public/home/img/xi.png">
-			<div class="app-down clearfix" style="padding:490px 0 0 0">
-				<span class="fr"><img class="wx" src="/PhonepadGames/Uploads/<?php echo ($web_stting['weixin_qrcode']); ?>" alt="<?php echo ($web_stting['site_name']); ?>"></span>
-				<span class="ios fr"><a href="<?php echo ($web_stting['ios_url']); ?>" target="_blank"> </a></span>
-				<span class="android fr"><a href="<?php echo ($web_stting['android_url']); ?>" target="_blank"> </a></span>
-			</div>
+	<div class="wrap" style="margin-top:3%;">
+		<div class="con-box" style="background:url(/Public/home/images/list.jpg) no-repeat left top; padding:0;display:none;">
+			 <img class="place glintFlash" src="/Public/home/img/xi.png">
 		</div>
 	</div>
 
@@ -75,8 +75,8 @@
 <div class="fooder">
 	<div class="wrap">
 		<div class="main">
-			<img class="pic1" src="/PhonepadGames/Uploads/<?php echo ($web_stting['member_logo']); ?>">
-			<img class="pic2" src="/PhonepadGames/Uploads/<?php echo ($web_stting['seller_logo']); ?>">
+			<img class="pic1" src="/Uploads/<?php echo ($web_stting['member_logo']); ?>">
+			<img class="pic2" src="/Uploads/<?php echo ($web_stting['seller_logo']); ?>">
 			<div class="hint fr" style="width: 490px; text-align: justify;">
 			<?php echo ($web_stting['footer_info']); ?>
 			</div>
